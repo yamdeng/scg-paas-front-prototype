@@ -30,4 +30,11 @@
 10. mobx 및 필수 라이브러리 설치
  -yarn add mobx@4.3.1 mobx-react moment lodash shortid stringquery axios recharts react-helmet bootstrap reactstrap@6.5.0
 
+11. 기타 라이브러리 설치
+ -yarn add mobx-react-router recompose mobx-react-devtools
+
+12. material-ui 설치
+ -yarn add @material-ui/core @material-ui/icons
+
+13. 
 

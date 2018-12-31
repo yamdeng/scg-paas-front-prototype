@@ -2,9 +2,7 @@
     "window.zoomLevel": 1,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
+    "editor.snippetSuggestions": "top",
     "editor.tabSize": 4,
     "eslint.autoFixOnSave": true,
     "eslint.alwaysShowStatus": true,
