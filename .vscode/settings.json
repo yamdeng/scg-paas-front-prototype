@@ -1,0 +1,24 @@
+{
+    "window.zoomLevel": 1,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "prettier.eslintIntegration": true,
+    "prettier.printWidth": 80,
+    "prettier.tabWidth": 4,
+    "prettier.disableLanguages": [
+        "markdown",
+        "json",
+        "css"
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true
+    }
+}
