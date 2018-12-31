@@ -1,12 +1,26 @@
-# scg-paas-front-prototype 프로젝트
+# 프로젝트 import
+
+1. node, visaul code 설치
+
+2. visual code "Settings Sync" 확장 툴 설치
+
+3. visual code 팔렛트 오픈 ---> Sync Download 선택
+
+4. 라이브러리 설치 : yarn
+
+5. 실행 : yarn start
+
+
+# scg-paas-front-prototype 프로젝트 작업 히스토리
 
 1. 상위 폴더에서 npx create-react-app scg-paas-front-prototype
 
 2. yarn eject 명령어 실행
- -rm -rf node_modules 폴더 삭제
- -yarn
+ -node_modules 폴더 삭제 : rm -rf
+ -라이브러리 재설치 : yarn
 
-3. yarn start로 확인하기
+3. yarn start로 브라우저 실행 확인하기
+ -http://localhost:3000
 
 4. .bable 파일 추가
  -기존 package.json에 정의되어있던 "babel" 정보 삭제
@@ -36,5 +50,5 @@
 12. material-ui 설치
  -yarn add @material-ui/core @material-ui/icons
 
-13. 
+13.
 
