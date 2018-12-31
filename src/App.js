@@ -11,14 +11,6 @@ import './App.css';
 @inject('appStore')
 @observer
 class App extends Component {
-  init() {
-    console.log('init call');
-  }
-
-  componentDidMount() {
-    this.init();
-  }
-
   render() {
     return (
       <div>
