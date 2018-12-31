@@ -1,14 +1,14 @@
 # scg-paas-front-prototype 프로젝트
 
-1.상위 폴더에서 npx create-react-app scg-paas-front-prototype
+1. 상위 폴더에서 npx create-react-app scg-paas-front-prototype
 
-2.yarn eject 명령어 실행
+2. yarn eject 명령어 실행
  -rm -rf node_modules 폴더 삭제
  -yarn
 
-3.yarn start로 확인하기
+3. yarn start로 확인하기
 
-4.bable 추가
+4. .bable 파일 추가
  -기존 package.json에 정의되어있던 "babel" 정보 삭제
  -.babelrc 파일 생성
  -babel 라이브러리 설치 : yarn add --dev babel-plugin-transform-decorators-legacy
@@ -27,5 +27,7 @@
  -터미널에서 yarn start 실행
  -vs code IDE에서 디버그 포인트 걸고 [F5] 키 눌러서 디버깅 여부 확인
 
+10. mobx 및 필수 라이브러리 설치
+ -yarn add mobx@4.3.1 mobx-react moment lodash shortid stringquery axios recharts react-helmet bootstrap reactstrap@6.5.0
 
 

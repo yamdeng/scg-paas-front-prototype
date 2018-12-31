@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { HashRouter as Router } from 'react-router-dom';
+import { configure } from 'mobx';
+import { Provider } from 'mobx-react';
+import stores from './stores/stores';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+// state의 상태는 action을 통해서만 가능하게끔 셋팅
+configure({
+  enforceActions: true
+});
+
+ReactDOM.render(
+  <Provider {...stores}>
+    <Router>{<App />}</Router>
+  </Provider>,
+  document.getElementById('root')
+);
+
 serviceWorker.unregister();
