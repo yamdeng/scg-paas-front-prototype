@@ -5,6 +5,7 @@
 2. visual code "Settings Sync" 확장 툴 설치
 
 3. visual code 팔렛트 오픈 ---> Sync Download 선택
+ -git access token : 337dffea3cbfb98c8bbd3b7eb76c5164d90bd760
 
 4. 라이브러리 설치 : yarn
 
