@@ -26,7 +26,7 @@ Api.interceptors.request.use(
 
 Api.interceptors.response.use(
   function(response) {
-    Logger.info('api response : ' + JSON.stringify(response.data));
+    // Logger.info('api response : ' + JSON.stringify(response.data));
     return response;
   },
   function(error) {

@@ -1,29 +1,17 @@
 import React from 'react';
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
-  Row,
-  Col
-} from 'reactstrap';
-
 import { withStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-import classnames from 'classnames';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import ChargeRateMonthSearch from './ChargeRateMonthSearch';
 import ChargeRateYearSearch from './ChargeRateYearSearch';
 import PayOffHistory from './PayOffHistory';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.blue
+  }
+});
 
 class ChargeRateWrapper extends React.Component {
   constructor(props) {
@@ -31,11 +19,11 @@ class ChargeRateWrapper extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: 'one'
     };
   }
 
-  toggle(tab) {
+  toggle(event, tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab
@@ -44,55 +32,22 @@ class ChargeRateWrapper extends React.Component {
   }
 
   render() {
-    console.log('ChargeRateWrapper render');
+    const classes = this.props.classes;
+    let value = this.state.activeTab;
+
     return (
-      <div>
-        <Nav tabs>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => {
-                this.toggle('1');
-              }}
-            >
-              월별조회
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => {
-                this.toggle('2');
-              }}
-            >
-              연간조회
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '3' })}
-              onClick={() => {
-                this.toggle('3');
-              }}
-            >
-              미납내역조회
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="1">
-            <ChargeRateMonthSearch />
-          </TabPane>
-          <TabPane tabId="2">
-            <ChargeRateYearSearch />
-          </TabPane>
-          <TabPane tabId="3">
-            <PayOffHistory />
-          </TabPane>
-        </TabContent>
+      <div className={classes.root}>
+        <Tabs value={value} onChange={this.toggle}>
+          <Tab value="one" label="월별조회" />
+          <Tab value="two" label="연간조회" />
+          <Tab value="three" label="미납내역조회" />
+        </Tabs>
+        {value === 'one' && <ChargeRateMonthSearch />}
+        {value === 'two' && <ChargeRateYearSearch />}
+        {value === 'three' && <PayOffHistory />}
       </div>
     );
   }
 }
 
-export default ChargeRateWrapper;
+export default withStyles(styles)(ChargeRateWrapper);
