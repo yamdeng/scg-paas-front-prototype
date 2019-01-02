@@ -15,7 +15,7 @@ class Home extends React.Component {
           <title>Home</title>
         </Helmet>
         <img src={logo} className="App-logo" alt="logo" />
-        <h1> Home 페이지입니다 3</h1>
+        <h1> Home 페이지입니다</h1>
       </div>
     );
   }

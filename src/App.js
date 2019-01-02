@@ -3,8 +3,12 @@ import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
-import List from './components/List';
-import Chart from './components/Chart';
+import Profile from './components/Profile';
+import Setting from './components/Setting';
+import SafeHistory from './components/SafeHistory';
+import GasRateTable from './components/GasRateTable';
+import GasRateDetail from './components/GasRateDetail';
+import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper';
 import './App.css';
 
 @withRouter
@@ -16,8 +20,17 @@ class App extends Component {
       <div>
         <Navigation />
         <Route exact path="/" component={Home} />
-        <Route exact path="/list" component={List} />
-        <Route exact path="/chart" component={Chart} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/setting" component={Setting} />
+        <Route exact path="/safeHistory/:contractNo" component={SafeHistory} />
+        <Route exact path="/tariff" component={GasRateTable} />
+        <Route exact path="/tariff/:gasId" component={GasRateDetail} />
+        <Route
+          exact
+          path="/monthInfo/:month/:contractNo"
+          component={ChargeRateWrapper}
+        />
       </div>
     );
   }

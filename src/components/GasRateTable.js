@@ -2,7 +2,7 @@ import React from 'react';
 
 class GasRateTable extends React.Component {
   render() {
-    return <div>{null}</div>;
+    return <div>가스요금표</div>;
   }
 }
 
