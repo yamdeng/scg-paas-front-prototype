@@ -1,27 +1,23 @@
 {
-    "files.autoSave": "afterDelay",
-    "window.zoomLevel": 1,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.snippetSuggestions": "top",
-    "editor.tabSize": 2,
-    "eslint.autoFixOnSave": true,
-    "eslint.alwaysShowStatus": true,
-    "prettier.eslintIntegration": true,
-    "prettier.disableLanguages": [
-        "markdown",
-        "json",
-        "css"
-    ],
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/node_modules": true
-    },
-    "javascript.implicitProjectConfig.experimentalDecorators": true,
-    "sync.gist": "555b04b206f71ff3b5a03e2fb58a05c0",
-    "sync.quietSync": false
+  "files.autoSave": "off",
+  "window.zoomLevel": 1,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "prettier.eslintIntegration": true,
+  "prettier.disableLanguages": ["markdown", "json", "css"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "sync.gist": "555b04b206f71ff3b5a03e2fb58a05c0",
+  "sync.quietSync": false
 }
