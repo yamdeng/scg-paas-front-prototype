@@ -71,7 +71,7 @@ class ChargeRateYearSearch extends React.Component {
             <tbody>
               {this.state.allMonthChartData.map(info => {
                 return (
-                  <tr>
+                  <tr key={info.date}>
                     <td>{info.date}</td>
                     <td>{info.useGas}</td>
                     <td>{info.chargeAmt}</td>

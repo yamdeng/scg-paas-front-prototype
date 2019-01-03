@@ -20,7 +20,7 @@ class GasRateTable extends React.Component {
   render() {
     let resultComponent = this.state.data.map(info => {
       return (
-        <tr>
+        <tr key={info.id}>
           <td>
             <Link className="nav-link" to={`/tariff/${info.id}`}>
               {info.id}

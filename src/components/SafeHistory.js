@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 import Api from '../utils/Api';
+import shortid from 'shortid';
 
 class SafeHistory extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class SafeHistory extends React.Component {
   render() {
     let resultComponent = this.state.data.map(info => {
       return (
-        <tr>
+        <tr key={shortid.generate()}>
           <td>{info.checkDate}</td>
           <td>{info.checkResult === 1 ? '적합' : '부적합'}</td>
           <td>{info.checkReason}</td>

@@ -13,6 +13,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Table } from 'reactstrap';
+import shortid from 'shortid';
 
 import {
   LineChart,
@@ -193,7 +194,7 @@ class ChargeRateMonthSearch extends React.Component {
                 {this.state.monthDetailInfo.depositAccount
                   ? this.state.monthDetailInfo.depositAccount.map(info => {
                       return (
-                        <tr>
+                        <tr key={shortid.generate()}>
                           <td>{info.bankName}</td>
                           <td>{info.bankAccountNo}</td>
                         </tr>
