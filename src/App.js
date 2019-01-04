@@ -12,6 +12,7 @@ import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper
 import NativeTest from './components/NativeTest';
 import './App.css';
 import Api from './utils/Api';
+import NativeEventService from './services/NativeEventService';
 
 @withRouter
 @inject('appStore')
@@ -21,6 +22,7 @@ class App extends Component {
     Api.get('appInfo').then(result => {
       this.props.appStore.changeAppVersion(result.data.version);
     });
+    NativeEventService.initEventListener();
   }
 
   componentDidMount() {

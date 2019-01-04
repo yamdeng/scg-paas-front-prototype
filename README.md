@@ -43,7 +43,7 @@
  -vs code IDE에서 디버그 포인트 걸고 [F5] 키 눌러서 디버깅 여부 확인
 
 10. mobx 및 필수 라이브러리 설치
- -yarn add mobx@4.3.1 mobx-react moment lodash shortid stringquery axios recharts react-helmet bootstrap reactstrap@6.5.0 classnames prop-types
+ -yarn add mobx@4.3.1 mobx-react moment lodash shortid stringquery axios recharts react-helmet bootstrap reactstrap@6.5.0 classnames prop-types jquery
 
 11. 기타 라이브러리 설치
  -yarn add mobx-react-router recompose mobx-react-devtools
