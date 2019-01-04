@@ -16,6 +16,10 @@ class NativeTest extends Component {
     this.getGps = this.getGps.bind(this);
   }
 
+  componentDidMount() {
+    this.props.appStore.changeHeadTitle('디바이스 연동 테스트');
+  }
+
   getDeviceInfo() {
     NativeInterfaceService.getDeviceInfo();
   }
