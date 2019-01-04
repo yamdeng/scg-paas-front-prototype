@@ -14,6 +14,13 @@ class GasRateTable extends React.Component {
     this.state = {
       data: []
     };
+    this.moveGasRateDetail = this.moveGasRateDetail.bind(this);
+  }
+
+  moveGasRateDetail(id) {
+    this.props.history.push({
+      pathname: '/tariff/' + id
+    });
   }
 
   componentDidMount() {
@@ -26,9 +33,16 @@ class GasRateTable extends React.Component {
   render() {
     let resultComponent = this.state.data.map(info => {
       return (
-        <tr key={info.id}>
+        <tr
+          key={info.id}
+          onClick={event => this.moveGasRateDetail(info.id, event)}
+        >
           <td>
-            <Link className="nav-link" to={`/tariff/${info.id}`}>
+            <Link
+              style={{ color: 'black' }}
+              className="nav-link"
+              to={`/tariff/${info.id}`}
+            >
               {info.id}
             </Link>
           </td>

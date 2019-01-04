@@ -30,7 +30,7 @@ class SafeHistory extends React.Component {
         <tr key={shortid.generate()}>
           <td>{info.checkDate}</td>
           <td>{info.checkResult === 1 ? '적합' : '부적합'}</td>
-          <td>{info.checkReason}</td>
+          <td>{info.checkReason ? info.checkReason : '-'}</td>
         </tr>
       );
     });
