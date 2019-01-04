@@ -43,8 +43,18 @@ class ChargeRateYearSearch extends React.Component {
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <XAxis dataKey="date" />
-            <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
-            <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+            <YAxis
+              yAxisId="left"
+              orientation="left"
+              stroke="#8884d8"
+              mirror={true}
+            />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              stroke="#82ca9d"
+              mirror={true}
+            />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip />
             <Legend />
@@ -59,7 +69,7 @@ class ChargeRateYearSearch extends React.Component {
           </ComposedChart>
         </div>
         <div>
-          <Table>
+          <Table style={{ overflow: 'scroll' }}>
             <thead>
               <tr>
                 <th>청구년월</th>

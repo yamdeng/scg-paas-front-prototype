@@ -68,15 +68,16 @@ class ChargeRateMonthSearch extends React.Component {
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>연간 차트정보</Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails style={{ overflow: 'scroll' }}>
+          <ExpansionPanelDetails
+            style={{ overflow: 'scroll', padding: '0 0 0 0' }}
+          >
             <LineChart
               width={1500}
               height={300}
               data={this.state.allMonthChartData}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
               <XAxis dataKey="date" />
-              <YAxis />
+              <YAxis orientation="left" mirror={true} />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
@@ -211,15 +212,22 @@ class ChargeRateMonthSearch extends React.Component {
               최근 1년 가스 사용량 추이
             </Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
+          <ExpansionPanelDetails style={{ padding: '0 0 0 0' }}>
             <ResponsiveContainer height={300}>
-              <ComposedChart
-                data={this.state.recentUseChartData}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
+              <ComposedChart data={this.state.recentUseChartData}>
                 <XAxis dataKey="month" />
-                <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
-                <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+                <YAxis
+                  yAxisId="left"
+                  orientation="left"
+                  stroke="#8884d8"
+                  mirror={true}
+                />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  stroke="#82ca9d"
+                  mirror={true}
+                />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip />
                 <Legend />

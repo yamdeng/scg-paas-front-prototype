@@ -2,8 +2,7 @@ import React from 'react';
 
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-import logo from '../logo.svg';
-import { Helmet } from 'react-helmet';
+import logo from '../logo.jpg';
 
 @withRouter
 @inject('appStore')
@@ -15,11 +14,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Helmet>
-          <title>Home</title>
-        </Helmet>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1> Home 페이지입니다</h1>
+        <img src={logo} style={{ width: '100%', height: 250 }} alt="logo" />
+        <h1> 도시가스 프로토타입 홈</h1>
       </div>
     );
   }
