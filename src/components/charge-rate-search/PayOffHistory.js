@@ -76,8 +76,8 @@ class PayOffHistory extends React.Component {
           <tbody>
             {this.state.payOffHistoryInfo.map(info => {
               return (
-                <tr key={shortid.generate()}>
-                  <td onClick={this.openModal}>{info.date}</td>
+                <tr key={shortid.generate()} onClick={this.openModal}>
+                  <td>{info.date}</td>
                   <td>{info.useGas}</td>
                   <td>{info.chargeAmt.toLocaleString() + '원'}</td>
                   <td>{info.dueAmt.toLocaleString() + '원'}</td>
