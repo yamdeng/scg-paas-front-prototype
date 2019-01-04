@@ -1,7 +1,12 @@
 import React from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import Api from '../utils/Api';
+import { observer, inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 
+@withRouter
+@inject('appStore')
+@observer
 class GasRateDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +16,9 @@ class GasRateDetail extends React.Component {
   }
 
   componentDidMount() {
+    this.props.appStore.changeHeadTitle(
+      '가스요금 상세 : ' + this.props.match.params.gasId
+    );
     Api.get('tariff/' + this.props.match.params.gasId).then(result => {
       this.setState({ data: result.data });
     });

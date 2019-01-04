@@ -10,11 +10,22 @@ import GasRateTable from './components/GasRateTable';
 import GasRateDetail from './components/GasRateDetail';
 import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper';
 import './App.css';
+import Api from './utils/Api';
 
 @withRouter
 @inject('appStore')
 @observer
 class App extends Component {
+  init() {
+    Api.get('appInfo').then(result => {
+      this.props.appStore.changeAppVersion(result.data.version);
+    });
+  }
+
+  componentDidMount() {
+    this.init();
+  }
+
   render() {
     return (
       <div>

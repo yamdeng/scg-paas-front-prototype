@@ -5,6 +5,8 @@ import Tab from '@material-ui/core/Tab';
 import ChargeRateMonthSearch from './ChargeRateMonthSearch';
 import ChargeRateYearSearch from './ChargeRateYearSearch';
 import PayOffHistory from './PayOffHistory';
+import { observer, inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -13,6 +15,9 @@ const styles = theme => ({
   }
 });
 
+@withRouter
+@inject('appStore')
+@observer
 class ChargeRateWrapper extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +26,10 @@ class ChargeRateWrapper extends React.Component {
     this.state = {
       activeTab: 'one'
     };
+  }
+
+  componentDidMount() {
+    this.props.appStore.changeHeadTitle('청구요금 조회');
   }
 
   toggle(event, tab) {

@@ -20,8 +20,11 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import BuildIcon from '@material-ui/icons/Build';
 import DonutSmallIcon from '@material-ui/icons/DonutSmall';
 import SearchIcon from '@material-ui/icons/Search';
+import InfoIcon from '@material-ui/icons/Info';
 import { Link } from 'react-router-dom';
 import Config from '../config/Config';
+import { observer, inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -82,6 +85,9 @@ const styles = theme => ({
   }
 });
 
+@withRouter
+@inject('appStore')
+@observer
 class DrawerNavigation extends React.Component {
   constructor(props) {
     super(props);
@@ -101,7 +107,7 @@ class DrawerNavigation extends React.Component {
     this.setState({ open: false });
   }
 
-  clickMenu(event) {
+  clickMenu() {
     this.setState({ open: false });
   }
 
@@ -129,7 +135,7 @@ class DrawerNavigation extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              인천 도시가스 프로토타입
+              {this.props.appStore.headTitle}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -148,8 +154,8 @@ class DrawerNavigation extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List onClick={this.clickMenu}>
-            <Link className="nav-link" to="/home">
+          <List>
+            <Link className="nav-link" to="/home" onClick={this.clickMenu}>
               <ListItem button key={'home'}>
                 <ListItemIcon>
                   <HomeIcon />
@@ -157,7 +163,7 @@ class DrawerNavigation extends React.Component {
                 <ListItemText primary={'홈'} />
               </ListItem>
             </Link>
-            <Link className="nav-link" to="/profile">
+            <Link className="nav-link" to="/profile" onClick={this.clickMenu}>
               <ListItem button key={'profile'}>
                 <ListItemIcon>
                   <AccountBoxIcon />
@@ -165,7 +171,7 @@ class DrawerNavigation extends React.Component {
                 <ListItemText primary={'프로필'} />
               </ListItem>
             </Link>
-            <Link className="nav-link" to="/setting">
+            <Link className="nav-link" to="/setting" onClick={this.clickMenu}>
               <ListItem button key={'settings'}>
                 <ListItemIcon>
                   <SettingsIcon />
@@ -173,7 +179,11 @@ class DrawerNavigation extends React.Component {
                 <ListItemText primary={'설정'} />
               </ListItem>
             </Link>
-            <Link className="nav-link" to={`/safeHistory/${Config.contractNo}`}>
+            <Link
+              className="nav-link"
+              to={`/safeHistory/${Config.contractNo}`}
+              onClick={this.clickMenu}
+            >
               <ListItem button key={'safehistory'}>
                 <ListItemIcon>
                   <BuildIcon />
@@ -181,7 +191,7 @@ class DrawerNavigation extends React.Component {
                 <ListItemText primary={'안전점검이력 조회'} />
               </ListItem>
             </Link>
-            <Link className="nav-link" to="/tariff">
+            <Link className="nav-link" to="/tariff" onClick={this.clickMenu}>
               <ListItem button key={'gassearch'}>
                 <ListItemIcon>
                   <DonutSmallIcon />
@@ -192,12 +202,30 @@ class DrawerNavigation extends React.Component {
             <Link
               className="nav-link"
               to={`/monthInfo/201812/${Config.contractNo}`}
+              onClick={this.clickMenu}
             >
               <ListItem button key={'search'}>
                 <ListItemIcon>
                   <SearchIcon />
                 </ListItemIcon>
                 <ListItemText primary={'청구요금 조회'} />
+              </ListItem>
+            </Link>
+            <Link
+              className="nav-link"
+              to="setting"
+              onClick={event => {
+                event.preventDefault();
+                this.setState({ open: false });
+              }}
+            >
+              <ListItem button key={'appInfo'}>
+                <ListItemIcon>
+                  <InfoIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={'앱 정보 ' + this.props.appStore.appVersion}
+                />
               </ListItem>
             </Link>
           </List>

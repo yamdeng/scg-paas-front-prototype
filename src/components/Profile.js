@@ -2,6 +2,12 @@ import React from 'react';
 import Api from '../utils/Api';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
+import { observer, inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
+
+@withRouter
+@inject('appStore')
+@observer
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +17,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
+    this.props.appStore.changeHeadTitle('프로필');
     Api.get('profile').then(result => {
       this.setState({ data: result.data });
     });

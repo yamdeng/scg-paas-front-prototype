@@ -2,7 +2,12 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import Api from '../utils/Api';
 import shortid from 'shortid';
+import { observer, inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 
+@withRouter
+@inject('appStore')
+@observer
 class SafeHistory extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +17,7 @@ class SafeHistory extends React.Component {
   }
 
   componentDidMount() {
+    this.props.appStore.changeHeadTitle('안전점검이력 조회');
     let contractNo = this.props.match.params.contractNo;
     Api.get('safeHistory/' + contractNo).then(result => {
       this.setState({ data: result.data.safeHistory });
