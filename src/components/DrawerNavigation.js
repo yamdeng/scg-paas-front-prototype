@@ -230,7 +230,7 @@ class DrawerNavigation extends React.Component {
               </ListItem>
             </Link>
           </List>
-          <Link className="nav-link" to="nativetest" onClick={this.clickMenu}>
+          <Link className="nav-link" to="/nativetest" onClick={this.clickMenu}>
             <ListItem button key={'nativetest'}>
               <ListItemIcon>
                 <DeviceUnknownIcon />
