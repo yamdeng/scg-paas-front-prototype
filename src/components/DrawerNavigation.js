@@ -21,6 +21,7 @@ import BuildIcon from '@material-ui/icons/Build';
 import DonutSmallIcon from '@material-ui/icons/DonutSmall';
 import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
+import DeviceUnknownIcon from '@material-ui/icons/DeviceUnknown';
 import { Link } from 'react-router-dom';
 import Config from '../config/Config';
 import { observer, inject } from 'mobx-react';
@@ -229,6 +230,14 @@ class DrawerNavigation extends React.Component {
               </ListItem>
             </Link>
           </List>
+          <Link className="nav-link" to="nativetest" onClick={this.clickMenu}>
+            <ListItem button key={'nativetest'}>
+              <ListItemIcon>
+                <DeviceUnknownIcon />
+              </ListItemIcon>
+              <ListItemText primary={'연동 테스트'} />
+            </ListItem>
+          </Link>
           <Divider />
         </Drawer>
       </div>

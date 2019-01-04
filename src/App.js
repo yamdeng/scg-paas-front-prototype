@@ -9,6 +9,7 @@ import SafeHistory from './components/SafeHistory';
 import GasRateTable from './components/GasRateTable';
 import GasRateDetail from './components/GasRateDetail';
 import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper';
+import NativeTest from './components/NativeTest';
 import './App.css';
 import Api from './utils/Api';
 
@@ -47,6 +48,7 @@ class App extends Component {
             path="/monthInfo/:month/:contractNo"
             component={ChargeRateWrapper}
           />
+          <Route exact path="/nativetest" component={NativeTest} />
         </div>
       </div>
     );

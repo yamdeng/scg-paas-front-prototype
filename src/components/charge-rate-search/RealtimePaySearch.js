@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import Api from '../../utils/Api';
 import Config from '../../config/Config';
+import shortid from 'shortid';
 
 class RealtimePaySearch extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class RealtimePaySearch extends React.Component {
         <List>
           {this.state.realtimePayInfos.map(info => {
             return (
-              <React.Fragment>
+              <React.Fragment key={shortid.generate()}>
                 <ListItem button>
                   <ListItemText primary="카드번호" secondary={info.cardNo} />
                 </ListItem>
