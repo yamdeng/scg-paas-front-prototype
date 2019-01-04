@@ -1,4 +1,4 @@
 // eslint-disable-next-line
-function nativeInterface(eventName, eventData) {
+function dispatchEventToApp(eventName, eventData) {
   $(window).trigger(eventName, [eventData]);
 }
