@@ -19,18 +19,24 @@ class App extends Component {
     return (
       <div>
         <DrawerNavigation />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/setting" component={Setting} />
-        <Route exact path="/safeHistory/:contractNo" component={SafeHistory} />
-        <Route exact path="/tariff" component={GasRateTable} />
-        <Route exact path="/tariff/:gasId" component={GasRateDetail} />
-        <Route
-          exact
-          path="/monthInfo/:month/:contractNo"
-          component={ChargeRateWrapper}
-        />
+        <div style={{ marginTop: 56 }}>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/setting" component={Setting} />
+          <Route
+            exact
+            path="/safeHistory/:contractNo"
+            component={SafeHistory}
+          />
+          <Route exact path="/tariff" component={GasRateTable} />
+          <Route exact path="/tariff/:gasId" component={GasRateDetail} />
+          <Route
+            exact
+            path="/monthInfo/:month/:contractNo"
+            component={ChargeRateWrapper}
+          />
+        </div>
       </div>
     );
   }

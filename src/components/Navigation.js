@@ -28,7 +28,7 @@ class Navigation extends React.Component {
             </Link>
           </li>
           <li className="nav-item active">
-            <Link className="nav-link" to="/tariff/">
+            <Link className="nav-link" to="/tariff">
               가스요금조회
             </Link>
           </li>

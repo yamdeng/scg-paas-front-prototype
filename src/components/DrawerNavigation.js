@@ -14,8 +14,14 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
+import SettingsIcon from '@material-ui/icons/Settings';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import BuildIcon from '@material-ui/icons/Build';
+import DonutSmallIcon from '@material-ui/icons/DonutSmall';
+import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
+import Config from '../config/Config';
 
 const drawerWidth = 240;
 
@@ -79,13 +85,12 @@ const styles = theme => ({
 class DrawerNavigation extends React.Component {
   constructor(props) {
     super(props);
-
-    this.toggle = this.toggle.bind(this);
     this.state = {
       open: false
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
+    this.clickMenu = this.clickMenu.bind(this);
   }
 
   handleDrawerOpen() {
@@ -96,12 +101,8 @@ class DrawerNavigation extends React.Component {
     this.setState({ open: false });
   }
 
-  toggle(event, tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
-    }
+  clickMenu(event) {
+    this.setState({ open: false });
   }
 
   render() {
@@ -147,27 +148,60 @@ class DrawerNavigation extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
+          <List onClick={this.clickMenu}>
+            <Link className="nav-link" to="/home">
+              <ListItem button key={'home'}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={'홈'} />
               </ListItem>
-            ))}
+            </Link>
+            <Link className="nav-link" to="/profile">
+              <ListItem button key={'profile'}>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText primary={'프로필'} />
+              </ListItem>
+            </Link>
+            <Link className="nav-link" to="/setting">
+              <ListItem button key={'settings'}>
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary={'설정'} />
+              </ListItem>
+            </Link>
+            <Link className="nav-link" to={`/safeHistory/${Config.contractNo}`}>
+              <ListItem button key={'safehistory'}>
+                <ListItemIcon>
+                  <BuildIcon />
+                </ListItemIcon>
+                <ListItemText primary={'안전점검이력 조회'} />
+              </ListItem>
+            </Link>
+            <Link className="nav-link" to="/tariff">
+              <ListItem button key={'gassearch'}>
+                <ListItemIcon>
+                  <DonutSmallIcon />
+                </ListItemIcon>
+                <ListItemText primary={'가스요금 조회'} />
+              </ListItem>
+            </Link>
+            <Link
+              className="nav-link"
+              to={`/monthInfo/201812/${Config.contractNo}`}
+            >
+              <ListItem button key={'search'}>
+                <ListItemIcon>
+                  <SearchIcon />
+                </ListItemIcon>
+                <ListItemText primary={'청구요금 조회'} />
+              </ListItem>
+            </Link>
           </List>
           <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
         </Drawer>
       </div>
     );
