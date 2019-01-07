@@ -3,19 +3,22 @@ import stores from '../stores/stores';
 
 class NativeEventService {
   initEventListener() {
-    $(window).on('getDeviceInfo', function(event, data) {
+    $(window).on('setDeviceInfo', function(event, data) {
       // eslint-disable-next-line
-      console.log('getDeviceInfo');
+      console.log('setDeviceInfo');
+      stores.nativeStore.setDeviceInfo(data);
     });
 
-    $(window).on('sendImage', function(event, data) {
+    $(window).on('setImage', function(event, data) {
       // eslint-disable-next-line
-      console.log('sendImage');
+      console.log('setImage');
+      stores.nativeStore.setImage(data);
     });
 
-    $(window).on('getGps', function(event, data) {
+    $(window).on('setGps', function(event, data) {
       // eslint-disable-next-line
-      console.log('getGps : ' + data);
+      console.log('setGps : ' + data);
+      stores.nativeStore.setGps(JSON.parse(data));
     });
   }
 }

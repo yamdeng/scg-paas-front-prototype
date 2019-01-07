@@ -2,6 +2,11 @@ import DeviceUtil from '../utils/DeviceUtil';
 import stores from '../stores/stores';
 
 class NativeInterfaceService {
+  enableBackButton() {
+    if (DeviceUtil.isAndroid) {
+      window.android.enableBackButton();
+    }
+  }
   disableBackButton() {
     if (DeviceUtil.isAndroid) {
       window.android.disableBackButton();
@@ -25,6 +30,12 @@ class NativeInterfaceService {
   getGps() {
     if (DeviceUtil.isAndroid) {
       window.android.getGps();
+    }
+  }
+
+  showToast(message) {
+    if (DeviceUtil.isAndroid) {
+      window.android.showToast(message);
     }
   }
 }

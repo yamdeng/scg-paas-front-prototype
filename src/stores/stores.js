@@ -20,7 +20,8 @@ let rootStore = new RootStore();
 
 let stores = {
   rootStore: rootStore,
-  appStore: rootStore.appStore
+  appStore: rootStore.appStore,
+  nativeStore: rootStore.nativeStore
 };
 
 export default stores;
