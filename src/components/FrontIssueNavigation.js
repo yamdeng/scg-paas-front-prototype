@@ -12,18 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
-import SettingsIcon from '@material-ui/icons/Settings';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import BuildIcon from '@material-ui/icons/Build';
-import DonutSmallIcon from '@material-ui/icons/DonutSmall';
-import SearchIcon from '@material-ui/icons/Search';
-import InfoIcon from '@material-ui/icons/Info';
-import DeviceUnknownIcon from '@material-ui/icons/DeviceUnknown';
 import { Link } from 'react-router-dom';
-import Config from '../config/Config';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 
@@ -188,6 +178,7 @@ class FrontIssueNavigation extends React.Component {
                   className="nav-link"
                   to={info.linkUrl}
                   onClick={this.clickMenu}
+                  key={info.title}
                 >
                   <ListItem button key={info.title}>
                     <ListItemText primary={info.title} />
