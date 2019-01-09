@@ -26,6 +26,7 @@ class NativeTest extends Component {
     this.setAppVersion = this.setAppVersion.bind(this);
     this.openCamera = this.openCamera.bind(this);
     this.getGps = this.getGps.bind(this);
+    this.getGpsByBrowser = this.getGpsByBrowser.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.enableBackButton = this.enableBackButton.bind(this);
     this.disableBackButton = this.disableBackButton.bind(this);
@@ -50,6 +51,8 @@ class NativeTest extends Component {
   getGps() {
     NativeInterfaceService.getGps();
   }
+
+  getGpsByBrowser() {}
 
   handleClose() {
     this.setState({ open: false });
@@ -88,6 +91,13 @@ class NativeTest extends Component {
         </Button>
         <Button variant="contained" color="primary" onClick={this.getGps}>
           GPS 정보
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.getGpsByBrowser}
+        >
+          GPS 정보(브라우저)
         </Button>
         <Button
           variant="contained"

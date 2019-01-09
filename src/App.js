@@ -3,13 +3,34 @@ import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
 import Home from './components/Home';
-import Profile from './components/Profile';
-import Setting from './components/Setting';
-import SafeHistory from './components/SafeHistory';
-import GasRateTable from './components/GasRateTable';
-import GasRateDetail from './components/GasRateDetail';
-import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper';
-import NativeTest from './components/NativeTest';
+import AccordionB from './components/front-issue/AccordionB';
+import AccordionM from './components/front-issue/AccordionM';
+import TabB from './components/front-issue/TabB';
+import TabM from './components/front-issue/TabM';
+import DeviceBasic from './components/front-issue/DeviceBasic';
+//
+import FooterSelect from './components/front-issue/FooterSelect';
+import CheckboxSwitch from './components/front-issue/CheckboxSwitch';
+import NativeInterface from './components/front-issue/NativeInterface';
+import ModalTest1 from './components/front-issue/ModalTest1';
+
+import LoadingBar from './components/front-issue/LoadingBar';
+import SassTest from './components/front-issue/SassTest';
+import Environment from './components/front-issue/Environment';
+import CodeSplit from './components/front-issue/CodeSplit';
+
+import ErrorTest from './components/front-issue/ErrorTest';
+import ErrorClient from './components/front-issue/ErrorClient';
+import ErrorServer from './components/front-issue/ErrorServer';
+import ImageServerSync from './components/front-issue/ImageServerSync';
+import EventTest from './components/front-issue/EventTest';
+import TalkAnimation from './components/front-issue/TalkAnimation';
+import PushCase1 from './components/front-issue/PushCase1';
+import Analytics from './components/front-issue/Analytics';
+import FormTest from './components/front-issue/FormTest';
+import LoginToApp from './components/front-issue/LoginToApp';
+import ChartCase1 from './components/front-issue/ChartCase1';
+
 import './App.css';
 import Logger from './utils/Logger';
 
@@ -29,24 +50,32 @@ class App extends Component {
     return (
       <div>
         <FrontIssueNavigation />
-        <div style={{ marginTop: 56 }}>
+        <div style={{ marginTop: 60 }}>
           <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/setting" component={Setting} />
-          <Route
-            exact
-            path="/safeHistory/:contractNo"
-            component={SafeHistory}
-          />
-          <Route exact path="/tariff" component={GasRateTable} />
-          <Route exact path="/tariff/:gasId" component={GasRateDetail} />
-          <Route
-            exact
-            path="/monthInfo/:month/:contractNo"
-            component={ChargeRateWrapper}
-          />
-          <Route exact path="/nativetest" component={NativeTest} />
+          <Route exact path="/accordion-b" component={AccordionB} />
+          <Route exact path="/accordion-m" component={AccordionM} />
+          <Route exact path="/tab-b" component={TabB} />
+          <Route exact path="/tab-m" component={TabM} />
+          <Route exact path="/device-basic" component={DeviceBasic} />
+          <Route exact path="/footer-select" component={FooterSelect} />
+          <Route exact path="/checkbox-switch" component={CheckboxSwitch} />
+          <Route exact path="/native-interface" component={NativeInterface} />
+          <Route exact path="/modal-test-1" component={ModalTest1} />
+          <Route exact path="/loadingbar" component={LoadingBar} />
+          <Route exact path="/sass" component={SassTest} />
+          <Route exact path="/environment" component={Environment} />
+          <Route exact path="/code-split" component={CodeSplit} />
+          <Route exact path="/error-test" component={ErrorTest} />
+          <Route exact path="/error-client" component={ErrorClient} />
+          <Route exact path="/error-server" component={ErrorServer} />
+          <Route exact path="/image-server-sync" component={ImageServerSync} />
+          <Route exact path="/event-test" component={EventTest} />
+          <Route exact path="/talk-anmation" component={TalkAnimation} />
+          <Route exact path="/pushcase-1" component={PushCase1} />
+          <Route exact path="/analytics" component={Analytics} />
+          <Route exact path="/form-test" component={FormTest} />
+          <Route exact path="/login-to-app" component={LoginToApp} />
+          <Route exact path="/chartcase-1" component={ChartCase1} />
         </div>
       </div>
     );

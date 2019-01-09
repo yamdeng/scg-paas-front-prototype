@@ -86,6 +86,32 @@ const styles = theme => ({
   }
 });
 
+const menuMappingInfos = [
+  { title: '아코디언 부트스트랩', linkUrl: '/accordion-b' },
+  { title: '아코디언 메트리얼', linkUrl: '/accordion-m' },
+  { title: '탭 부트스트랩', linkUrl: '/tab-b' },
+  { title: '탭 메트리얼', linkUrl: '/tab-m' },
+  { title: '디바이스', linkUrl: '/device-basic' },
+  { title: '하단영역 선택', linkUrl: '/footer-select' },
+  { title: '라디오 스위치', linkUrl: '/checkbox-switch' },
+  { title: '네이티브 인터페이스', linkUrl: '/native-interface' },
+  { title: '모달 테스트1', linkUrl: '/modal-test-1' },
+  { title: '로딩바', linkUrl: '/loadingbar' },
+  { title: 'sass', linkUrl: '/sass' },
+  { title: '환경변수', linkUrl: '/environment' },
+  { title: '코드분류', linkUrl: '/code-split' },
+  { title: '에러테스트', linkUrl: '/error-test' },
+  { title: '클라이언트 에러', linkUrl: '/error-client' },
+  { title: '서버 에러', linkUrl: '/error-server' },
+  { title: '이미지 서버에 동기화', linkUrl: '/image-server-sync' },
+  { title: '상담톡', linkUrl: '/talk-anmation' },
+  { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },
+  { title: 'Analytics', linkUrl: '/analytics' },
+  { title: '폼 테스트', linkUrl: '/form-test' },
+  { title: '로그인 정보를 앱에게', linkUrl: '/login-to-app' },
+  { title: '차트 테스트1', linkUrl: '/chartcase-1' }
+];
+
 @withRouter
 @inject('appStore')
 @observer
@@ -156,88 +182,20 @@ class FrontIssueNavigation extends React.Component {
           </div>
           <Divider />
           <List>
-            <Link className="nav-link" to="/home" onClick={this.clickMenu}>
-              <ListItem button key={'home'}>
-                <ListItemIcon>
-                  <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary={'홈'} />
-              </ListItem>
-            </Link>
-            <Link className="nav-link" to="/profile" onClick={this.clickMenu}>
-              <ListItem button key={'profile'}>
-                <ListItemIcon>
-                  <AccountBoxIcon />
-                </ListItemIcon>
-                <ListItemText primary={'프로필2'} />
-              </ListItem>
-            </Link>
-            <Link className="nav-link" to="/setting" onClick={this.clickMenu}>
-              <ListItem button key={'settings'}>
-                <ListItemIcon>
-                  <SettingsIcon />
-                </ListItemIcon>
-                <ListItemText primary={'설정'} />
-              </ListItem>
-            </Link>
-            <Link
-              className="nav-link"
-              to={`/safeHistory/${Config.contractNo}`}
-              onClick={this.clickMenu}
-            >
-              <ListItem button key={'safehistory'}>
-                <ListItemIcon>
-                  <BuildIcon />
-                </ListItemIcon>
-                <ListItemText primary={'안전점검이력 조회'} />
-              </ListItem>
-            </Link>
-            <Link className="nav-link" to="/tariff" onClick={this.clickMenu}>
-              <ListItem button key={'gassearch'}>
-                <ListItemIcon>
-                  <DonutSmallIcon />
-                </ListItemIcon>
-                <ListItemText primary={'가스요금 조회'} />
-              </ListItem>
-            </Link>
-            <Link
-              className="nav-link"
-              to={`/monthInfo/201812/${Config.contractNo}`}
-              onClick={this.clickMenu}
-            >
-              <ListItem button key={'search'}>
-                <ListItemIcon>
-                  <SearchIcon />
-                </ListItemIcon>
-                <ListItemText primary={'청구요금 조회'} />
-              </ListItem>
-            </Link>
-            <Link
-              className="nav-link"
-              to="setting"
-              onClick={event => {
-                event.preventDefault();
-                this.setState({ open: false });
-              }}
-            >
-              <ListItem button key={'appInfo'}>
-                <ListItemIcon>
-                  <InfoIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={'앱 정보 ' + this.props.appStore.appVersion}
-                />
-              </ListItem>
-            </Link>
+            {menuMappingInfos.map(info => {
+              return (
+                <Link
+                  className="nav-link"
+                  to={info.linkUrl}
+                  onClick={this.clickMenu}
+                >
+                  <ListItem button key={info.title}>
+                    <ListItemText primary={info.title} />
+                  </ListItem>
+                </Link>
+              );
+            })}
           </List>
-          <Link className="nav-link" to="/nativetest" onClick={this.clickMenu}>
-            <ListItem button key={'nativetest'}>
-              <ListItemIcon>
-                <DeviceUnknownIcon />
-              </ListItemIcon>
-              <ListItemText primary={'연동 테스트'} />
-            </ListItem>
-          </Link>
           <Divider />
         </Drawer>
       </div>
