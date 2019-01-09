@@ -3,22 +3,20 @@ import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
 import Home from './components/Home';
+
 import AccordionB from './components/front-issue/AccordionB';
 import AccordionM from './components/front-issue/AccordionM';
 import TabB from './components/front-issue/TabB';
 import TabM from './components/front-issue/TabM';
 import DeviceBasic from './components/front-issue/DeviceBasic';
-//
 import FooterSelect from './components/front-issue/FooterSelect';
 import CheckboxSwitch from './components/front-issue/CheckboxSwitch';
 import NativeInterface from './components/front-issue/NativeInterface';
 import ModalTest1 from './components/front-issue/ModalTest1';
-
 import LoadingBar from './components/front-issue/LoadingBar';
 import SassTest from './components/front-issue/SassTest';
 import Environment from './components/front-issue/Environment';
 import CodeSplit from './components/front-issue/CodeSplit';
-
 import ErrorTest from './components/front-issue/ErrorTest';
 import ErrorClient from './components/front-issue/ErrorClient';
 import ErrorServer from './components/front-issue/ErrorServer';
