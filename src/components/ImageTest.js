@@ -288,7 +288,7 @@ class ImageTest extends Component {
       <div style={{ marginTop: 70, padding: 10 }} className={classes.root}>
         <GridList cellHeight={160} className={classes.gridList} cols={3}>
           {tileData.map(tile => (
-            <GridListTile key={tile.img} cols={tile.cols || 1}>
+            <GridListTile key={shortid.generate()} cols={tile.cols || 1}>
               <img src={tile.img + '?' + shortid.generate()} alt={tile.title} />
             </GridListTile>
           ))}
