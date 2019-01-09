@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
-import DrawerNavigation from './components/DrawerNavigation';
+import FrontIssueNavigation from './components/FrontIssueNavigation';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Setting from './components/Setting';
@@ -11,18 +11,14 @@ import GasRateDetail from './components/GasRateDetail';
 import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper';
 import NativeTest from './components/NativeTest';
 import './App.css';
-import Api from './utils/Api';
-import NativeEventService from './services/NativeEventService';
+import Logger from './utils/Logger';
 
 @withRouter
 @inject('appStore')
 @observer
 class App extends Component {
   init() {
-    Api.get('appInfo').then(result => {
-      this.props.appStore.changeAppVersion(result.data.version);
-    });
-    NativeEventService.initEventListener();
+    Logger.info('App init call');
   }
 
   componentDidMount() {
@@ -32,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <DrawerNavigation />
+        <FrontIssueNavigation />
         <div style={{ marginTop: 56 }}>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
