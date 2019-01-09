@@ -10,6 +10,7 @@ import GasRateTable from './components/GasRateTable';
 import GasRateDetail from './components/GasRateDetail';
 import ChargeRateWrapper from './components/charge-rate-search/ChargeRateWrapper';
 import NativeTest from './components/NativeTest';
+import ImageTest from './components/ImageTest';
 import './App.css';
 import Api from './utils/Api';
 import NativeEventService from './services/NativeEventService';
@@ -51,6 +52,7 @@ class App extends Component {
             component={ChargeRateWrapper}
           />
           <Route exact path="/nativetest" component={NativeTest} />
+          <Route exact path="/imagetest" component={ImageTest} />
         </div>
       </div>
     );

@@ -51,9 +51,16 @@ class ChargeRateWrapper extends React.Component {
           <Tab value="two" label="연간조회" />
           <Tab value="three" label="미납내역조회" />
         </Tabs>
-        {value === 'one' && <ChargeRateMonthSearch />}
-        {value === 'two' && <ChargeRateYearSearch />}
-        {value === 'three' && <PayOffHistory />}
+        <div style={{ display: value === 'one' ? 'block' : 'none' }}>
+          <ChargeRateMonthSearch />
+        </div>
+
+        <div style={{ display: value === 'two' ? 'block' : 'none' }}>
+          <ChargeRateYearSearch />
+        </div>
+        <div style={{ display: value === 'three' ? 'block' : 'none' }}>
+          <PayOffHistory />
+        </div>
       </div>
     );
   }
