@@ -4,10 +4,10 @@ import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import InnerTextComponent from './help/InnerTextComponent';
 
-// const checkPageAuth = function() {
-//   history.pushState(null, '코드분류', '#/code-split');
-//   return false;
-// };
+const checkPageAuth = function() {
+  history.pushState(null, '코드분류', '#/code-split');
+  return false;
+};
 
 @withRouter
 @inject('appStore')

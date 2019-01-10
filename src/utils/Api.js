@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Config from '../config/Config';
 import Logger from './Logger';
+import stores from '../stores/stores';
 
 // let API_URL = 'http://localhost:3000/api';
 let API_URL =
@@ -27,6 +28,23 @@ Api.interceptors.request.use(
 Api.interceptors.response.use(
   function(response) {
     // Logger.info('api response : ' + JSON.stringify(response.data));
+    if (response.data && response.data.code) {
+      if (response.data.code === 404) {
+        // history.pushState(null, 'error client', '#/error-client');
+        setTimeout(() => {
+          // history.pushState(null, '코드분류', '#/code-split');
+        }, 2000);
+        // history.pushState(null, '코드분류', '#/code-split');
+        // history.pushState(null, '코드분류', '#/code-split');
+        // stores.appStore.pushHistory(null, '코드분류', '#/code-split');
+        stores.appStore.pushHistory('code-split');
+      } else if (response.data.code === 403) {
+        // history.pushState(null, 'error auth', '#/error-auth');
+      } else if (response.data.code === 500) {
+        // history.pushState(null, 'error server', '#/error-server');
+      }
+      return null;
+    }
     return response;
   },
   function(error) {

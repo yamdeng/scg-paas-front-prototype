@@ -10,6 +10,10 @@ import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import stores from './stores/stores';
 
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
+stores.appStore.setHistory(history);
+
 // state의 상태는 action을 통해서만 가능하게끔 셋팅
 configure({
   enforceActions: true
@@ -17,7 +21,7 @@ configure({
 
 ReactDOM.render(
   <Provider {...stores}>
-    <Router>{<App />}</Router>
+    <Router history={history}>{<App />}</Router>
   </Provider>,
   document.getElementById('root')
 );
