@@ -4,6 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import InnerTextComponent from './help/InnerTextComponent';
 
+// const checkPageAuth = function() {
+//   history.pushState(null, '코드분류', '#/code-split');
+//   return false;
+// };
+
 @withRouter
 @inject('appStore')
 @observer
@@ -32,6 +37,9 @@ class AccordionB extends React.Component {
     // eslint-disable-next-line
     console.log('AccordionB componentDidMount call');
     this.props.appStore.changeHeadTitle('아코디언 부트스트랩');
+
+    // 마운트시에 페이지 권한 체크
+    // checkPageAuth();
   }
 
   render() {

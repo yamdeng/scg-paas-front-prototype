@@ -93,6 +93,7 @@ const menuMappingInfos = [
   { title: '에러테스트', linkUrl: '/error-test' },
   { title: '클라이언트 에러', linkUrl: '/error-client' },
   { title: '서버 에러', linkUrl: '/error-server' },
+  { title: '권한 에러', linkUrl: '/error-auth' },
   { title: '이미지 서버에 동기화', linkUrl: '/image-server-sync' },
   { title: '상담톡', linkUrl: '/talk-anmation' },
   { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },

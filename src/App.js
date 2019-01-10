@@ -20,6 +20,7 @@ import CodeSplit from './components/front-issue/CodeSplit';
 import ErrorTest from './components/front-issue/ErrorTest';
 import ErrorClient from './components/front-issue/ErrorClient';
 import ErrorServer from './components/front-issue/ErrorServer';
+import ErrorAuth from './components/front-issue/ErrorAuth';
 import ImageServerSync from './components/front-issue/ImageServerSync';
 import EventTest from './components/front-issue/EventTest';
 import TalkAnimation from './components/front-issue/TalkAnimation';
@@ -82,6 +83,7 @@ class App extends Component {
           <Route exact path="/error-test" component={ErrorTest} />
           <Route exact path="/error-client" component={ErrorClient} />
           <Route exact path="/error-server" component={ErrorServer} />
+          <Route exact path="/error-auth" component={ErrorAuth} />
           <Route exact path="/image-server-sync" component={ImageServerSync} />
           <Route exact path="/event-test" component={EventTest} />
           <Route exact path="/talk-anmation" component={TalkAnimation} />
