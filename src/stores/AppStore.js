@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 
 class AppStore {
-  @observable headTitle = '인천 도시가스 프로토타입';
+  @observable headTitle = '프론트 개발 이슈 테스트';
   @observable deviceInfo = {};
   @observable appVersion = '';
   constructor(rootStore) {

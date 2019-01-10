@@ -5,15 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
-}
+import InnerTextComponent from './help/InnerTextComponent';
+import InnerTextComponent2 from './help/InnerTextComponent2';
 
 const styles = theme => ({
   root: {
@@ -54,22 +47,16 @@ class TabM extends React.Component {
             variant="scrollable"
             scrollButtons="auto"
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
-            <Tab label="Item Four" />
-            <Tab label="Item Five" />
-            <Tab label="Item Six" />
-            <Tab label="Item Seven" />
+            <Tab label="사용자 정보" />
+            <Tab label="청구 정보" />
           </Tabs>
         </AppBar>
-        {this.state.value === 0 && <TabContainer>Item One</TabContainer>}
-        {this.state.value === 1 && <TabContainer>Item Two</TabContainer>}
-        {this.state.value === 2 && <TabContainer>Item Three</TabContainer>}
-        {this.state.value === 3 && <TabContainer>Item Four</TabContainer>}
-        {this.state.value === 4 && <TabContainer>Item Five</TabContainer>}
-        {this.state.value === 5 && <TabContainer>Item Six</TabContainer>}
-        {this.state.value === 6 && <TabContainer>Item Seven</TabContainer>}
+        {this.state.value === 0 && (
+          <InnerTextComponent text="사용자 정보 상세" />
+        )}
+        {this.state.value === 1 && (
+          <InnerTextComponent2 text="청구 정보 상세" />
+        )}
       </div>
     );
   }

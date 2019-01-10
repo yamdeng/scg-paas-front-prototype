@@ -13,6 +13,16 @@ import {
 import classnames from 'classnames';
 import InnerTextComponent from './help/InnerTextComponent';
 import InnerTextComponent2 from './help/InnerTextComponent2';
+import Api from '../../utils/Api';
+import Config from '../../config/Config';
+
+/*
+
+  1.탭 외부 컴포넌트에서 불러와서 props로 주입시키는 방법
+
+  2.store를 사용하는 방법
+
+*/
 
 @withRouter
 @inject('appStore')
@@ -21,7 +31,8 @@ class TabB extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: '1'
+      activeTab: '1',
+      tabData1: []
     };
   }
 
@@ -35,6 +46,9 @@ class TabB extends React.Component {
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('탭 부트스트랩');
+    Api.get('safeHistory/' + Config.contractNo).then(result => {
+      this.setState({ tabData1: result.data.safeHistory });
+    });
   }
 
   render() {
