@@ -36,12 +36,28 @@ import Logger from './utils/Logger';
 @inject('appStore')
 @observer
 class App extends Component {
+  historyBlockHandler = null;
   init() {
     Logger.info('App init call');
+
+    // this.historyBlockHandler = this.props.history.block((location, action) => {
+    //   console.log('on route block');
+    //   if (this.props.appStore.headTitle === '아코디언 메트리얼') {
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // });
   }
 
   componentDidMount() {
     this.init();
+  }
+
+  componentWillUnmount() {
+    if (this.historyBlockHandler) {
+      this.historyBlockHandler();
+    }
   }
 
   render() {
