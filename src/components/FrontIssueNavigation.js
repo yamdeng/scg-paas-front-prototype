@@ -126,6 +126,9 @@ class FrontIssueNavigation extends React.Component {
 
   clickMenu() {
     this.setState({ open: false });
+    // Promise.resolve().then(() => {
+    //   this.props.history.push('/tab-b');
+    // });
   }
 
   render() {
