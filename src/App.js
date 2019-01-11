@@ -29,6 +29,8 @@ import Analytics from './components/front-issue/Analytics';
 import FormTest from './components/front-issue/FormTest';
 import LoginToApp from './components/front-issue/LoginToApp';
 import ChartCase1 from './components/front-issue/ChartCase1';
+import TableScrollPage from './components/front-issue/TableScrollPage';
+import ImageScrollPage from './components/front-issue/ImageScrollPage';
 
 import './App.css';
 import Logger from './utils/Logger';
@@ -92,6 +94,8 @@ class App extends Component {
           <Route exact path="/form-test" component={FormTest} />
           <Route exact path="/login-to-app" component={LoginToApp} />
           <Route exact path="/chartcase-1" component={ChartCase1} />
+          <Route exact path="/table-page-scroll" component={TableScrollPage} />
+          <Route exact path="/image-page-scroll" component={ImageScrollPage} />
         </div>
       </div>
     );
