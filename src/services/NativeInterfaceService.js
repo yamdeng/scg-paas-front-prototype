@@ -38,6 +38,12 @@ class NativeInterfaceService {
       window.android.showToast(message);
     }
   }
+
+  changeAppHeadTitle(title) {
+    if (DeviceUtil.isAndroid) {
+      window.android.changeAppHeadTitle(title);
+    }
+  }
 }
 
 export default new NativeInterfaceService();

@@ -29,6 +29,7 @@ class NativeTest extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.enableBackButton = this.enableBackButton.bind(this);
     this.disableBackButton = this.disableBackButton.bind(this);
+    this.changeAppHeadTitle = this.changeAppHeadTitle;
   }
 
   componentDidMount() {
@@ -61,6 +62,10 @@ class NativeTest extends Component {
 
   disableBackButton() {
     NativeInterfaceService.disableBackButton();
+  }
+
+  changeAppHeadTitle() {
+    NativeInterfaceService.changeAppHeadTitle('yamdeng good');
   }
 
   render() {
@@ -102,6 +107,13 @@ class NativeTest extends Component {
           onClick={this.enableBackButton}
         >
           백버튼 활성화
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.changeAppHeadTitle}
+        >
+          앱 헤더 변경
         </Button>
         <Dialog
           open={this.state.open}
