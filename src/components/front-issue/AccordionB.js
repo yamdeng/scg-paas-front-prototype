@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import InnerTextComponent from './help/InnerTextComponent';
-import AppHistory from '../../utils/AppHistory';
+// import AppHistory from '../../utils/AppHistory';
 
 @withRouter
 @inject('appStore')

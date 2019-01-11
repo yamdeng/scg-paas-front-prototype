@@ -1,8 +1,25 @@
 import React from 'react';
-import { Table } from 'reactstrap';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import shortid from 'shortid';
 import Api from '../../utils/Api';
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    width: 500,
+    height: '100%'
+  }
+});
 
 @withRouter
 @inject('appStore')
@@ -22,7 +39,7 @@ class ImageScrollPage extends React.Component {
   handleScroll() {
     if (window.scrollY + window.innerHeight + 50 > document.body.clientHeight) {
       if (this.state.data.length < this.state.totalCount) {
-        Api.get('tableScroll', {
+        Api.get('imageScroll', {
           params: {
             page: this.page,
             pageSize: this.pageSize
@@ -39,8 +56,8 @@ class ImageScrollPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('TableScrollPage');
-    Api.get('tableScroll', {
+    this.props.appStore.changeHeadTitle('ImageScrollPage');
+    Api.get('imageScroll', {
       params: {
         page: this.page,
         pageSize: this.pageSize
@@ -60,26 +77,21 @@ class ImageScrollPage extends React.Component {
   }
 
   render() {
-    let resultComponent = this.state.data.map(info => {
-      return (
-        <tr key={info.id}>
-          <td>{info.id}</td>
-          <td>{info.name}</td>
-        </tr>
-      );
-    });
+    let classes = this.props.classes;
+    let prefixImageSrc =
+      'http://ec2-54-180-120-228.ap-northeast-2.compute.amazonaws.com:3000/image/';
     return (
-      <Table>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>이름</th>
-          </tr>
-        </thead>
-        <tbody>{resultComponent}</tbody>
-      </Table>
+      <div style={{ marginTop: 70, padding: 10 }} className={classes.root}>
+        <GridList cellHeight={160} className={classes.gridList} cols={3}>
+          {this.state.data.map(info => (
+            <GridListTile key={shortid.generate()} cols={3}>
+              <img src={prefixImageSrc + info.id + '.JPG'} alt={info.title} />
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
     );
   }
 }
 
-export default ImageScrollPage;
+export default withStyles(styles)(ImageScrollPage);
