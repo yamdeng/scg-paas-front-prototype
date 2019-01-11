@@ -15,13 +15,7 @@ class ErrorTest extends React.Component {
   }
 
   callErrorApi(url) {
-    // this.props.history.push('code-split');
-    // Api.get(url).then(() => {
-    //   // this.props.history.push('code-split');
-    //   // history.pushState(null, '코드분류', '#/code-split');
-    // });
-    // history.pushState(null, '코드분류', '#/code-split');
-    // this.props.history.push('code-split');
+    Api.get(url);
   }
 
   componentDidMount() {
@@ -37,6 +31,44 @@ class ErrorTest extends React.Component {
           onClick={() => this.callErrorApi('errorClientCode')}
         >
           클라이언트 에러 코드
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => this.callErrorApi('errorAuthCode')}
+        >
+          권한 에러 코드
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => this.callErrorApi('errorServerCode')}
+        >
+          서버 에러 코드
+        </Button>
+        {/* {실제 에러} */}
+        <br />
+        <div style={{ marginTop: 20 }} />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => this.callErrorApi('errorClient')}
+        >
+          클라이언트 에러
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => this.callErrorApi('errorAuth')}
+        >
+          권한 에러
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => this.callErrorApi('errorServer')}
+        >
+          서버 에러
         </Button>
       </div>
     );

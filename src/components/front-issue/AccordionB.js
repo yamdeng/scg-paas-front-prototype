@@ -3,11 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import InnerTextComponent from './help/InnerTextComponent';
-
-const checkPageAuth = function() {
-  history.pushState(null, '코드분류', '#/code-split');
-  return false;
-};
+import AppHistory from '../../utils/AppHistory';
 
 @withRouter
 @inject('appStore')
@@ -19,6 +15,12 @@ class AccordionB extends React.Component {
     // eslint-disable-next-line
     console.log('AccordionB constructor call');
     this.toggleAccordion = this.toggleAccordion.bind(this);
+    this.handlerHistory = this.handlerHistory.bind(this);
+  }
+
+  handlerHistory() {
+    // this.props.history.push('/code-split');
+    // AppHistory.push('/code-split');
   }
 
   toggleAccordion(accrodionNumber, isDisplay) {
@@ -39,7 +41,7 @@ class AccordionB extends React.Component {
     this.props.appStore.changeHeadTitle('아코디언 부트스트랩');
 
     // 마운트시에 페이지 권한 체크
-    // checkPageAuth();
+    // Helper.checkAuthByUrl(this.props.match.url);
   }
 
   render() {
@@ -53,7 +55,10 @@ class AccordionB extends React.Component {
           사용자 정보
         </ListGroupItem>
         {this.state.display1 ? (
-          <div style={{ display: this.state.display1 ? 'block' : 'none' }}>
+          <div
+            style={{ display: this.state.display1 ? 'block' : 'none' }}
+            onClick={this.handlerHistory}
+          >
             <InnerTextComponent text="사용자 정보 상세" />
           </div>
         ) : null}

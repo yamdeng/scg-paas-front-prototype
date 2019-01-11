@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Config from '../config/Config';
 import Logger from './Logger';
-import stores from '../stores/stores';
+import AppHistory from '../utils/AppHistory';
+// import stores from '../stores/stores';
 
 // let API_URL = 'http://localhost:3000/api';
 let API_URL =
@@ -30,25 +31,24 @@ Api.interceptors.response.use(
     // Logger.info('api response : ' + JSON.stringify(response.data));
     if (response.data && response.data.code) {
       if (response.data.code === 404) {
-        // history.pushState(null, 'error client', '#/error-client');
-        setTimeout(() => {
-          // history.pushState(null, '코드분류', '#/code-split');
-        }, 2000);
-        // history.pushState(null, '코드분류', '#/code-split');
-        // history.pushState(null, '코드분류', '#/code-split');
-        // stores.appStore.pushHistory(null, '코드분류', '#/code-split');
-        stores.appStore.pushHistory('code-split');
+        AppHistory.push('/error-client');
       } else if (response.data.code === 403) {
-        // history.pushState(null, 'error auth', '#/error-auth');
+        AppHistory.push('/error-auth');
       } else if (response.data.code === 500) {
-        // history.pushState(null, 'error server', '#/error-server');
+        AppHistory.push('/error-server');
       }
-      return null;
     }
     return response;
   },
   function(error) {
     Logger.error('sever error : ' + JSON.stringify(error));
+    if (error.response.status === 404) {
+      AppHistory.push('/error-client');
+    } else if (error.response.status === 403) {
+      AppHistory.push('/error-auth');
+    } else if (error.response.status === 500) {
+      AppHistory.push('/error-server');
+    }
     return Promise.reject(error);
   }
 );

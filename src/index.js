@@ -9,10 +9,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import stores from './stores/stores';
-
-import { createBrowserHistory } from 'history';
-const history = createBrowserHistory();
-stores.appStore.setHistory(history);
+import AppHistory from './utils/AppHistory';
 
 // state의 상태는 action을 통해서만 가능하게끔 셋팅
 configure({
@@ -21,7 +18,7 @@ configure({
 
 ReactDOM.render(
   <Provider {...stores}>
-    <Router history={history}>{<App />}</Router>
+    <Router>{<App />}</Router>
   </Provider>,
   document.getElementById('root')
 );
