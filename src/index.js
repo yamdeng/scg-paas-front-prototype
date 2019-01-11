@@ -9,7 +9,11 @@ import { HashRouter as Router } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import stores from './stores/stores';
-import AppHistory from './utils/AppHistory';
+// import AppHistory from './utils/AppHistory';
+// AppHistory.block((location, action) => {
+//   console.log('on route block');
+//   return true;
+// });
 
 // state의 상태는 action을 통해서만 가능하게끔 셋팅
 configure({
