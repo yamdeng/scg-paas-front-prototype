@@ -6,9 +6,15 @@ import InnerTextComponent from './help/InnerTextComponent';
 // import AppHistory from '../../utils/AppHistory';
 
 @withRouter
-@inject('appStore')
+@inject('appStore', 'frontIssueStore')
 @observer
 class AccordionB extends React.Component {
+  /*
+
+    store의 값을 변경해서 아코디언 상세 값을 바꾸기
+
+  */
+
   constructor(props) {
     super(props);
     this.state = { display1: false, display2: false, display3: false };
@@ -23,7 +29,8 @@ class AccordionB extends React.Component {
     // AppHistory.push('/code-split');
   }
 
-  toggleAccordion(accrodionNumber, isDisplay) {
+  toggleAccordion(accrodionNumber, isDisplay, text) {
+    this.props.frontIssueStore.setAccodionData(accrodionNumber, text);
     this.setState({
       ['display' + accrodionNumber]: isDisplay
     });
@@ -42,6 +49,8 @@ class AccordionB extends React.Component {
 
     // 마운트시에 페이지 권한 체크
     // Helper.checkAuthByUrl(this.props.match.url);
+    this.props.frontIssueStore.clearAccordionData();
+    this.props.frontIssueStore.setAccodionData(1, '사용자 정보 상세');
   }
 
   render() {
@@ -50,7 +59,9 @@ class AccordionB extends React.Component {
     return (
       <ListGroup>
         <ListGroupItem
-          onClick={event => this.toggleAccordion(1, !this.state.display1)}
+          onClick={event =>
+            this.toggleAccordion(1, !this.state.display1, '사용자 정보 상세!')
+          }
         >
           사용자 정보
         </ListGroupItem>
@@ -59,24 +70,34 @@ class AccordionB extends React.Component {
             style={{ display: this.state.display1 ? 'block' : 'none' }}
             onClick={this.handlerHistory}
           >
-            <InnerTextComponent text="사용자 정보 상세" />
+            <InnerTextComponent
+              text={this.props.frontIssueStore.accordionData[1]}
+            />
           </div>
         ) : null}
         <ListGroupItem
-          onClick={event => this.toggleAccordion(2, !this.state.display2)}
+          onClick={event =>
+            this.toggleAccordion(2, !this.state.display2, '청구 정보 상세!')
+          }
         >
           청구 정보
         </ListGroupItem>
         <div style={{ display: this.state.display2 ? 'block' : 'none' }}>
-          <InnerTextComponent text="청구 정보 상세" />
+          <InnerTextComponent
+            text={this.props.frontIssueStore.accordionData[2]}
+          />
         </div>
         <ListGroupItem
-          onClick={event => this.toggleAccordion(3, !this.state.display3)}
+          onClick={event =>
+            this.toggleAccordion(3, !this.state.display3, '미납 정보 상세!')
+          }
         >
           미납 정보
         </ListGroupItem>
         <div style={{ display: this.state.display3 ? 'block' : 'none' }}>
-          <InnerTextComponent text="미납 정보 상세" />
+          <InnerTextComponent
+            text={this.props.frontIssueStore.accordionData[3]}
+          />
         </div>
       </ListGroup>
     );

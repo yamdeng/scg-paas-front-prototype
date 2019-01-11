@@ -28,9 +28,31 @@ const styles = theme => ({
 @inject('appStore')
 @observer
 class AccordionM extends React.Component {
+  /*
+
+    외부에서 props을 변경해서 아코디언 상세 값을 바꾸기
+
+  */
+
   constructor(props) {
     super(props);
-    this.state = { expanded: null };
+    this.state = { expanded: null, text1: '', text2: '', text3: '' };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(panel, event, isExpanded) {
+    console.log('AccordionM handleChange');
+    this.setState({ expanded: isExpanded ? panel : false });
+    if (panel === 'panel1' && !this.state.text1) {
+      console.log('panel1 text change');
+      this.setState({ text1: '사용자 정보' });
+    } else if (panel === 'panel2' && !this.state.text2) {
+      console.log('panel2 text change');
+      this.setState({ text2: '청구 정보' });
+    } else if (panel === 'panel3' && !this.state.text3) {
+      console.log('panel3 text change');
+      this.setState({ text3: '미납 정보' });
+    }
   }
 
   componentDidMount() {
@@ -41,36 +63,43 @@ class AccordionM extends React.Component {
     // eslint-disable-next-line
     console.log('AccordionM render call');
     let classes = this.props.classes;
-    const handleChange = panel => (event, isExpanded) => {
-      this.setState({ expanded: isExpanded ? panel : false });
-    };
+    // const handleChange = panel => (event, isExpanded) => {
+    //   this.setState({ expanded: isExpanded ? panel : false });
+    // };
+
     return (
       <div className={classes.root}>
         <ExpansionPanel
           expanded={this.state.expanded === 'panel1'}
-          onChange={handleChange('panel1')}
+          onChange={(event, isExpanded) =>
+            this.handleChange('panel1', event, isExpanded)
+          }
         >
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>사용자 정보</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <InnerTextComponent text="사용자 정보 상세" />
+            <InnerTextComponent text={this.state.text1} />
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel
           expanded={this.state.expanded === 'panel2'}
-          onChange={handleChange('panel2')}
+          onChange={(event, isExpanded) =>
+            this.handleChange('panel2', event, isExpanded)
+          }
         >
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>청구 정보</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <InnerTextComponent text="청구 정보 상세" />
+            <InnerTextComponent text={this.state.text2} />
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel
           expanded={this.state.expanded === 'panel3'}
-          onChange={handleChange('panel3')}
+          onChange={(event, isExpanded) =>
+            this.handleChange('panel3', event, isExpanded)
+          }
         >
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>미납 정보</Typography>
