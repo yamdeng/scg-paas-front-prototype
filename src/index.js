@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+import App2 from './App2';
 import * as serviceWorker from './serviceWorker';
 
 import { HashRouter as Router } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import stores from './stores/stores';
+import Helper from './utils/Helper';
 // import AppHistory from './utils/AppHistory';
 // AppHistory.block((location, action) => {
 //   console.log('on route block');
@@ -20,9 +22,16 @@ configure({
   enforceActions: true
 });
 
+let AppComponent = <App />;
+
+// let appType = Helper.getQueryStringValue('appType');
+// if (appType && appType === 'app2') {
+//   AppComponent = <App2 />;
+// }
+
 ReactDOM.render(
   <Provider {...stores}>
-    <Router>{<App />}</Router>
+    <Router>{AppComponent}</Router>
   </Provider>,
   document.getElementById('root')
 );
