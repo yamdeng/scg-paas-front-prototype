@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import InnerTextComponent from './help/InnerTextComponent';
 // import AppHistory from '../../utils/AppHistory';
+import Logger from '../../utils/Logger';
 
 @withRouter
 @inject('appStore', 'frontIssueStore')
@@ -19,7 +20,7 @@ class AccordionB extends React.Component {
     super(props);
     this.state = { display1: false, display2: false, display3: false };
     // eslint-disable-next-line
-    console.log('AccordionB constructor call');
+    Logger.info('AccordionB constructor call');
     this.toggleAccordion = this.toggleAccordion.bind(this);
     this.handlerHistory = this.handlerHistory.bind(this);
   }
@@ -44,7 +45,7 @@ class AccordionB extends React.Component {
 
   componentDidMount() {
     // eslint-disable-next-line
-    console.log('AccordionB componentDidMount call');
+    Logger.info('AccordionB componentDidMount call');
     this.props.appStore.changeHeadTitle('아코디언 부트스트랩');
 
     // 마운트시에 페이지 권한 체크
@@ -55,7 +56,7 @@ class AccordionB extends React.Component {
 
   render() {
     // eslint-disable-next-line
-    console.log('AccordionB render call');
+    Logger.info('AccordionB render call');
     return (
       <ListGroup>
         <ListGroupItem

@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import Logger from '../utils/Logger';
 
 class FrontIssueStore {
   @observable accordionData = {};
@@ -14,7 +15,7 @@ class FrontIssueStore {
   @action
   setAccodionData(accrodionNumber, text) {
     if (!this.accordionData[accrodionNumber]) {
-      console.log('setAccodionData call');
+      Logger.info('setAccodionData call');
       this.accordionData[accrodionNumber] = text;
     }
   }
