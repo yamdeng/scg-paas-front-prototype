@@ -11,33 +11,22 @@ import {
   Col
 } from 'reactstrap';
 import classnames from 'classnames';
-import InnerTextComponent from './help/InnerTextComponent';
-import InnerTextComponent2 from './help/InnerTextComponent2';
-import Api from '../../utils/Api';
-import Config from '../../config/Config';
-
-/*
-
-  1.탭 외부 컴포넌트에서 불러와서 props로 주입시키는 방법
-
-  2.store를 사용하는 방법
-
-*/
+import InnerTableComponent from './help/InnerTableComponent';
 
 @withRouter
-@inject('appStore')
+@inject('appStore', 'frontIssueStore')
 @observer
 class TabB extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: '1',
-      tabData1: []
+      activeTab: '1'
     };
   }
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
+      this.props.frontIssueStore.loadTabData(2);
       this.setState({
         activeTab: tab
       });
@@ -46,9 +35,7 @@ class TabB extends React.Component {
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('탭 부트스트랩');
-    Api.get('safeHistory/' + Config.contractNo).then(result => {
-      this.setState({ tabData1: result.data.safeHistory });
-    });
+    this.props.frontIssueStore.loadTabData(1);
   }
 
   render() {
@@ -80,14 +67,18 @@ class TabB extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <InnerTextComponent text="사용자 정보 상세" />
+                <InnerTableComponent
+                  data={this.props.frontIssueStore.tabData1}
+                />
               </Col>
             </Row>
           </TabPane>
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <InnerTextComponent2 text="청구 정보 상세" />
+                <InnerTableComponent
+                  data={this.props.frontIssueStore.tabData2}
+                />
               </Col>
             </Row>
           </TabPane>

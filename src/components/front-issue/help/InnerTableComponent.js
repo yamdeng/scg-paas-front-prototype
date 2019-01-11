@@ -1,4 +1,5 @@
 import React from 'react';
+import { Table } from 'reactstrap';
 
 class InnerTableComponent extends React.Component {
   constructor(props) {
@@ -13,14 +14,26 @@ class InnerTableComponent extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line
-    console.log('InnerTableComponent render call');
-    return <p>{this.props.text}</p>;
+    let resultComponent = this.props.data.map(info => {
+      return (
+        <tr key={info.id}>
+          <td>{info.id}</td>
+          <td>{info.name}</td>
+        </tr>
+      );
+    });
+    return (
+      <Table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>이름</th>
+          </tr>
+        </thead>
+        <tbody>{resultComponent}</tbody>
+      </Table>
+    );
   }
 }
-
-// const InnerTextComponent = props => {
-//   return <p>{props.text + 'hhhhh'}</p>;
-// };
 
 export default InnerTableComponent;
