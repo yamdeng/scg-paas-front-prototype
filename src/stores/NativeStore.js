@@ -22,6 +22,13 @@ class NativeStore {
   setImage(image) {
     this.image = image;
   }
+
+  @action
+  clearStore() {
+    this.deviceInfo = null;
+    this.gps = null;
+    this.image = null;
+  }
 }
 
 export default NativeStore;
