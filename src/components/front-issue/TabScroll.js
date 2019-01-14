@@ -29,13 +29,11 @@ class TabScroll extends React.Component {
     console.log('event.target.offsetLeft : ' + event.target.offsetLeft);
     console.log('event.target.clientWidth : ' + event.target.clientWidth);
     this.setState({ activeIndex: index });
-    if (event.target.offsetLeft > document.body.clientWidth / 2) {
-      findDom.scrollTo(
-        findDom.scrollWidth -
-          (findDom.scrollWidth - event.target.offsetLeft + 50),
-        0
-      );
-    }
+    findDom.scrollTo(
+      findDom.scrollWidth -
+        (findDom.scrollWidth - event.target.offsetLeft + 70),
+      0
+    );
   }
 
   render() {
