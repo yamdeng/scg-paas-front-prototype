@@ -16,7 +16,31 @@ class DeviceBasic extends React.Component {
   }
 
   render() {
-    return <div>디바이스 테스트</div>;
+    return (
+      <div>
+        디바이스 테스트
+        <form>
+          <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+          <br />
+          <input type="date" />
+          <br />
+          <input type="time" />
+        </form>
+      </div>
+    );
   }
 }
 
