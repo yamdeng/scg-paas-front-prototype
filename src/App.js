@@ -31,6 +31,7 @@ import LoginToApp from './components/front-issue/LoginToApp';
 import ChartCase1 from './components/front-issue/ChartCase1';
 import TableScrollPage from './components/front-issue/TableScrollPage';
 import ImageScrollPage from './components/front-issue/ImageScrollPage';
+import TabScroll from './components/front-issue/TabScroll';
 
 import './App.css';
 import Logger from './utils/Logger';
@@ -96,6 +97,7 @@ class App extends Component {
           <Route exact path="/chartcase-1" component={ChartCase1} />
           <Route exact path="/table-page-scroll" component={TableScrollPage} />
           <Route exact path="/image-page-scroll" component={ImageScrollPage} />
+          <Route exact path="/tab-scroll" component={TabScroll} />
         </div>
       </div>
     );

@@ -84,6 +84,7 @@ const menuMappingInfos = [
   { title: '디바이스', linkUrl: '/device-basic' },
   { title: '하단영역 선택', linkUrl: '/footer-select' },
   { title: '라디오 스위치', linkUrl: '/checkbox-switch' },
+  { title: '탭 스크롤', linkUrl: '/tab-scroll' },
   { title: '네이티브 인터페이스', linkUrl: '/native-interface' },
   { title: '모달 테스트1', linkUrl: '/modal-test-1' },
   { title: '로딩바', linkUrl: '/loadingbar' },
