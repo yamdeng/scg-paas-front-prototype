@@ -103,7 +103,8 @@ const menuMappingInfos = [
   { title: '로그인 정보를 앱에게', linkUrl: '/login-to-app' },
   { title: '차트 테스트1', linkUrl: '/chartcase-1' },
   { title: '테이블 페이징 스크롤', linkUrl: '/table-page-scroll' },
-  { title: '이미지 페이징 스크롤', linkUrl: '/image-page-scroll' }
+  { title: '이미지 페이징 스크롤', linkUrl: '/image-page-scroll' },
+  { title: '리액트 에러 테스트', linkUrl: '/react-error-test' }
 ];
 
 @withRouter

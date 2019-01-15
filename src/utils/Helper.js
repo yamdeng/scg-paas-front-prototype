@@ -28,10 +28,28 @@ function getQueryStringValue(key) {
   );
 }
 
+function copyToClipboard(id) {
+  let textArea = document.getElementById(id);
+  if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+    var range, selection;
+    range = document.createRange();
+    range.selectNodeContents(textArea);
+    selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    textArea.setSelectionRange(0, 999999);
+  } else {
+    textArea.select();
+  }
+  document.execCommand('copy');
+  alert('복사되었습니다');
+}
+
 const Helper = {
   convertEmptyValue: convertEmptyValue,
   checkAuthByUrl: checkAuthByUrl,
-  getQueryStringValue: getQueryStringValue
+  getQueryStringValue: getQueryStringValue,
+  copyToClipboard: copyToClipboard
 };
 
 export default Helper;
