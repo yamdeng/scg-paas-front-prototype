@@ -15,7 +15,7 @@ class Home extends React.Component {
     return (
       <div>
         <img src={logo} style={{ width: '100%', height: 250 }} alt="logo" />
-        <h1> 도시가스 프로토타입 홈</h1>
+        <h1> 도시가스 프로토타입 홈 v-0.1</h1>
       </div>
     );
   }
