@@ -5,9 +5,6 @@ import AppHistory from '../utils/AppHistory';
 // import stores from '../stores/stores';
 
 let API_URL = '/api/gas/';
-// let API_URL = 'http://localhost:3000/api/gas/';
-// let API_URL =
-// 'http://ec2-54-180-120-228.ap-northeast-2.compute.amazonaws.com:3000/api/gas/';
 
 const Api = axios.create({
   baseURL: API_URL
