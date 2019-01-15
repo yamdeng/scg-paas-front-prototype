@@ -45,6 +45,8 @@ class App extends Component {
   init() {
     Logger.info('App init call');
 
+    Logger.info('process.env : ' + JSON.stringify(process.env));
+
     // this.historyBlockHandler = this.props.history.block((location, action) => {
     //   console.log('on route block');
     //   if (this.props.appStore.headTitle === '아코디언 메트리얼') {
