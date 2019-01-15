@@ -26,7 +26,8 @@ class TableScrollPage extends React.Component {
           params: {
             page: this.page,
             pageSize: this.pageSize
-          }
+          },
+          disableLoadingBar: true
         }).then(result => {
           this.page = this.page + 1;
           this.setState({

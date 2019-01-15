@@ -7,7 +7,8 @@ import LoadingBar from '../utils/LoadingBar';
 let API_URL = '/api/gas/';
 
 const Api = axios.create({
-  baseURL: API_URL
+  baseURL: API_URL,
+  disableLoadingBar: false
 });
 
 Api.defaults.timeout = Config.apiCallTimeout;
@@ -16,7 +17,9 @@ Api.defaults.headers.post['Content-Type'] = 'application/json';
 Api.interceptors.request.use(
   function(config) {
     Logger.info('api request : ' + JSON.stringify(config.data));
-    LoadingBar.show();
+    if (!config.disableLoadingBar) {
+      LoadingBar.show();
+    }
     return config;
   },
   function(error) {
