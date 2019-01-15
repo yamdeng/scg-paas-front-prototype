@@ -18,6 +18,7 @@ import NativeInterfaceService from '../../services/NativeInterfaceService';
 @inject('appStore', 'nativeStore')
 @observer
 class NativeInterface extends React.Component {
+  watcherId = null;
   constructor(props) {
     super(props);
     this.state = {
@@ -49,7 +50,23 @@ class NativeInterface extends React.Component {
     NativeInterfaceService.getGps();
   }
 
-  getGpsByBrowser() {}
+  getGpsByBrowser() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        alert(
+          'getCurrentPosition position.coords.latitude : ' +
+            position.coords.latitude
+        );
+      });
+
+      this.watcherId = navigator.geolocation.watchPosition(function(position) {
+        alert(
+          'watchPosition position.coords.latitude2 : ' +
+            position.coords.latitude
+        );
+      });
+    }
+  }
 
   handleClose() {
     this.setState({ open: false });
@@ -97,6 +114,9 @@ class NativeInterface extends React.Component {
 
   componentWillUnmount() {
     this.removeEventListener();
+    if (this.watcherId) {
+      this.watcherId = navigator.geolocation.clearWatch(this.watcherId);
+    }
   }
 
   render() {
