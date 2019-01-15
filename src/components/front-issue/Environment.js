@@ -12,7 +12,8 @@ class Environment extends React.Component {
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('sass test');
+    this.props.appStore.changeHeadTitle('EnvironmentTest');
+    alert('process.env : ' + JSON.stringify(process.eventNames));
   }
 
   render() {

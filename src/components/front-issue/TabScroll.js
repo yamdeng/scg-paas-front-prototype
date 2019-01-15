@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import Logger from '../../utils/Logger';
 
 @withRouter
 @inject('appStore')
@@ -23,11 +24,11 @@ class TabScroll extends React.Component {
 
   handlerClick(index, event) {
     let findDom = document.getElementById('tabScroll');
-    console.log('document.body.clientWidth : ' + document.body.clientWidth);
-    console.log('findDom.scrollWidth : ' + findDom.scrollWidth);
-    console.log('findDom.scrollLeft : ' + findDom.scrollLeft);
-    console.log('event.target.offsetLeft : ' + event.target.offsetLeft);
-    console.log('event.target.clientWidth : ' + event.target.clientWidth);
+    Logger.info('document.body.clientWidth : ' + document.body.clientWidth);
+    Logger.info('findDom.scrollWidth : ' + findDom.scrollWidth);
+    Logger.info('findDom.scrollLeft : ' + findDom.scrollLeft);
+    Logger.info('event.target.offsetLeft : ' + event.target.offsetLeft);
+    Logger.info('event.target.clientWidth : ' + event.target.clientWidth);
     this.setState({ activeIndex: index });
     findDom.scrollTo(
       findDom.scrollWidth -

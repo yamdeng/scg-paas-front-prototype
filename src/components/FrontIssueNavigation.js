@@ -78,7 +78,7 @@ const styles = theme => ({
 
 const menuMappingInfos = [
   { title: '아코디언 부트스트랩', linkUrl: '/accordion-b' },
-  { title: '아코디언 메트리얼', linkUrl: '/accordion-m' },
+  { title: '아코디언 메트리얼', linkUrl: '/accordion-m?aa=aa&bb=bb' },
   { title: '탭 부트스트랩', linkUrl: '/tab-b' },
   { title: '탭 메트리얼', linkUrl: '/tab-m' },
   { title: '디바이스', linkUrl: '/device-basic' },

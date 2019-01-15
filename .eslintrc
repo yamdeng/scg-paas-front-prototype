@@ -4,9 +4,12 @@
         "plugin:prettier/recommended"
     ],
     "rules": {
-        "no-alert": "warn",
+        "no-alert": "off",
         "no-console": "warn",
-        "no-restricted-globals": "off"
+        "no-restricted-globals": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "no-script-url": "off",
+        "no-useless-escape": "off"
     },
     "env": {
         "browser": true,
