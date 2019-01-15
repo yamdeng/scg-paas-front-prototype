@@ -2,7 +2,7 @@ import axios from 'axios';
 import Config from '../config/Config';
 import Logger from './Logger';
 import AppHistory from '../utils/AppHistory';
-// import stores from '../stores/stores';
+import LoadingBar from '../utils/LoadingBar';
 
 let API_URL = '/api/gas/';
 
@@ -16,6 +16,7 @@ Api.defaults.headers.post['Content-Type'] = 'application/json';
 Api.interceptors.request.use(
   function(config) {
     Logger.info('api request : ' + JSON.stringify(config.data));
+    LoadingBar.show();
     return config;
   },
   function(error) {
@@ -36,6 +37,7 @@ Api.interceptors.response.use(
         AppHistory.push('/error-server');
       }
     }
+    LoadingBar.hide();
     return response;
   },
   function(error) {
@@ -47,6 +49,7 @@ Api.interceptors.response.use(
     } else if (error.response.status === 500) {
       AppHistory.push('/error-server');
     }
+    LoadingBar.hide();
     return Promise.reject(error);
   }
 );

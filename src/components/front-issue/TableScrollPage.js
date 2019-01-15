@@ -8,7 +8,7 @@ import Api from '../../utils/Api';
 @inject('appStore')
 @observer
 class TableScrollPage extends React.Component {
-  pageSize = 10;
+  pageSize = 20;
   page = 1;
   constructor(props) {
     super(props);
