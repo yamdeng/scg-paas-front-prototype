@@ -45,11 +45,26 @@ function copyToClipboard(id) {
   alert('복사되었습니다');
 }
 
+function saveInfoToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getInfoByLocalStorage(key) {
+  let jsonString = localStorage.getItem(key);
+  if (jsonString) {
+    return JSON.parse(jsonString);
+  } else {
+    return null;
+  }
+}
+
 const Helper = {
   convertEmptyValue: convertEmptyValue,
   checkAuthByUrl: checkAuthByUrl,
   getQueryStringValue: getQueryStringValue,
-  copyToClipboard: copyToClipboard
+  copyToClipboard: copyToClipboard,
+  saveInfoToLocalStorage: saveInfoToLocalStorage,
+  getInfoByLocalStorage: getInfoByLocalStorage
 };
 
 export default Helper;
