@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Constant from './config/Constant';
 import App from './App';
 // import App2 from './App2';
 import * as serviceWorker from './serviceWorker';
@@ -43,6 +44,13 @@ let AppComponent = <App />;
 // if (appType && appType === 'app2') {
 //   AppComponent = <App2 />;
 // }
+
+if (process.env.TOKEN_TYPE === Constant.TOKEN_TYPE_WEB) {
+  // #/?token=123789
+  if (urlQuery && urlQuery.token) {
+    stores.appStore.setLoginInfo({ name: 'test', token: urlQuery.token });
+  }
+}
 
 ReactDOM.render(
   <Provider {...stores}>
