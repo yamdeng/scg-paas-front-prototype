@@ -75,6 +75,7 @@ function getClientEnvironment(publicUrl) {
         // This should only be used as an escape hatch. Normally you would put
         // images into the `src` and `import` them in code to get their paths.
         PUBLIC_URL: publicUrl,
+        APP_ENV: process.env.APP_ENV || 'developemnt',
         APP_TYPE: process.env.APP_TYPE || 'defaultApp',
         TOKEN_TYPE: process.env.TOKEN_TYPE || 'localStorage'
       }

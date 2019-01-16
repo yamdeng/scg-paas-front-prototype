@@ -3,7 +3,7 @@
 # alias /Users/user/Project/scg-paas-front-prototype/build.sh
 
 cd /Users/user/Project/scg-paas-front-prototype
-yarn build
+yarn build:dev
 echo "build success"
 sleep 1
 cp -rf ./build/* ../scg-paas-server-prototype/public

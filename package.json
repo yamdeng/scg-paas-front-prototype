@@ -75,8 +75,9 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "cross-env HTTPS=true TOKEN_TYPE=native node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "cross-env HTTPS=true TOKEN_TYPE=web APP_ENV=development node scripts/start.js",
+    "build:dev": "cross-env TOKEN_TYPE=native APP_ENV=development node scripts/build.js",
+    "build": "cross-env TOKEN_TYPE=native APP_ENV=production node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

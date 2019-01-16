@@ -5,9 +5,6 @@ import shortid from 'shortid';
 import Logger from '../utils/Logger';
 import Helper from '../utils/Helper';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 
 @withRouter
 @inject('appStore')
@@ -16,45 +13,10 @@ class ErrorBoundary extends React.Component {
   queue = [];
   constructor(props) {
     super(props);
-    this.state = {
-      open: false,
-      messageInfo: {}
-    };
+    this.state = { hasError: false };
     this.refreshPage = this.refreshPage.bind(this);
     this.copyToClipboardByTextArea = this.copyToClipboardByTextArea.bind(this);
   }
-
-  handleClick = message => () => {
-    this.queue.push({
-      message,
-      key: new Date().getTime()
-    });
-    if (this.state.open) {
-      this.setState({ open: false });
-    } else {
-      this.processQueue();
-    }
-  };
-
-  processQueue = () => {
-    if (this.queue.length > 0) {
-      this.setState({
-        messageInfo: this.queue.shift(),
-        open: true
-      });
-    }
-  };
-
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    this.setState({ open: false });
-  };
-
-  handleExited = () => {
-    this.processQueue();
-  };
 
   copyToClipboardByTextArea(textAreaId) {
     Helper.copyToClipboard(textAreaId);
@@ -84,7 +46,6 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      const { messageInfo } = this.state;
       let errorObject = this.state.errorObject;
       let errorObjectConvertString = '';
       if (errorObject) {
@@ -114,47 +75,6 @@ class ErrorBoundary extends React.Component {
             페이지 리프레쉬
           </Button>
         </div>
-        // <div>
-        //   <Button onClick={this.handleClick('message a')}>
-        //     Show message A
-        //   </Button>
-        //   <Button onClick={this.handleClick('message b')}>
-        //     Show message B
-        //   </Button>
-        //   <Snackbar
-        //     key={messageInfo.key}
-        //     anchorOrigin={{
-        //       vertical: 'bottom',
-        //       horizontal: 'left'
-        //     }}
-        //     open={this.state.open}
-        //     autoHideDuration={6000}
-        //     onClose={this.handleClose}
-        //     onExited={this.handleExited}
-        //     ContentProps={{
-        //       'aria-describedby': 'message-id'
-        //     }}
-        //     message={<span id="message-id">{messageInfo.message}</span>}
-        //     action={[
-        //       <Button
-        //         key="undo"
-        //         color="secondary"
-        //         size="small"
-        //         onClick={this.handleClose}
-        //       >
-        //         UNDO
-        //       </Button>,
-        //       <IconButton
-        //         key="close"
-        //         aria-label="Close"
-        //         color="inherit"
-        //         onClick={this.handleClose}
-        //       >
-        //         <CloseIcon />
-        //       </IconButton>
-        //     ]}
-        //   />
-        // </div>
       );
     } else {
       return this.props.children;
