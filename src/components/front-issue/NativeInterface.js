@@ -32,6 +32,8 @@ class NativeInterface extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.enableBackButton = this.enableBackButton.bind(this);
     this.disableBackButton = this.disableBackButton.bind(this);
+    this.moveUrl = this.moveUrl.bind(this);
+    this.refreshApp = this.refreshApp.bind(this);
   }
 
   getDeviceInfo() {
@@ -78,6 +80,14 @@ class NativeInterface extends React.Component {
 
   disableBackButton() {
     NativeInterfaceService.disableBackButton();
+  }
+
+  moveUrl() {
+    NativeInterfaceService.moveUrl();
+  }
+
+  refreshApp() {
+    NativeInterfaceService.refreshApp();
   }
 
   addEventListener() {
@@ -165,6 +175,12 @@ class NativeInterface extends React.Component {
           onClick={this.enableBackButton}
         >
           백버튼 활성화
+        </Button>
+        <Button variant="contained" color="primary" onClick={this.moveUrl}>
+          moveUrl
+        </Button>
+        <Button variant="contained" color="primary" onClick={this.refreshApp}>
+          refreshApp
         </Button>
         <Dialog
           open={this.state.open}

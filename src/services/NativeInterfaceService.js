@@ -44,6 +44,18 @@ class NativeInterfaceService {
       window.android.getLoginInfo();
     }
   }
+
+  moveUrl() {
+    if (DeviceUtil.isAndroid) {
+      window.android.moveUrl();
+    }
+  }
+
+  refreshApp() {
+    if (DeviceUtil.isAndroid) {
+      window.android.refreshApp();
+    }
+  }
 }
 
 export default new NativeInterfaceService();

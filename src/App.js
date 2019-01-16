@@ -37,7 +37,7 @@ import PusblishTest from './components/front-issue/PusblishTest';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 // import NativeInterfaceService from './services/NativeInterfaceService';
-// import NativeEventService from './services/NativeEventService';
+import NativeEventService from './services/NativeEventService';
 // import LoadingBar from './utils/LoadingBar';
 
 import './App.css';
@@ -108,7 +108,7 @@ class App extends Component {
     Logger.info('App init call');
     Logger.info('process.env : ' + JSON.stringify(process.env));
     window.onerror = this.handleGlobalError;
-    // NativeEventService.initEventListener();
+    NativeEventService.initEventListener();
     // NativeInterfaceService.getLoginInfo();
     // LoadingBar.show();
 

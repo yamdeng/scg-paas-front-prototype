@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import stores from '../stores/stores';
 import LoadingBar from '../utils/LoadingBar';
+import AppHistory from '../utils/AppHistory';
 
 class NativeEventService {
   initEventListener() {
@@ -27,6 +28,20 @@ class NativeEventService {
       console.log('setLoginInfo : ' + data);
       stores.appStore.setLoginInfo(JSON.parse(data));
       LoadingBar.hide();
+    });
+
+    $(window).on('moveUrl', function(event, data) {
+      // eslint-disable-next-line
+      console.log('moveUrl : ' + data);
+      AppHistory.push(data);
+      LoadingBar.hide();
+    });
+
+    $(window).on('refreshApp', function(event, data) {
+      // eslint-disable-next-line
+      console.log('refreshApp : ' + data);
+      LoadingBar.hide();
+      window.location.href = '/';
     });
   }
 }
