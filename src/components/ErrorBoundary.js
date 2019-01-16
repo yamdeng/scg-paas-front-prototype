@@ -29,10 +29,7 @@ class ErrorBoundary extends React.Component {
       message,
       key: new Date().getTime()
     });
-
     if (this.state.open) {
-      // immediately begin dismissing current message
-      // to start showing new one
       this.setState({ open: false });
     } else {
       this.processQueue();
@@ -95,69 +92,69 @@ class ErrorBoundary extends React.Component {
       }
       let textAreaId = shortid.generate();
       return (
-        // <div className="mid title-div">
-        //   <div>
-        //     <label
-        //       className="info-msg"
-        //       onClick={event => this.copyToClipboardByTextArea(textAreaId)}
-        //     >
-        //       창을 닫고 메신저에서
-        //       <br />
-        //       다시 시작해 주시기 바랍니다.
-        //     </label>
-        //     <textarea
-        //       id={textAreaId}
-        //       value={errorObjectConvertString}
-        //       style={{
-        //         display: 'block',
-        //         opacity: 0,
-        //         width: '0px',
-        //         height: '0px'
-        //       }}
-        //     />
-        //   </div>
-        // </div>
         <div>
-          <Button onClick={this.handleClick('message a')}>
-            Show message A
-          </Button>
-          <Button onClick={this.handleClick('message b')}>
-            Show message B
-          </Button>
-          <Snackbar
-            key={messageInfo.key}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left'
+          <textarea
+            id={textAreaId}
+            value={errorObjectConvertString}
+            style={{
+              display: 'block',
+              opacity: 0,
+              width: '0px',
+              height: '0px'
             }}
-            open={this.state.open}
-            autoHideDuration={6000}
-            onClose={this.handleClose}
-            onExited={this.handleExited}
-            ContentProps={{
-              'aria-describedby': 'message-id'
-            }}
-            message={<span id="message-id">{messageInfo.message}</span>}
-            action={[
-              <Button
-                key="undo"
-                color="secondary"
-                size="small"
-                onClick={this.handleClose}
-              >
-                UNDO
-              </Button>,
-              <IconButton
-                key="close"
-                aria-label="Close"
-                color="inherit"
-                onClick={this.handleClose}
-              >
-                <CloseIcon />
-              </IconButton>
-            ]}
           />
+          <Button
+            color="primary"
+            onClick={event => this.copyToClipboardByTextArea(textAreaId)}
+          >
+            에러 복사
+          </Button>
+          <br />
+          <Button color="primary" onClick={this.refreshPage}>
+            페이지 리프레쉬
+          </Button>
         </div>
+        // <div>
+        //   <Button onClick={this.handleClick('message a')}>
+        //     Show message A
+        //   </Button>
+        //   <Button onClick={this.handleClick('message b')}>
+        //     Show message B
+        //   </Button>
+        //   <Snackbar
+        //     key={messageInfo.key}
+        //     anchorOrigin={{
+        //       vertical: 'bottom',
+        //       horizontal: 'left'
+        //     }}
+        //     open={this.state.open}
+        //     autoHideDuration={6000}
+        //     onClose={this.handleClose}
+        //     onExited={this.handleExited}
+        //     ContentProps={{
+        //       'aria-describedby': 'message-id'
+        //     }}
+        //     message={<span id="message-id">{messageInfo.message}</span>}
+        //     action={[
+        //       <Button
+        //         key="undo"
+        //         color="secondary"
+        //         size="small"
+        //         onClick={this.handleClose}
+        //       >
+        //         UNDO
+        //       </Button>,
+        //       <IconButton
+        //         key="close"
+        //         aria-label="Close"
+        //         color="inherit"
+        //         onClick={this.handleClose}
+        //       >
+        //         <CloseIcon />
+        //       </IconButton>
+        //     ]}
+        //   />
+        // </div>
       );
     } else {
       return this.props.children;
