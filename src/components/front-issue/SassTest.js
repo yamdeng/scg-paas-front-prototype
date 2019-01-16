@@ -16,7 +16,7 @@ class SassTest extends React.Component {
   }
 
   render() {
-    return <div>sass test</div>;
+    return <div className="sass">sass test</div>;
   }
 }
 

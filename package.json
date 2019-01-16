@@ -45,6 +45,7 @@
     "mobx-react-devtools": "^6.0.3",
     "mobx-react-router": "^4.0.5",
     "moment": "^2.23.0",
+    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -75,7 +76,7 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "cross-env HTTPS=true TOKEN_TYPE=web APP_ENV=development node scripts/start.js",
+    "start": "cross-env HTTPS=false TOKEN_TYPE=web APP_ENV=development node scripts/start.js",
     "start:publish": "cross-env ENTRY_NAME=publish node scripts/start.js",
     "build:dev": "cross-env TOKEN_TYPE=native APP_ENV=development NODE_ENV=development node scripts/build.js",
     "build": "cross-env TOKEN_TYPE=native APP_ENV=production node scripts/build.js",

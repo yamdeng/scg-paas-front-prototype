@@ -1,6 +1,7 @@
+import './css/common.scss';
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Constant from './config/Constant';
 import App from './App';
