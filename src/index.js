@@ -16,6 +16,7 @@ import queryString from 'query-string';
 
 // let urlQuery = querySearch(hashString.substr(hashString.indexOf('/') + 1));
 import Logger from './utils/Logger';
+import AppHistory from './utils/AppHistory';
 // import Helper from './utils/Helper';
 // alert(Helper.getQueryStringValue('aa'));
 
@@ -27,11 +28,14 @@ let urlQuery = queryString.parse(
 );
 Logger.info('index.js queryInfo : ' + JSON.stringify(urlQuery));
 
-// import AppHistory from './utils/AppHistory';
-// AppHistory.block((location, action) => {
-//   console.log('on route block');
-//   return true;
-// });
+AppHistory.block((location, action) => {
+  Logger.info('on route block');
+  return true;
+});
+
+AppHistory.listen((location, action) => {
+  // location.pathname ---> route시에 공통으로 구글 서비스 전달
+});
 
 // state의 상태는 action을 통해서만 가능하게끔 셋팅
 configure({
