@@ -5,6 +5,7 @@ class AppStore {
   @observable deviceInfo = {};
   @observable appVersion = '';
   @observable history = null;
+  @observable loginInfo = null;
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -22,6 +23,11 @@ class AppStore {
   @action
   changeAppVersion(appVersion) {
     this.appVersion = appVersion;
+  }
+
+  @action
+  setLoginInfo(loginInfo) {
+    this.loginInfo = loginInfo;
   }
 }
 

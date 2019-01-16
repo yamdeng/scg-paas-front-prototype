@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import stores from '../stores/stores';
+import LoadingBar from '../utils/LoadingBar';
 
 class NativeEventService {
   initEventListener() {
@@ -19,6 +20,13 @@ class NativeEventService {
       // eslint-disable-next-line
       console.log('setGps : ' + data);
       stores.nativeStore.setGps(JSON.parse(data));
+    });
+
+    $(window).on('setLoginInfo', function(event, data) {
+      // eslint-disable-next-line
+      console.log('setLoginInfo : ' + data);
+      stores.appStore.setLoginInfo(JSON.parse(data));
+      LoadingBar.hide();
     });
   }
 }

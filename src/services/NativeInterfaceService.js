@@ -38,6 +38,12 @@ class NativeInterfaceService {
       window.android.showToast(message);
     }
   }
+
+  getLoginInfo() {
+    if (DeviceUtil.isAndroid) {
+      window.android.getLoginInfo();
+    }
+  }
 }
 
 export default new NativeInterfaceService();

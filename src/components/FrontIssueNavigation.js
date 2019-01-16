@@ -174,6 +174,9 @@ class FrontIssueNavigation extends React.Component {
           }}
         >
           <div className={classes.drawerHeader}>
+            {this.props.appStore.loginInfo
+              ? this.props.appStore.loginInfo.name
+              : ''}
             <IconButton onClick={this.handleDrawerClose}>
               <ChevronLeftIcon />
             </IconButton>

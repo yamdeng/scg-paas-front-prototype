@@ -3,6 +3,7 @@ import Config from '../config/Config';
 import Logger from './Logger';
 import AppHistory from '../utils/AppHistory';
 import LoadingBar from '../utils/LoadingBar';
+import stores from '../stores/stores';
 
 let API_URL = '/api/gas/';
 
@@ -17,6 +18,9 @@ Api.defaults.headers.post['Content-Type'] = 'application/json';
 Api.interceptors.request.use(
   function(config) {
     Logger.info('api request : ' + JSON.stringify(config.data));
+    config.headers.authorization = stores.appStore.loginInfo
+      ? stores.appStore.loginInfo.token
+      : '';
     if (!config.disableLoadingBar) {
       LoadingBar.show();
     }

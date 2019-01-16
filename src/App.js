@@ -13,7 +13,7 @@ import FooterSelect from './components/front-issue/FooterSelect';
 import CheckboxSwitch from './components/front-issue/CheckboxSwitch';
 import NativeInterface from './components/front-issue/NativeInterface';
 import ModalTest1 from './components/front-issue/ModalTest1';
-import LoadingBar from './components/front-issue/LoadingBar';
+import LoadingBarTest from './components/front-issue/LoadingBar';
 import SassTest from './components/front-issue/SassTest';
 import Environment from './components/front-issue/Environment';
 import CodeSplit from './components/front-issue/CodeSplit';
@@ -35,6 +35,9 @@ import TabScroll from './components/front-issue/TabScroll';
 import ReactErrorTest from './components/front-issue/ReactErrorTest';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
+import NativeInterfaceService from './services/NativeInterfaceService';
+import NativeEventService from './services/NativeEventService';
+import LoadingBar from './utils/LoadingBar';
 
 import './App.css';
 import Logger from './utils/Logger';
@@ -81,6 +84,9 @@ class App extends Component {
     Logger.info('App init call');
     Logger.info('process.env : ' + JSON.stringify(process.env));
     window.onerror = this.handleGlobalError;
+    NativeEventService.initEventListener();
+    NativeInterfaceService.getLoginInfo();
+    LoadingBar.show();
 
     // this.historyBlockHandler = this.props.history.block((location, action) => {
     //   console.log('on route block');
@@ -103,11 +109,15 @@ class App extends Component {
   }
 
   render() {
+    let mainContainerStyle = { marginTop: 60 };
+    if (!this.props.appStore.loginInfo) {
+      mainContainerStyle.display = 'none';
+    }
     return (
       <ErrorBoundary>
         <div>
           <FrontIssueNavigation />
-          <div style={{ marginTop: 60 }}>
+          <div style={mainContainerStyle}>
             <Route exact path="/" component={Home} />
             <Route exact path="/accordion-b" component={AccordionB} />
             <Route exact path="/accordion-m" component={AccordionM} />
@@ -118,7 +128,7 @@ class App extends Component {
             <Route exact path="/checkbox-switch" component={CheckboxSwitch} />
             <Route exact path="/native-interface" component={NativeInterface} />
             <Route exact path="/modal-test-1" component={ModalTest1} />
-            <Route exact path="/loadingbar" component={LoadingBar} />
+            <Route exact path="/loadingbar" component={LoadingBarTest} />
             <Route exact path="/sass" component={SassTest} />
             <Route exact path="/environment" component={Environment} />
             <Route exact path="/code-split" component={CodeSplit} />
