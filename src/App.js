@@ -35,9 +35,9 @@ import TabScroll from './components/front-issue/TabScroll';
 import ReactErrorTest from './components/front-issue/ReactErrorTest';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
-import NativeInterfaceService from './services/NativeInterfaceService';
-import NativeEventService from './services/NativeEventService';
-import LoadingBar from './utils/LoadingBar';
+// import NativeInterfaceService from './services/NativeInterfaceService';
+// import NativeEventService from './services/NativeEventService';
+// import LoadingBar from './utils/LoadingBar';
 
 import './App.css';
 import Logger from './utils/Logger';
@@ -84,9 +84,9 @@ class App extends Component {
     Logger.info('App init call');
     Logger.info('process.env : ' + JSON.stringify(process.env));
     window.onerror = this.handleGlobalError;
-    NativeEventService.initEventListener();
-    NativeInterfaceService.getLoginInfo();
-    LoadingBar.show();
+    // NativeEventService.initEventListener();
+    // NativeInterfaceService.getLoginInfo();
+    // LoadingBar.show();
 
     // this.historyBlockHandler = this.props.history.block((location, action) => {
     //   console.log('on route block');
@@ -110,9 +110,9 @@ class App extends Component {
 
   render() {
     let mainContainerStyle = { marginTop: 60 };
-    if (!this.props.appStore.loginInfo) {
-      mainContainerStyle.display = 'none';
-    }
+    // if (!this.props.appStore.loginInfo) {
+    //   mainContainerStyle.display = 'none';
+    // }
     return (
       <ErrorBoundary>
         <div>

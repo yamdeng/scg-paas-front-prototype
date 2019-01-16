@@ -12,6 +12,9 @@ import { Provider } from 'mobx-react';
 import stores from './stores/stores';
 // import querySearch from 'stringquery';
 import queryString from 'query-string';
+
+// let urlQuery = querySearch(hashString.substr(hashString.indexOf('/') + 1));
+import Logger from './utils/Logger';
 // import Helper from './utils/Helper';
 // alert(Helper.getQueryStringValue('aa'));
 
@@ -21,9 +24,7 @@ let hashString = location.hash;
 let urlQuery = queryString.parse(
   hashString.substr(hashString.indexOf('/') + 1)
 );
-
-// let urlQuery = querySearch(hashString.substr(hashString.indexOf('/') + 1));
-console.log('index.js queryInfo : ' + JSON.stringify(urlQuery));
+Logger.info('index.js queryInfo : ' + JSON.stringify(urlQuery));
 
 // import AppHistory from './utils/AppHistory';
 // AppHistory.block((location, action) => {
