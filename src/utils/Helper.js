@@ -1,4 +1,5 @@
 import Config from '../config/Config';
+import AppHistory from '../utils/AppHistory';
 
 function convertEmptyValue(value) {
   if (value === undefined || value === null || value === '') {
@@ -10,7 +11,7 @@ function convertEmptyValue(value) {
 
 function checkAuthByUrl(url) {
   if (url && url.indexOf('accordion-b') !== -1) {
-    history.pushState(null, '권한 에러', '#/error-auth');
+    AppHistory.push('/error-auth');
   }
 }
 

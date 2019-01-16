@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import InnerTextComponent from './help/InnerTextComponent';
 // import AppHistory from '../../utils/AppHistory';
+// import Helper from '../../utils/Helper';
 import Logger from '../../utils/Logger';
 
 @withRouter
