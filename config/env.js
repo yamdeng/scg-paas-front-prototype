@@ -77,7 +77,7 @@ function getClientEnvironment(publicUrl) {
         PUBLIC_URL: publicUrl,
         APP_ENV: process.env.APP_ENV || 'developemnt',
         APP_TYPE: process.env.APP_TYPE || 'defaultApp',
-        TOKEN_TYPE: process.env.TOKEN_TYPE || 'localStorage'
+        TOKEN_TYPE: process.env.TOKEN_TYPE || 'web'
       }
     );
   // Stringify all values so we can feed into Webpack DefinePlugin

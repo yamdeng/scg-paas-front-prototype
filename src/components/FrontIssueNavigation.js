@@ -104,7 +104,8 @@ const menuMappingInfos = [
   { title: '차트 테스트1', linkUrl: '/chartcase-1' },
   { title: '테이블 페이징 스크롤', linkUrl: '/table-page-scroll' },
   { title: '이미지 페이징 스크롤', linkUrl: '/image-page-scroll' },
-  { title: '리액트 에러 테스트', linkUrl: '/react-error-test' }
+  { title: '리액트 에러 테스트', linkUrl: '/react-error-test' },
+  { title: '퍼블리싱 테스트', linkUrl: '/publish-test' }
 ];
 
 @withRouter

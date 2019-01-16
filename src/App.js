@@ -33,6 +33,7 @@ import TableScrollPage from './components/front-issue/TableScrollPage';
 import ImageScrollPage from './components/front-issue/ImageScrollPage';
 import TabScroll from './components/front-issue/TabScroll';
 import ReactErrorTest from './components/front-issue/ReactErrorTest';
+import PusblishTest from './components/front-issue/PusblishTest';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -188,6 +189,7 @@ class App extends Component {
             />
             <Route exact path="/tab-scroll" component={TabScroll} />
             <Route exact path="/react-error-test" component={ReactErrorTest} />
+            <Route exact path="/publish-test" component={PusblishTest} />
           </div>
           <LoadingBarContainer />
 
