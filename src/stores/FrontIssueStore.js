@@ -1,6 +1,7 @@
 import { observable, action, runInAction } from 'mobx';
 import Logger from '../utils/Logger';
 import Api from '../utils/Api';
+import ListDetail from './domain/ListDetail';
 
 class FrontIssueStore {
   @observable accordionData = {};
@@ -81,9 +82,11 @@ class FrontIssueStore {
   @action
   addArrayTestInfo(index, info) {
     if (index === 2) {
-      this.arrayTest2.push(info);
+      this.arrayTest2.push(new ListDetail(info));
+      // this.arrayTest2.push(info);
     } else {
-      this.arrayTest.push(info);
+      this.arrayTest.push(new ListDetail(info));
+      // this.arrayTest.push(info);
     }
   }
 }

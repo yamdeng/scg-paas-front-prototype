@@ -1,11 +1,24 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 import update from 'immutability-helper';
 import shortid from 'shortid';
 import Logger from '../../utils/Logger';
-import ListDetail from './help/ListDetail';
+import UlComponent from './help/UlComponent';
+// import ListDetail from './help/ListDetail';
+
+// PureComponent
+const ListDetailPure = React.memo(props => {
+  Logger.info('ListDetail render call : ' + props.id);
+  return <li>{props.id + ' : ' + props.name}</li>;
+});
+
+// Basic Component
+const ListDetail = props => {
+  Logger.info('ListDetail render call : ' + props.id);
+  return <li>{props.id + ' : ' + props.name}</li>;
+};
 
 @withRouter
 @inject('appStore', 'frontIssueStore')
@@ -32,28 +45,12 @@ class ImmutabilityTest extends React.Component {
   }
 
   handleArrayTest1() {
-    // this.setState({
-    //   arrayTest: [
-    //     {
-    //       id: shortid.generate(),
-    //       name: 'test'
-    //     }
-    //   ]
-    // });
-
     this.setState({
       arrayTest: this.state.arrayTest.concat({
         id: shortid.generate(),
         name: 'test'
       })
     });
-
-    //   console.log(Array.isArray(this.state.arrayTest));
-    //   this.setState({
-    //     arrayTest: update(this.state.arrayTest, {
-    //       $push: [{ id: shortid.generate(), name: 'test' }]
-    //     })
-    //   });
   }
 
   handleArrayTest2() {
@@ -63,7 +60,13 @@ class ImmutabilityTest extends React.Component {
     });
   }
 
-  handleArrayTest3() {}
+  handleArrayTest3() {
+    this.setState({
+      arrayTest: update(this.state.arrayTest, {
+        $push: [{ id: shortid.generate(), name: 'test' }]
+      })
+    });
+  }
 
   handleArrayTest4() {}
 
@@ -97,6 +100,42 @@ class ImmutabilityTest extends React.Component {
     return (
       <div style={{ padding: 20 }}>
         <div>
+          <Button color="primary" onClick={this.handleArrayTest1}>
+            arrayTest1
+          </Button>{' '}
+          <Button color="secondary" onClick={this.handleArrayTest2}>
+            arrayTest2
+          </Button>{' '}
+          <Button color="success" onClick={this.handleArrayTest3}>
+            arrayTest3
+          </Button>{' '}
+          <Button color="info" onClick={this.handleArrayTest4}>
+            arrayTest4
+          </Button>{' '}
+          <Button color="warning" onClick={this.handleArrayTest5}>
+            arrayTest5
+          </Button>{' '}
+        </div>
+        <br />
+        <div>
+          <Button color="primary" onClick={this.handleObjectTest1}>
+            ObjectTest1
+          </Button>{' '}
+          <Button color="secondary" onClick={this.handleObjectTest2}>
+            ObjectTest2
+          </Button>{' '}
+          <Button color="success" onClick={this.handleObjectTest3}>
+            ObjectTest3
+          </Button>{' '}
+          <Button color="info" onClick={this.handleObjectTest4}>
+            ObjectTest4
+          </Button>{' '}
+          <Button color="warning" onClick={this.handleObjectTest5}>
+            ObjectTest5
+          </Button>{' '}
+        </div>
+        <br />
+        <div>
           <Button color="primary" onClick={this.clearArrayTest}>
             clearArrayTest
           </Button>{' '}
@@ -104,54 +143,44 @@ class ImmutabilityTest extends React.Component {
             clearStore Array
           </Button>{' '}
         </div>
-        <br />
-        <div>
-          <Button color="primary" onClick={this.handleArrayTest1}>
-            handleArrayTest1
-          </Button>{' '}
-          <Button color="secondary" onClick={this.handleArrayTest2}>
-            handleArrayTest2
-          </Button>{' '}
-          <Button color="success" onClick={this.handleArrayTest3}>
-            handleArrayTest3
-          </Button>{' '}
-          <Button color="info" onClick={this.handleArrayTest4}>
-            handleArrayTest4
-          </Button>{' '}
-          <Button color="warning" onClick={this.handleArrayTest5}>
-            handleArrayTest5
-          </Button>{' '}
-        </div>
-        <br />
-        <div>
-          <Button color="primary" onClick={this.handleObjectTest1}>
-            handleObjectTest1
-          </Button>{' '}
-          <Button color="secondary" onClick={this.handleObjectTest2}>
-            handleObjectTest2
-          </Button>{' '}
-          <Button color="success" onClick={this.handleObjectTest3}>
-            handleObjectTest3
-          </Button>{' '}
-          <Button color="info" onClick={this.handleObjectTest4}>
-            handleObjectTest4
-          </Button>{' '}
-          <Button color="warning" onClick={this.handleObjectTest5}>
-            handleObjectTest5
-          </Button>{' '}
-        </div>
-        <h1>arrayTest</h1>
-        <ul>
-          {this.state.arrayTest.map(info => {
-            return <ListDetail key={info.id} id={info.id} name={info.name} />;
-          })}
-        </ul>
-        <h1>store arrayTest</h1>
-        <ul>
-          {this.props.frontIssueStore.arrayTest.map(info => {
-            return <ListDetail key={info.id} id={info.id} name={info.name} />;
-          })}
-        </ul>
+
+        <Container>
+          <Row>
+            <Col sm="4">
+              <h1>arrayTest</h1>
+              <ul>
+                {this.state.arrayTest.map(info => {
+                  return (
+                    <ListDetail key={info.id} id={info.id} name={info.name} />
+                  );
+                })}
+              </ul>
+            </Col>
+            <Col sm="4">
+              <h1>arrayTest</h1>
+              <ul>
+                {this.state.arrayTest.map(info => {
+                  return (
+                    <ListDetailPure
+                      key={info.id}
+                      id={info.id}
+                      name={info.name}
+                    />
+                  );
+                })}
+              </ul>
+            </Col>
+            <Col sm="4">
+              <h1>storeTest</h1>
+              <UlComponent list={this.props.frontIssueStore.arrayTest.toJS()} />
+              {/* <ul>
+                {this.props.frontIssueStore.arrayTest.map(info => {
+                  return <ListDetail key={info.id} id={info.id} name={info.name} />;
+                })}
+              </ul> */}
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

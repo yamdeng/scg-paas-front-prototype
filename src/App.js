@@ -147,9 +147,9 @@ class App extends Component {
     let textAreaId = shortid.generate();
 
     let DEV_TOOL_COMPONENT = null;
-    if (process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT) {
-      DEV_TOOL_COMPONENT = <DevTools />;
-    }
+    // if (process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT) {
+    //   DEV_TOOL_COMPONENT = <DevTools />;
+    // }
     return (
       <ErrorBoundary>
         <div>
