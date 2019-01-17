@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import styles from '../../css/test.module.css';
 
 @withRouter
 @inject('appStore')
@@ -16,7 +17,12 @@ class SassTest extends React.Component {
   }
 
   render() {
-    return <div className="sass">sass test</div>;
+    return (
+      <div className="sass">
+        sass test
+        <p className={styles.module}>module test</p>
+      </div>
+    );
   }
 }
 
