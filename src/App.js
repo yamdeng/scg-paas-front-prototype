@@ -1,3 +1,4 @@
+import DevTools from 'mobx-react-devtools';
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
@@ -144,9 +145,15 @@ class App extends Component {
       errorObjectConvertString = JSON.stringify(this.state.appErrorObject);
     }
     let textAreaId = shortid.generate();
+
+    let DEV_TOOL_COMPONENT = null;
+    if (process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT) {
+      DEV_TOOL_COMPONENT = <DevTools />;
+    }
     return (
       <ErrorBoundary>
         <div>
+          {DEV_TOOL_COMPONENT}
           <FrontIssueNavigation />
           <div style={mainContainerStyle}>
             <Route exact path="/" component={Home} />

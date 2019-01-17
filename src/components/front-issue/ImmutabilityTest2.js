@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 
 @withRouter
-@inject('appStore')
+@inject('appStore', 'frontIssueStore')
 @observer
 class ImmutabilityTest2 extends React.Component {
   constructor(props) {

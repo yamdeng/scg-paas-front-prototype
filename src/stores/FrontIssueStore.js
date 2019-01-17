@@ -7,6 +7,10 @@ class FrontIssueStore {
   @observable tabData1 = [];
   @observable tabData2 = [];
   @observable talkList = [];
+  @observable arrayTest = [];
+  @observable arrayTest2 = [];
+  @observable objectTest = {};
+  @observable objectTest2 = {};
   @observable loadedTabData1 = false;
   @observable loadedTabData2 = false;
   constructor(rootStore) {
@@ -44,6 +48,19 @@ class FrontIssueStore {
   }
 
   @action
+  clearData() {
+    this.tabData1 = [];
+    this.tabData2 = [];
+    this.talkList = [];
+    this.arrayTest = [];
+    this.arrayTest2 = [];
+    this.objectTest = {};
+    this.objectTest2 = {};
+    this.loadedTabData1 = false;
+    this.loadedTabData2 = false;
+  }
+
+  @action
   clearTabData() {
     this.tabData1 = [];
     this.tabData2 = [];
@@ -59,6 +76,15 @@ class FrontIssueStore {
   @action
   addTalkInfo(talkInfo) {
     this.talkList.push(talkInfo);
+  }
+
+  @action
+  addArrayTestInfo(index, info) {
+    if (index === 2) {
+      this.arrayTest2.push(info);
+    } else {
+      this.arrayTest.push(info);
+    }
   }
 }
 

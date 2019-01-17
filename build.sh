@@ -3,7 +3,7 @@
 # alias /Users/user/Project/scg-paas-front-prototype/build.sh
 
 cd /Users/user/Project/scg-paas-server-prototype/public
-rm -f `ls | find . -name image -prune -o -print`
+rm -rf `ls | find . -name image -prune -o -print`
 echo "server public remove success"
 cd /Users/user/Project/scg-paas-front-prototype
 yarn build:dev
