@@ -98,7 +98,8 @@ const menuMappingInfos = [
   { title: '클라이언트 에러', linkUrl: '/error-client', success: true },
   { title: '서버 에러', linkUrl: '/error-server', success: true },
   { title: '권한 에러', linkUrl: '/error-auth', success: true },
-  { title: '상담톡', linkUrl: '/talk-anmation' },
+  { title: '상담톡 목록', linkUrl: '/talk-list', success: true },
+  { title: '상담톡 애니메이션', linkUrl: '/talk-anmation' },
   { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },
   { title: 'Analytics', linkUrl: '/analytics' },
   { title: '폼 테스트', linkUrl: '/form-test' },
@@ -114,7 +115,11 @@ const menuMappingInfos = [
     success: true
   },
   { title: '리액트 에러 테스트', linkUrl: '/react-error-test', success: true },
-  { title: '퍼블리싱 테스트', linkUrl: '/publish-test', success: true }
+  { title: '퍼블리싱 테스트', linkUrl: '/publish-test', success: true },
+  {
+    title: '불변 자료구조 테스트',
+    linkUrl: '/immutability-test'
+  }
 ];
 
 @withRouter

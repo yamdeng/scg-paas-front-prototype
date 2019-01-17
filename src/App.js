@@ -22,6 +22,7 @@ import ErrorServer from './components/front-issue/ErrorServer';
 import ErrorAuth from './components/front-issue/ErrorAuth';
 import EventTest from './components/front-issue/EventTest';
 import TalkAnimation from './components/front-issue/TalkAnimation';
+import TalkList from './components/front-issue/TalkList';
 import PushCase1 from './components/front-issue/PushCase1';
 import Analytics from './components/front-issue/Analytics';
 import FormTest from './components/front-issue/FormTest';
@@ -31,6 +32,7 @@ import ImageScrollPage from './components/front-issue/ImageScrollPage';
 import TabScroll from './components/front-issue/TabScroll';
 import ReactErrorTest from './components/front-issue/ReactErrorTest';
 import PublishTest from './components/front-issue/PublishTest';
+import ImmutabilityTest from './components/front-issue/ImmutabilityTest';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -163,6 +165,7 @@ class App extends Component {
             <Route exact path="/error-auth" component={ErrorAuth} />
             <Route exact path="/event-test" component={EventTest} />
             <Route exact path="/talk-anmation" component={TalkAnimation} />
+            <Route exact path="/talk-list" component={TalkList} />
             <Route exact path="/pushcase-1" component={PushCase1} />
             <Route exact path="/analytics" component={Analytics} />
             <Route exact path="/form-test" component={FormTest} />
@@ -180,6 +183,11 @@ class App extends Component {
             <Route exact path="/tab-scroll" component={TabScroll} />
             <Route exact path="/react-error-test" component={ReactErrorTest} />
             <Route exact path="/publish-test" component={PublishTest} />
+            <Route
+              exact
+              path="/immutability-test"
+              component={ImmutabilityTest}
+            />
           </div>
           <LoadingBarContainer />
 

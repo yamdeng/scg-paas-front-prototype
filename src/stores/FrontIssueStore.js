@@ -6,6 +6,7 @@ class FrontIssueStore {
   @observable accordionData = {};
   @observable tabData1 = [];
   @observable tabData2 = [];
+  @observable talkList = [];
   @observable loadedTabData1 = false;
   @observable loadedTabData2 = false;
   constructor(rootStore) {
@@ -48,6 +49,16 @@ class FrontIssueStore {
     this.tabData2 = [];
     this.loadedTabData1 = false;
     this.loadedTabData2 = false;
+  }
+
+  @action
+  clearTalkList() {
+    this.talkList = [];
+  }
+
+  @action
+  addTalkInfo(talkInfo) {
+    this.talkList.push(talkInfo);
   }
 }
 
