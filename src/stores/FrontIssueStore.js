@@ -80,14 +80,14 @@ class FrontIssueStore {
   }
 
   @action
-  addArrayTestInfo(index, info) {
-    if (index === 2) {
-      this.arrayTest2.push(new ListDetail(info));
-      // this.arrayTest2.push(info);
-    } else {
-      this.arrayTest.push(new ListDetail(info));
-      // this.arrayTest.push(info);
-    }
+  addArrayTestInfo(info) {
+    this.arrayTest.push(new ListDetail(info));
+    // this.arrayTest.push(info);
+  }
+
+  @action
+  changArrayTestInfo(arrayIndex, name) {
+    this.arrayTest[arrayIndex].name = name;
   }
 }
 

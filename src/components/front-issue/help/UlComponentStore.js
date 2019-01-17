@@ -1,8 +1,9 @@
 import React from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import Logger from '../../../utils/Logger';
 import ListDetail from './ListDetail';
 
+@inject('appStore', 'frontIssueStore')
 @observer
 class UlComponent extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class UlComponent extends React.Component {
     Logger.info('UlComponent list render : ' + this.props.list.length);
     return (
       <div>
-        {this.props.list.map(info => {
+        {this.props.frontIssueStore.arrayTest.map(info => {
           return <ListDetail key={info.id} id={info.id} name={info.name} />;
         })}
       </div>

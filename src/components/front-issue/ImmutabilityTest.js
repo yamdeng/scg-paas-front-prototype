@@ -6,11 +6,13 @@ import update from 'immutability-helper';
 import shortid from 'shortid';
 import Logger from '../../utils/Logger';
 import UlComponent from './help/UlComponent';
-// import ListDetail from './help/ListDetail';
+import UlComponentStore from './help/UlComponentStore';
+import ListDetailOuter from './help/ListDetail';
+import ListDetailObject from './help/ListDetailObject';
 
 // PureComponent
 const ListDetailPure = React.memo(props => {
-  Logger.info('ListDetail render call : ' + props.id);
+  Logger.info('ListDetailPure render call : ' + props.id);
   return <li>{props.id + ' : ' + props.name}</li>;
 });
 
@@ -19,6 +21,16 @@ const ListDetail = props => {
   Logger.info('ListDetail render call : ' + props.id);
   return <li>{props.id + ' : ' + props.name}</li>;
 };
+
+// const ListDetailObject = props => {
+//   Logger.info('ListDetailObject render call : ' + props.info.id);
+//   return <li>{props.info.id + ' : ' + props.info.name}</li>;
+// };
+
+// const ListDetailObject = React.memo(props => {
+//   Logger.info('ListDetailObject render call : ' + props.info.id);
+//   return <li>{props.info.id + ' : ' + props.info.name}</li>;
+// });
 
 @withRouter
 @inject('appStore', 'frontIssueStore')
@@ -45,32 +57,65 @@ class ImmutabilityTest extends React.Component {
   }
 
   handleArrayTest1() {
+    let updateArrayTest = this.state.arrayTest.concat({
+      id: shortid.generate(),
+      name: 'test'
+    });
     this.setState({
-      arrayTest: this.state.arrayTest.concat({
-        id: shortid.generate(),
-        name: 'test'
-      })
+      arrayTest: updateArrayTest
     });
   }
 
   handleArrayTest2() {
-    this.props.frontIssueStore.addArrayTestInfo(1, {
+    this.props.frontIssueStore.addArrayTestInfo({
       id: shortid.generate(),
       name: 'test'
     });
   }
 
   handleArrayTest3() {
+    // let debuggerUpdate = update;
+    // debugger;
+    /*
+
+      var testObj = {aaa:'aaa'};
+      var initialArray = [testObj, 2, 3];
+      var newArray = debuggerUpdate(initialArray, {$push: [4]});
+      initialArray === newArray
+      testObj === newArray[0]
+
+      var obj = {a: 5, b: 3};
+      var newObj = debuggerUpdate(obj, {$merge: {b: 6, c: 7}});
+
+      var deepObj = {a: 5, b: 3, c:{c1:'ccc'}, d:{d1:'ddd'}};
+      var newDeepObj = debuggerUpdate(deepObj, {$merge: {c:{c1:'ccc1', c2:'ccc2'}}});
+
+    */
+
+    let updateArrayTest = update(this.state.arrayTest, {
+      $push: [
+        { id: shortid.generate(), name: 'test' },
+        { id: shortid.generate(), name: 'test' }
+      ]
+    });
+    Logger.info('asd :' + updateArrayTest === this.state.arrayTest);
     this.setState({
-      arrayTest: update(this.state.arrayTest, {
-        $push: [{ id: shortid.generate(), name: 'test' }]
-      })
+      arrayTest: updateArrayTest
     });
   }
 
-  handleArrayTest4() {}
+  handleArrayTest4() {
+    let updateArrayTest = update(this.state.arrayTest, {
+      2: { name: { $set: shortid.generate() } }
+    });
+    this.setState({
+      arrayTest: updateArrayTest
+    });
+  }
 
-  handleArrayTest5() {}
+  handleArrayTest5() {
+    this.props.frontIssueStore.changArrayTestInfo(1, 'yamdeng');
+  }
 
   handleObjectTest1() {}
 
@@ -147,7 +192,7 @@ class ImmutabilityTest extends React.Component {
         <Container>
           <Row>
             <Col sm="4">
-              <h1>arrayTest</h1>
+              <h1>arrayTest2</h1>
               <ul>
                 {this.state.arrayTest.map(info => {
                   return (
@@ -169,15 +214,25 @@ class ImmutabilityTest extends React.Component {
                   );
                 })}
               </ul>
+              {/* <UlComponent list={this.state.arrayTest} /> */}
             </Col>
             <Col sm="4">
               <h1>storeTest</h1>
-              <UlComponent list={this.props.frontIssueStore.arrayTest.toJS()} />
+              {/* <UlComponentStore list={[]} /> */}
+              {/* <UlComponent list={this.props.frontIssueStore.arrayTest.toJS()} /> */}
+              {/* <UlComponent list={this.props.frontIssueStore.arrayTest} /> */}
               {/* <ul>
                 {this.props.frontIssueStore.arrayTest.map(info => {
-                  return <ListDetail key={info.id} id={info.id} name={info.name} />;
+                  return (
+                    <ListDetail key={info.id} id={info.id} name={info.name} />
+                  );
                 })}
               </ul> */}
+              <ul>
+                {this.props.frontIssueStore.arrayTest.map(info => {
+                  return <ListDetailObject key={info.id} info={info} />;
+                })}
+              </ul>
             </Col>
           </Row>
         </Container>
