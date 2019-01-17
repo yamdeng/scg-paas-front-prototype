@@ -119,6 +119,10 @@ const menuMappingInfos = [
   {
     title: '불변 자료구조 테스트',
     linkUrl: '/immutability-test'
+  },
+  {
+    title: '불변 자료구조 테스트2',
+    linkUrl: '/immutability-test2'
   }
 ];
 

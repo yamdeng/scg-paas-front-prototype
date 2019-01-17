@@ -33,6 +33,7 @@ import TabScroll from './components/front-issue/TabScroll';
 import ReactErrorTest from './components/front-issue/ReactErrorTest';
 import PublishTest from './components/front-issue/PublishTest';
 import ImmutabilityTest from './components/front-issue/ImmutabilityTest';
+import ImmutabilityTest2 from './components/front-issue/ImmutabilityTest2';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -187,6 +188,11 @@ class App extends Component {
               exact
               path="/immutability-test"
               component={ImmutabilityTest}
+            />
+            <Route
+              exact
+              path="/immutability-test2"
+              component={ImmutabilityTest2}
             />
           </div>
           <LoadingBarContainer />
