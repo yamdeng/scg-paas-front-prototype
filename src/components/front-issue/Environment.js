@@ -13,11 +13,11 @@ class Environment extends React.Component {
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('EnvironmentTest');
-    alert('process.env : ' + JSON.stringify(process.eventNames));
+    alert('process.env : ' + JSON.stringify(process.env));
   }
 
   render() {
-    return <div>sass test</div>;
+    return <div>EnvironmentTest</div>;
   }
 }
 

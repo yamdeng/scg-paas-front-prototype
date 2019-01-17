@@ -6,14 +6,14 @@ import DogImage from '../../image/1.JPG';
 @withRouter
 @inject('appStore')
 @observer
-class PusblishTest extends React.Component {
+class PublishTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('PusblishTest');
+    this.props.appStore.changeHeadTitle('PublishTest');
   }
 
   render() {
@@ -34,4 +34,4 @@ class PusblishTest extends React.Component {
   }
 }
 
-export default PusblishTest;
+export default PublishTest;

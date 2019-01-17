@@ -77,35 +77,44 @@ const styles = theme => ({
 });
 
 const menuMappingInfos = [
-  { title: '아코디언 부트스트랩', linkUrl: '/accordion-b' },
-  { title: '아코디언 메트리얼', linkUrl: '/accordion-m?aa=aa&bb=bb' },
-  { title: '탭 부트스트랩', linkUrl: '/tab-b' },
-  { title: '탭 메트리얼', linkUrl: '/tab-m' },
-  { title: '디바이스', linkUrl: '/device-basic' },
-  { title: '하단영역 선택', linkUrl: '/footer-select' },
-  { title: '라디오 스위치', linkUrl: '/checkbox-switch' },
-  { title: '탭 스크롤', linkUrl: '/tab-scroll' },
-  { title: '네이티브 인터페이스', linkUrl: '/native-interface' },
+  { title: '아코디언 부트스트랩', linkUrl: '/accordion-b', success: true },
+  {
+    title: '아코디언 메트리얼',
+    linkUrl: '/accordion-m?aa=aa&bb=bb',
+    success: true
+  },
+  { title: '탭 부트스트랩', linkUrl: '/tab-b', success: true },
+  { title: '탭 메트리얼', linkUrl: '/tab-m', success: true },
+  { title: '디바이스', linkUrl: '/device-basic', success: true },
+  { title: '하단영역 선택', linkUrl: '/footer-select', success: true },
+  { title: '라디오 스위치', linkUrl: '/checkbox-switch', success: true },
+  { title: '탭 스크롤', linkUrl: '/tab-scroll', success: true },
+  { title: '네이티브 인터페이스', linkUrl: '/native-interface', success: true },
   { title: '모달 테스트1', linkUrl: '/modal-test-1' },
-  { title: '로딩바', linkUrl: '/loadingbar' },
-  { title: 'sass', linkUrl: '/sass' },
-  { title: '환경변수', linkUrl: '/environment' },
+  { title: 'sass', linkUrl: '/sass', success: true },
+  { title: '환경변수', linkUrl: '/environment', success: true },
   { title: '코드분류', linkUrl: '/code-split' },
-  { title: '에러테스트', linkUrl: '/error-test' },
-  { title: '클라이언트 에러', linkUrl: '/error-client' },
-  { title: '서버 에러', linkUrl: '/error-server' },
-  { title: '권한 에러', linkUrl: '/error-auth' },
-  { title: '이미지 서버에 동기화', linkUrl: '/image-server-sync' },
+  { title: '에러테스트', linkUrl: '/error-test', success: true },
+  { title: '클라이언트 에러', linkUrl: '/error-client', success: true },
+  { title: '서버 에러', linkUrl: '/error-server', success: true },
+  { title: '권한 에러', linkUrl: '/error-auth', success: true },
   { title: '상담톡', linkUrl: '/talk-anmation' },
   { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },
   { title: 'Analytics', linkUrl: '/analytics' },
   { title: '폼 테스트', linkUrl: '/form-test' },
-  { title: '로그인 정보를 앱에게', linkUrl: '/login-to-app' },
   { title: '차트 테스트1', linkUrl: '/chartcase-1' },
-  { title: '테이블 페이징 스크롤', linkUrl: '/table-page-scroll' },
-  { title: '이미지 페이징 스크롤', linkUrl: '/image-page-scroll' },
-  { title: '리액트 에러 테스트', linkUrl: '/react-error-test' },
-  { title: '퍼블리싱 테스트', linkUrl: '/publish-test' }
+  {
+    title: '테이블 페이징 스크롤',
+    linkUrl: '/table-page-scroll',
+    success: true
+  },
+  {
+    title: '이미지 페이징 스크롤',
+    linkUrl: '/image-page-scroll',
+    success: true
+  },
+  { title: '리액트 에러 테스트', linkUrl: '/react-error-test', success: true },
+  { title: '퍼블리싱 테스트', linkUrl: '/publish-test', success: true }
 ];
 
 @withRouter
@@ -192,7 +201,11 @@ class FrontIssueNavigation extends React.Component {
                   onClick={this.clickMenu}
                   key={info.title}
                 >
-                  <ListItem button key={info.title}>
+                  <ListItem
+                    button
+                    key={info.title}
+                    style={{ backgroundColor: info.success ? '#28a745' : '' }}
+                  >
                     <ListItemText primary={info.title} />
                   </ListItem>
                 </Link>

@@ -13,7 +13,6 @@ import FooterSelect from './components/front-issue/FooterSelect';
 import CheckboxSwitch from './components/front-issue/CheckboxSwitch';
 import NativeInterface from './components/front-issue/NativeInterface';
 import ModalTest1 from './components/front-issue/ModalTest1';
-import LoadingBarTest from './components/front-issue/LoadingBar';
 import SassTest from './components/front-issue/SassTest';
 import Environment from './components/front-issue/Environment';
 import CodeSplit from './components/front-issue/CodeSplit';
@@ -21,19 +20,17 @@ import ErrorTest from './components/front-issue/ErrorTest';
 import ErrorClient from './components/front-issue/ErrorClient';
 import ErrorServer from './components/front-issue/ErrorServer';
 import ErrorAuth from './components/front-issue/ErrorAuth';
-import ImageServerSync from './components/front-issue/ImageServerSync';
 import EventTest from './components/front-issue/EventTest';
 import TalkAnimation from './components/front-issue/TalkAnimation';
 import PushCase1 from './components/front-issue/PushCase1';
 import Analytics from './components/front-issue/Analytics';
 import FormTest from './components/front-issue/FormTest';
-import LoginToApp from './components/front-issue/LoginToApp';
 import ChartCase1 from './components/front-issue/ChartCase1';
 import TableScrollPage from './components/front-issue/TableScrollPage';
 import ImageScrollPage from './components/front-issue/ImageScrollPage';
 import TabScroll from './components/front-issue/TabScroll';
 import ReactErrorTest from './components/front-issue/ReactErrorTest';
-import PusblishTest from './components/front-issue/PusblishTest';
+import PublishTest from './components/front-issue/PublishTest';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -157,7 +154,6 @@ class App extends Component {
             <Route exact path="/checkbox-switch" component={CheckboxSwitch} />
             <Route exact path="/native-interface" component={NativeInterface} />
             <Route exact path="/modal-test-1" component={ModalTest1} />
-            <Route exact path="/loadingbar" component={LoadingBarTest} />
             <Route exact path="/sass" component={SassTest} />
             <Route exact path="/environment" component={Environment} />
             <Route exact path="/code-split" component={CodeSplit} />
@@ -165,17 +161,11 @@ class App extends Component {
             <Route exact path="/error-client" component={ErrorClient} />
             <Route exact path="/error-server" component={ErrorServer} />
             <Route exact path="/error-auth" component={ErrorAuth} />
-            <Route
-              exact
-              path="/image-server-sync"
-              component={ImageServerSync}
-            />
             <Route exact path="/event-test" component={EventTest} />
             <Route exact path="/talk-anmation" component={TalkAnimation} />
             <Route exact path="/pushcase-1" component={PushCase1} />
             <Route exact path="/analytics" component={Analytics} />
             <Route exact path="/form-test" component={FormTest} />
-            <Route exact path="/login-to-app" component={LoginToApp} />
             <Route exact path="/chartcase-1" component={ChartCase1} />
             <Route
               exact
@@ -189,7 +179,7 @@ class App extends Component {
             />
             <Route exact path="/tab-scroll" component={TabScroll} />
             <Route exact path="/react-error-test" component={ReactErrorTest} />
-            <Route exact path="/publish-test" component={PusblishTest} />
+            <Route exact path="/publish-test" component={PublishTest} />
           </div>
           <LoadingBarContainer />
 
