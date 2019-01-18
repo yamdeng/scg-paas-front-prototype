@@ -23,7 +23,14 @@ class UlComponentStore extends React.Component {
     return (
       <div>
         {this.props.frontIssueStore.arrayTest.map(info => {
-          return <ListDetail key={info.id} id={info.id} name={info.name} />;
+          return (
+            <ListDetail
+              key={info.id}
+              id={info.id}
+              name={info.name}
+              color={info.color}
+            />
+          );
         })}
       </div>
     );

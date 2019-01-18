@@ -22,7 +22,14 @@ class UlComponentPure extends React.PureComponent {
     return (
       <div>
         {this.props.list.map(info => {
-          return <ListDetail key={info.id} id={info.id} name={info.name} />;
+          return (
+            <ListDetail
+              key={info.id}
+              id={info.id}
+              name={info.name}
+              color={info.color}
+            />
+          );
         })}
       </div>
     );

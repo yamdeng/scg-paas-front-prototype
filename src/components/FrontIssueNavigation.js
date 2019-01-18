@@ -118,11 +118,13 @@ const menuMappingInfos = [
   { title: '퍼블리싱 테스트', linkUrl: '/publish-test', success: true },
   {
     title: '불변 자료구조 테스트',
-    linkUrl: '/immutability-test'
+    linkUrl: '/immutability-test',
+    success: true
   },
   {
     title: '불변 자료구조 테스트2',
-    linkUrl: '/immutability-test2'
+    linkUrl: '/immutability-test2',
+    success: true
   },
   {
     title: '저장소 테스트',

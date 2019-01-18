@@ -18,7 +18,11 @@ class ListDetailObjectPure extends React.PureComponent {
 
   render() {
     Logger.info('ListDetailObjectPure render call : ' + this.props.info.id);
-    return <li>{this.props.info.id + ' : ' + this.props.info.name}</li>;
+    return (
+      <li style={{ color: this.props.info.color ? this.props.info.color : '' }}>
+        {this.props.info.id + ' : ' + this.props.info.name}
+      </li>
+    );
   }
 }
 
