@@ -14,7 +14,7 @@ import UlComponentPure from './help/UlComponentPure';
 
 @withRouter
 @observer
-@inject('appStore')
+@inject('appStore', 'frontIssueStore')
 class StoreTest extends React.Component {
   constructor(props) {
     super(props);
@@ -33,12 +33,16 @@ class StoreTest extends React.Component {
   }
 
   handleArrayConcat() {
-    let updateArrayTest = this.state.arrayTest.concat({
+    // let updateArrayTest = this.state.arrayTest.concat({
+    //   id: shortid.generate(),
+    //   name: 'test'
+    // });
+    // this.setState({
+    //   arrayTest: updateArrayTest
+    // });
+    this.props.frontIssueStore.addArrayTestInfoToDomain({
       id: shortid.generate(),
       name: 'test'
-    });
-    this.setState({
-      arrayTest: updateArrayTest
     });
   }
 
@@ -94,7 +98,7 @@ class StoreTest extends React.Component {
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('ImmutabilityTest');
+    this.props.appStore.changeHeadTitle('StoreTest');
   }
 
   render() {
@@ -129,7 +133,7 @@ class StoreTest extends React.Component {
             <Col sm="4">
               <h1>primary</h1>
               <ul>
-                {this.state.arrayTest.map(info => {
+                {this.props.frontIssueStore.arrayTest.map(info => {
                   return (
                     <ListDetail key={info.id} id={info.id} name={info.name} />
                   );
@@ -139,7 +143,7 @@ class StoreTest extends React.Component {
             <Col sm="4">
               <h1>primary pure</h1>
               <ul>
-                {this.state.arrayTest.map(info => {
+                {this.props.frontIssueStore.arrayTest.map(info => {
                   return (
                     <ListDetailPure
                       key={info.id}
@@ -153,7 +157,7 @@ class StoreTest extends React.Component {
             <Col sm="4">
               <h1>object basic</h1>
               <ul>
-                {this.state.arrayTest.map(info => {
+                {this.props.frontIssueStore.arrayTest.map(info => {
                   return <ListDetailObject key={info.id} info={info} />;
                 })}
               </ul>
@@ -161,26 +165,28 @@ class StoreTest extends React.Component {
             <Col sm="4">
               <h1>object pure</h1>
               <ul>
-                {this.state.arrayTest.map(info => {
+                {this.props.frontIssueStore.arrayTest.map(info => {
                   return <ListDetailObjectPure key={info.id} info={info} />;
                 })}
               </ul>
             </Col>
             <Col sm="4">
               <h1>UlComponent</h1>
-              <UlComponent list={this.state.arrayTest} />
+              <UlComponent list={this.props.frontIssueStore.arrayTest} />
             </Col>
             <Col sm="4">
               <h1>UlComponentPure</h1>
-              <UlComponentPure list={this.state.arrayTest} />
+              <UlComponentPure list={this.props.frontIssueStore.arrayTest} />
             </Col>
             <Col sm="6">
               <h1>ListDetailObject</h1>
-              <ListDetailObject info={this.state.objectTest} />
+              <ListDetailObject info={this.props.frontIssueStore.objectTest} />
             </Col>
             <Col sm="6">
               <h1>ListDetailObjectPure</h1>
-              <ListDetailObjectPure info={this.state.objectTest} />
+              <ListDetailObjectPure
+                info={this.props.frontIssueStore.objectTest}
+              />
             </Col>
           </Row>
         </Container>
