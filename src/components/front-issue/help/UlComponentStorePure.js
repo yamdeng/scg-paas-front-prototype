@@ -5,21 +5,21 @@ import ListDetail from './ListDetail';
 
 @inject('appStore', 'frontIssueStore')
 @observer
-class UlComponentStore extends React.Component {
+class UlComponentStorePure extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    Logger.info('UlComponentStore constructor call : ' + props.list.length);
+    Logger.info('UlComponentStorePure constructor call : ' + props.list.length);
   }
 
   componentDidMount() {
     Logger.info(
-      'UlComponentStore componentDidMount call : ' + this.props.list.length
+      'UlComponentStorePure componentDidMount call : ' + this.props.list.length
     );
   }
 
   render() {
-    Logger.info('UlComponentStore list render : ' + this.props.list.length);
+    Logger.info('UlComponentStorePure list render : ' + this.props.list.length);
     return (
       <div>
         {this.props.frontIssueStore.arrayTest.map(info => {
@@ -30,4 +30,4 @@ class UlComponentStore extends React.Component {
   }
 }
 
-export default UlComponentStore;
+export default UlComponentStorePure;

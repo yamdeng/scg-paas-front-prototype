@@ -81,8 +81,12 @@ class FrontIssueStore {
 
   @action
   addArrayTestInfo(info) {
+    this.arrayTest.push(info);
+  }
+
+  @action
+  addArrayTestInfoToDomain(info) {
     this.arrayTest.push(new ListDetail(info));
-    // this.arrayTest.push(info);
   }
 
   @action

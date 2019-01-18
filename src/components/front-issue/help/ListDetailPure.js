@@ -3,21 +3,21 @@ import Logger from '../../../utils/Logger';
 import { observer } from 'mobx-react';
 
 @observer
-class ListDetail extends React.Component {
+class ListDetailPure extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
-    Logger.info('ListDetail constructor call : ' + props.id);
+    Logger.info('ListDetailPure constructor call : ' + props.id);
   }
 
   componentDidMount() {
-    Logger.info('ListDetail componentDidMount call : ' + this.props.id);
+    Logger.info('ListDetailPure componentDidMount call : ' + this.props.id);
   }
 
   render() {
-    Logger.info('ListDetail render call : ' + this.props.id);
+    Logger.info('ListDetailPure render call : ' + this.props.id);
     return <li>{this.props.id + ' : ' + this.props.name}</li>;
   }
 }
 
-export default ListDetail;
+export default ListDetailPure;

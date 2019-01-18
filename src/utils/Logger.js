@@ -12,8 +12,8 @@ const Logger = {
     console.warn(message);
   },
   error: function(message) {
-    // eslint-disable-next-line
     // 에러정보 전송시 추가 정보로 다음을 전달 : appStore.deviceInfo, appStore.loginInfo, process.env
+    // eslint-disable-next-line
     console.error(message);
   }
 };

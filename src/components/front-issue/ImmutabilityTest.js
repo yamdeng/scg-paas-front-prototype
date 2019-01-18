@@ -5,58 +5,102 @@ import { Button, Container, Row, Col } from 'reactstrap';
 import update from 'immutability-helper';
 import shortid from 'shortid';
 import Logger from '../../utils/Logger';
-import UlComponent from './help/UlComponent';
-import UlComponentStore from './help/UlComponentStore';
-import ListDetailOuter from './help/ListDetail';
-import ListDetailObject from './help/ListDetailObject';
 
 // PureComponent
 const ListDetailPure = React.memo(props => {
   Logger.info('ListDetailPure render call : ' + props.id);
-  return <li>{props.id + ' : ' + props.name}</li>;
+  return (
+    <li style={{ color: props.color ? props.color : '' }}>
+      {props.id + ' : ' + props.name}
+    </li>
+  );
 });
 
-// Basic Component
+// // Basic Component
 const ListDetail = props => {
   Logger.info('ListDetail render call : ' + props.id);
-  return <li>{props.id + ' : ' + props.name}</li>;
+  return (
+    <li style={{ color: props.color ? props.color : '' }}>
+      {props.id + ' : ' + props.name}
+    </li>
+  );
 };
 
-// const ListDetailObject = props => {
-//   Logger.info('ListDetailObject render call : ' + props.info.id);
-//   return <li>{props.info.id + ' : ' + props.info.name}</li>;
-// };
+const ListDetailObject = props => {
+  Logger.info('ListDetailObject render call : ' + props.info.id);
+  return (
+    <li style={{ color: props.info.color ? props.info.color : '' }}>
+      {props.info.id + ' : ' + props.info.name}
+    </li>
+  );
+};
 
-// const ListDetailObject = React.memo(props => {
-//   Logger.info('ListDetailObject render call : ' + props.info.id);
-//   return <li>{props.info.id + ' : ' + props.info.name}</li>;
-// });
+const ListDetailObjectPure = React.memo(props => {
+  Logger.info('ListDetailObjectPure render call : ' + props.info.id);
+  return (
+    <li style={{ color: props.info.color ? props.info.color : '' }}>
+      {props.info.id + ' : ' + props.info.name}
+    </li>
+  );
+});
+
+const UlComponent = props => {
+  Logger.info('UlComponent render call : ' + props.list.length);
+  return (
+    <div>
+      {props.list.map(info => {
+        return (
+          <ListDetail
+            key={info.id}
+            id={info.id}
+            name={info.name}
+            color={info.color}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+const UlComponentPure = React.memo(props => {
+  Logger.info('UlComponentPure render call : ' + props.list.length);
+  return (
+    <div>
+      {props.list.map(info => {
+        return (
+          <ListDetailPure
+            key={info.id}
+            id={info.id}
+            name={info.name}
+            color={info.color}
+          />
+        );
+      })}
+    </div>
+  );
+});
 
 @withRouter
-@inject('appStore', 'frontIssueStore')
 @observer
+@inject('appStore')
 class ImmutabilityTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       arrayTest: [],
-      objectTest: []
+      objectTest: { id: 1, name: 'yamdeng' }
     };
-    this.handleArrayTest1 = this.handleArrayTest1.bind(this);
-    this.handleArrayTest2 = this.handleArrayTest2.bind(this);
-    this.handleArrayTest3 = this.handleArrayTest3.bind(this);
-    this.handleArrayTest4 = this.handleArrayTest4.bind(this);
-    this.handleArrayTest5 = this.handleArrayTest5.bind(this);
-    this.handleObjectTest1 = this.handleObjectTest1.bind(this);
-    this.handleObjectTest2 = this.handleObjectTest2.bind(this);
-    this.handleObjectTest3 = this.handleObjectTest3.bind(this);
-    this.handleObjectTest4 = this.handleObjectTest4.bind(this);
-    this.handleObjectTest5 = this.handleObjectTest5.bind(this);
+    this.handleArrayConcat = this.handleArrayConcat.bind(this);
+    this.handleArrayimmutabilityHelper = this.handleArrayimmutabilityHelper.bind(
+      this
+    );
+    this.handleArrayInfoChange = this.handleArrayInfoChange.bind(this);
     this.clearArrayTest = this.clearArrayTest.bind(this);
-    this.clearStoreArray = this.clearStoreArray.bind(this);
+    this.handleObjectChange = this.handleObjectChange.bind(this);
+    this.handleObjectMerge = this.handleObjectMerge.bind(this);
   }
 
-  handleArrayTest1() {
+  handleArrayConcat() {
     let updateArrayTest = this.state.arrayTest.concat({
       id: shortid.generate(),
       name: 'test'
@@ -66,14 +110,7 @@ class ImmutabilityTest extends React.Component {
     });
   }
 
-  handleArrayTest2() {
-    this.props.frontIssueStore.addArrayTestInfo({
-      id: shortid.generate(),
-      name: 'test'
-    });
-  }
-
-  handleArrayTest3() {
+  handleArrayimmutabilityHelper() {
     // let debuggerUpdate = update;
     // debugger;
     /*
@@ -95,48 +132,53 @@ class ImmutabilityTest extends React.Component {
     */
 
     let updateArrayTest = update(this.state.arrayTest, {
-      $push: [
-        { id: shortid.generate(), name: 'test' },
-        { id: shortid.generate(), name: 'test' }
-      ]
+      $push: [{ id: shortid.generate(), name: 'test' }]
     });
-    Logger.info('asd :' + updateArrayTest === this.state.arrayTest);
+    Logger.info(
+      'handleArrayimmutabilityHelper check :' +
+        (updateArrayTest === this.state.arrayTest)
+    );
     this.setState({
       arrayTest: updateArrayTest
     });
   }
 
-  handleArrayTest4() {
+  handleArrayInfoChange() {
     let updateArrayTest = update(this.state.arrayTest, {
       2: { name: { $set: shortid.generate() } }
     });
+    Logger.info(
+      'handleArrayInfoChange check :' +
+        (updateArrayTest === this.state.arrayTest)
+    );
     this.setState({
       arrayTest: updateArrayTest
     });
   }
 
-  handleArrayTest5() {
-    this.props.frontIssueStore.changArrayTestInfo(1, 'yamdeng');
+  handleObjectChange() {
+    this.setState({
+      objectTest: { id: shortid.generate(), name: 'yamdeng10' }
+    });
   }
 
-  handleObjectTest1() {}
-
-  handleObjectTest2() {}
-
-  handleObjectTest3() {}
-
-  handleObjectTest4() {}
-
-  handleObjectTest5() {}
+  handleObjectMerge() {
+    // merge하는 기준의 값이 같으면 그대로 변수를 유지
+    let updateObjectTest = update(this.state.objectTest, {
+      $merge: { id: 1, name: 'yamdeng10' }
+    });
+    Logger.info(
+      'handleObjectMerge check :' + (updateObjectTest === this.state.objectTest)
+    );
+    this.setState({
+      objectTest: updateObjectTest
+    });
+  }
 
   clearArrayTest() {
     this.setState({
       arrayTest: []
     });
-  }
-
-  clearStoreArray() {
-    this.props.frontIssueStore.clearData();
   }
 
   componentDidMount() {
@@ -147,54 +189,33 @@ class ImmutabilityTest extends React.Component {
     return (
       <div style={{ padding: 20 }}>
         <div>
-          <Button color="primary" onClick={this.handleArrayTest1}>
-            arrayTest1
+          <Button color="primary" onClick={this.handleArrayConcat}>
+            state array concat
           </Button>{' '}
-          <Button color="secondary" onClick={this.handleArrayTest2}>
-            arrayTest2
+          <Button color="success" onClick={this.handleArrayimmutabilityHelper}>
+            immutability-helper
           </Button>{' '}
-          <Button color="success" onClick={this.handleArrayTest3}>
-            arrayTest3
+          <Button color="info" onClick={this.handleArrayInfoChange}>
+            array 요소 수정
           </Button>{' '}
-          <Button color="info" onClick={this.handleArrayTest4}>
-            arrayTest4
+          <Button color="info" onClick={this.handleObjectChange}>
+            object change
           </Button>{' '}
-          <Button color="warning" onClick={this.handleArrayTest5}>
-            arrayTest5
-          </Button>{' '}
-        </div>
-        <br />
-        <div>
-          <Button color="primary" onClick={this.handleObjectTest1}>
-            ObjectTest1
-          </Button>{' '}
-          <Button color="secondary" onClick={this.handleObjectTest2}>
-            ObjectTest2
-          </Button>{' '}
-          <Button color="success" onClick={this.handleObjectTest3}>
-            ObjectTest3
-          </Button>{' '}
-          <Button color="info" onClick={this.handleObjectTest4}>
-            ObjectTest4
-          </Button>{' '}
-          <Button color="warning" onClick={this.handleObjectTest5}>
-            ObjectTest5
+          <Button color="info" onClick={this.handleObjectMerge}>
+            object merge
           </Button>{' '}
         </div>
         <br />
         <div>
           <Button color="primary" onClick={this.clearArrayTest}>
-            clearArrayTest
-          </Button>{' '}
-          <Button color="secondary" onClick={this.clearStoreArray}>
-            clearStore Array
+            clear state
           </Button>{' '}
         </div>
 
         <Container>
           <Row>
             <Col sm="4">
-              <h1>arrayTest2</h1>
+              <h1>primary</h1>
               <ul>
                 {this.state.arrayTest.map(info => {
                   return (
@@ -204,7 +225,7 @@ class ImmutabilityTest extends React.Component {
               </ul>
             </Col>
             <Col sm="4">
-              <h1>arrayTest</h1>
+              <h1>primary pure</h1>
               <ul>
                 {this.state.arrayTest.map(info => {
                   return (
@@ -216,25 +237,38 @@ class ImmutabilityTest extends React.Component {
                   );
                 })}
               </ul>
-              {/* <UlComponent list={this.state.arrayTest} /> */}
             </Col>
             <Col sm="4">
-              <h1>storeTest</h1>
-              {/* <UlComponentStore list={[]} /> */}
-              {/* <UlComponent list={this.props.frontIssueStore.arrayTest.toJS()} /> */}
-              {/* <UlComponent list={this.props.frontIssueStore.arrayTest} /> */}
-              {/* <ul>
-                {this.props.frontIssueStore.arrayTest.map(info => {
-                  return (
-                    <ListDetail key={info.id} id={info.id} name={info.name} />
-                  );
-                })}
-              </ul> */}
+              <h1>object basic</h1>
               <ul>
-                {this.props.frontIssueStore.arrayTest.map(info => {
+                {this.state.arrayTest.map(info => {
                   return <ListDetailObject key={info.id} info={info} />;
                 })}
               </ul>
+            </Col>
+            <Col sm="4">
+              <h1>object pure</h1>
+              <ul>
+                {this.state.arrayTest.map(info => {
+                  return <ListDetailObjectPure key={info.id} info={info} />;
+                })}
+              </ul>
+            </Col>
+            <Col sm="4">
+              <h1>UlComponent</h1>
+              <UlComponent list={this.state.arrayTest} />
+            </Col>
+            <Col sm="4">
+              <h1>UlComponentPure</h1>
+              <UlComponentPure list={this.state.arrayTest} />
+            </Col>
+            <Col sm="6">
+              <h1>ListDetailObject</h1>
+              <ListDetailObject info={this.state.objectTest} />
+            </Col>
+            <Col sm="6">
+              <h1>ListDetailObjectPure</h1>
+              <ListDetailObjectPure info={this.state.objectTest} />
             </Col>
           </Row>
         </Container>

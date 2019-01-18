@@ -150,6 +150,10 @@ class App extends Component {
     // if (process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT) {
     //   DEV_TOOL_COMPONENT = <DevTools />;
     // }
+    if (false) {
+      DEV_TOOL_COMPONENT = <DevTools />;
+    }
+
     return (
       <ErrorBoundary>
         <div>
