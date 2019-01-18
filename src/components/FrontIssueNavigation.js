@@ -128,7 +128,8 @@ const menuMappingInfos = [
   },
   {
     title: '저장소 테스트',
-    linkUrl: '/store-test'
+    linkUrl: '/store-test',
+    success: true
   },
   {
     title: '저장소 테스트2',

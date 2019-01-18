@@ -17,6 +17,7 @@ let rootStore = new RootStore();
      3.stores.js store 변수의 key값으로 새로 생성한 store를 추가한다
      4.FrontIssueStore.js : 프론트 테스트 store
      5.UiStore.js : UI store
+     6.TestStore.js : Test store
 
 */
 
@@ -25,7 +26,8 @@ let stores = {
   appStore: rootStore.appStore,
   nativeStore: rootStore.nativeStore,
   frontIssueStore: rootStore.frontIssueStore,
-  uiStore: rootStore.uiStore
+  uiStore: rootStore.uiStore,
+  testStore: rootStore.testStore
 };
 
 export default stores;
