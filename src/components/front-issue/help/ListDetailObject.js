@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import Logger from '../../../utils/Logger';
+import shortid from 'shortid';
 
 @observer
 class ListDetailObject extends React.Component {
@@ -8,6 +9,14 @@ class ListDetailObject extends React.Component {
     super(props);
     this.state = {};
     Logger.info('ListDetailObject constructor call : ' + props.info.id);
+    this.changeInfo = this.changeInfo.bind(this);
+  }
+
+  changeInfo() {
+    this.props.info.changeInfo({
+      id: shortid.generate(),
+      name: shortid.generate()
+    });
   }
 
   componentDidMount() {
@@ -19,7 +28,10 @@ class ListDetailObject extends React.Component {
   render() {
     Logger.info('ListDetail render call : ' + this.props.info.id);
     return (
-      <li style={{ color: this.props.info.color ? this.props.info.color : '' }}>
+      <li
+        style={{ color: this.props.info.color ? this.props.info.color : '' }}
+        onClick={this.changeInfo}
+      >
         {this.props.info.id + ' : ' + this.props.info.name}
       </li>
     );

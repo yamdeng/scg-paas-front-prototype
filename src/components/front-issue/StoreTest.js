@@ -2,9 +2,7 @@ import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'reactstrap';
-import update from 'immutability-helper';
 import shortid from 'shortid';
-import Logger from '../../utils/Logger';
 import ListDetail from './help/ListDetail';
 import ListDetailPure from './help/ListDetailPure';
 import ListDetailObject from './help/ListDetailObject';
@@ -13,88 +11,58 @@ import UlComponent from './help/UlComponent';
 import UlComponentPure from './help/UlComponentPure';
 
 @withRouter
-@observer
 @inject('appStore', 'frontIssueStore')
+@observer
 class StoreTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      arrayTest: [],
-      objectTest: { id: 1, name: 'yamdeng' }
-    };
-    this.handleArrayConcat = this.handleArrayConcat.bind(this);
-    this.handleArrayimmutabilityHelper = this.handleArrayimmutabilityHelper.bind(
-      this
-    );
+    this.state = {};
+    this.addArrayTestInfo = this.addArrayTestInfo.bind(this);
+    this.addArrayTestInfoToDomain = this.addArrayTestInfoToDomain.bind(this);
     this.handleArrayInfoChange = this.handleArrayInfoChange.bind(this);
-    this.clearArrayTest = this.clearArrayTest.bind(this);
-    this.handleObjectChange = this.handleObjectChange.bind(this);
-    this.handleObjectMerge = this.handleObjectMerge.bind(this);
+    this.clearData = this.clearData.bind(this);
+    this.changeObject1 = this.changeObject1.bind(this);
+    this.changeObject1Name = this.changeObject1Name.bind(this);
+    this.changeObject2 = this.changeObject2.bind(this);
+    this.changeObject2Name = this.changeObject2Name.bind(this);
   }
 
-  handleArrayConcat() {
-    // let updateArrayTest = this.state.arrayTest.concat({
-    //   id: shortid.generate(),
-    //   name: 'test'
-    // });
-    // this.setState({
-    //   arrayTest: updateArrayTest
-    // });
+  addArrayTestInfo() {
+    this.props.frontIssueStore.addArrayTestInfo({
+      id: shortid.generate(),
+      name: 'test'
+    });
+  }
+
+  addArrayTestInfoToDomain() {
     this.props.frontIssueStore.addArrayTestInfoToDomain({
       id: shortid.generate(),
       name: 'test'
     });
   }
 
-  handleArrayimmutabilityHelper() {
-    let updateArrayTest = update(this.state.arrayTest, {
-      $push: [{ id: shortid.generate(), name: 'test' }]
-    });
-    Logger.info(
-      'handleArrayimmutabilityHelper check :' +
-        (updateArrayTest === this.state.arrayTest)
-    );
-    this.setState({
-      arrayTest: updateArrayTest
-    });
-  }
-
   handleArrayInfoChange() {
-    let updateArrayTest = update(this.state.arrayTest, {
-      2: { name: { $set: shortid.generate() } }
-    });
-    Logger.info(
-      'handleArrayInfoChange check :' +
-        (updateArrayTest === this.state.arrayTest)
-    );
-    this.setState({
-      arrayTest: updateArrayTest
-    });
+    this.props.frontIssueStore.changArrayTestInfo(1, 'yamdeng777');
   }
 
-  handleObjectChange() {
-    this.setState({
-      objectTest: { id: shortid.generate(), name: 'yamdeng10' }
-    });
+  changeObject1() {
+    this.props.frontIssueStore.changeObject1({ id: 1001, name: '1001' });
   }
 
-  handleObjectMerge() {
-    // merge하는 기준의 값이 같으면 그대로 변수를 유지
-    let updateObjectTest = update(this.state.objectTest, {
-      $merge: { id: 1, name: 'yamdeng10' }
-    });
-    Logger.info(
-      'handleObjectMerge check :' + (updateObjectTest === this.state.objectTest)
-    );
-    this.setState({
-      objectTest: updateObjectTest
-    });
+  changeObject1Name() {
+    this.props.frontIssueStore.changeObject1Name('1002');
   }
 
-  clearArrayTest() {
-    this.setState({
-      arrayTest: []
-    });
+  changeObject2() {
+    this.props.frontIssueStore.changeObject2({ id: 2001, name: '2001' });
+  }
+
+  changeObject2Name() {
+    this.props.frontIssueStore.changeObject2Name('2002');
+  }
+
+  clearData() {
+    this.props.frontIssueStore.clearData();
   }
 
   componentDidMount() {
@@ -105,26 +73,32 @@ class StoreTest extends React.Component {
     return (
       <div style={{ padding: 20 }}>
         <div>
-          <Button color="primary" onClick={this.handleArrayConcat}>
-            state array concat
+          <Button color="primary" onClick={this.addArrayTestInfo}>
+            addArrayTestInfo
           </Button>{' '}
-          <Button color="success" onClick={this.handleArrayimmutabilityHelper}>
-            immutability-helper
+          <Button color="success" onClick={this.addArrayTestInfoToDomain}>
+            addArrayTestInfoToDomain
           </Button>{' '}
           <Button color="info" onClick={this.handleArrayInfoChange}>
             array 요소 수정
           </Button>{' '}
-          <Button color="info" onClick={this.handleObjectChange}>
-            object change
+          <Button color="info" onClick={this.changeObject1}>
+            changeObject1
           </Button>{' '}
-          <Button color="info" onClick={this.handleObjectMerge}>
-            object merge
+          <Button color="info" onClick={this.changeObject1Name}>
+            changeObject1Name
+          </Button>{' '}
+          <Button color="info" onClick={this.changeObject2}>
+            changeObject2
+          </Button>{' '}
+          <Button color="info" onClick={this.changeObject2Name}>
+            changeObject2Name
           </Button>{' '}
         </div>
         <br />
         <div>
-          <Button color="primary" onClick={this.clearArrayTest}>
-            clear state
+          <Button color="primary" onClick={this.clearData}>
+            clearData
           </Button>{' '}
         </div>
 
@@ -186,6 +160,16 @@ class StoreTest extends React.Component {
               <h1>ListDetailObjectPure</h1>
               <ListDetailObjectPure
                 info={this.props.frontIssueStore.objectTest}
+              />
+            </Col>
+            <Col sm="6">
+              <h1>ListDetailObject(domain)</h1>
+              <ListDetailObject info={this.props.frontIssueStore.objectTest2} />
+            </Col>
+            <Col sm="6">
+              <h1>ListDetailObjectPure(domain)</h1>
+              <ListDetailObjectPure
+                info={this.props.frontIssueStore.objectTest2}
               />
             </Col>
           </Row>

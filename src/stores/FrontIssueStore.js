@@ -9,9 +9,8 @@ class FrontIssueStore {
   @observable tabData2 = [];
   @observable talkList = [];
   @observable arrayTest = [];
-  @observable arrayTest2 = [];
-  @observable objectTest = {};
-  @observable objectTest2 = {};
+  @observable objectTest = { id: 101, name: 'primative object' };
+  @observable objectTest2 = new ListDetail({ id: 102, name: 'domain object' });
   @observable loadedTabData1 = false;
   @observable loadedTabData2 = false;
   constructor(rootStore) {
@@ -54,9 +53,8 @@ class FrontIssueStore {
     this.tabData2 = [];
     this.talkList = [];
     this.arrayTest = [];
-    this.arrayTest2 = [];
     this.objectTest = {};
-    this.objectTest2 = {};
+    this.objectTest2 = new ListDetail({});
     this.loadedTabData1 = false;
     this.loadedTabData2 = false;
   }
@@ -92,6 +90,28 @@ class FrontIssueStore {
   @action
   changArrayTestInfo(arrayIndex, name) {
     this.arrayTest[arrayIndex].name = name;
+  }
+
+  @action
+  changeObject1(info) {
+    this.objectTest = info;
+  }
+
+  @action
+  changeObject1Name(name) {
+    this.objectTest.name = name;
+  }
+
+  @action
+  changeObject2(info) {
+    this.objectTest2 = new ListDetail(info);
+    // 아래와 같이하면 자식 컴포넌트만 render 됨
+    // this.objectTest2.changeInfo(info);
+  }
+
+  @action
+  changeObject2Name(name) {
+    this.objectTest2.changeName(name);
   }
 }
 

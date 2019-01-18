@@ -58,6 +58,10 @@
  1. @inject는 this.props에 store를 주입받기 위한
  2. @observer mobx가 컴포넌트로 관리하기 위한 정보
  3. immutable 라이브러리스에 Map을 toJS 하면 object 자체가 변환되므로 사용하지 않는 것이 좋다
+ 4. 애노테이션 순서는 아래와 같이 해야 한다
+    @withRouter
+    @inject('appStore', 'frontIssueStore')
+    @observer
 
 
  

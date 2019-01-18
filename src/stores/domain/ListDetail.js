@@ -13,6 +13,12 @@ class ListDetail {
   changeName(name) {
     this.name = name;
   }
+
+  @action
+  changeInfo(info) {
+    this.id = info.id;
+    this.name = info.name;
+  }
 }
 
 export default ListDetail;
