@@ -125,12 +125,12 @@ const menuMappingInfos = [
     linkUrl: '/immutability-test2'
   },
   {
-    title: '퍼포먼스 테스트',
-    linkUrl: '/performance-test'
+    title: '저장소 테스트',
+    linkUrl: '/store-test'
   },
   {
-    title: '퍼포먼스 테스트2',
-    linkUrl: '/performance-test2'
+    title: '저장소 테스트2',
+    linkUrl: '/store-test2'
   }
 ];
 

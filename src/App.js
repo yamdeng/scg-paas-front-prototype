@@ -35,8 +35,8 @@ import ReactErrorTest from './components/front-issue/ReactErrorTest';
 import PublishTest from './components/front-issue/PublishTest';
 import ImmutabilityTest from './components/front-issue/ImmutabilityTest';
 import ImmutabilityTest2 from './components/front-issue/ImmutabilityTest2';
-import PerformanceTest from './components/front-issue/PerformanceTest';
-import PerformanceTest2 from './components/front-issue/PerformanceTest2';
+import StoreTest from './components/front-issue/StoreTest';
+import StoreTest2 from './components/front-issue/StoreTest2';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -207,12 +207,8 @@ class App extends Component {
               path="/immutability-test2"
               component={ImmutabilityTest2}
             />
-            <Route exact path="/performance-test" component={PerformanceTest} />
-            <Route
-              exact
-              path="/performance-test2"
-              component={PerformanceTest2}
-            />
+            <Route exact path="/store-test" component={StoreTest} />
+            <Route exact path="/store-test2" component={StoreTest2} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
