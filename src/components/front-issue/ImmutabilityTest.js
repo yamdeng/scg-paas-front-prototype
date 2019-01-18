@@ -90,6 +90,8 @@ class ImmutabilityTest extends React.Component {
       var deepObj = {a: 5, b: 3, c:{c1:'ccc'}, d:{d1:'ddd'}};
       var newDeepObj = debuggerUpdate(deepObj, {$merge: {c:{c1:'ccc1', c2:'ccc2'}}});
 
+      // 얕은 copy가 기본을 이룬다. 다만 해당 루트의 변수값 자체가 틀려지므로
+
     */
 
     let updateArrayTest = update(this.state.arrayTest, {
