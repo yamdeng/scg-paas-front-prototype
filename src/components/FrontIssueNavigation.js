@@ -93,7 +93,7 @@ const menuMappingInfos = [
   { title: '모달 테스트1', linkUrl: '/modal-test-1' },
   { title: 'sass', linkUrl: '/sass', success: true },
   { title: '환경변수', linkUrl: '/environment', success: true },
-  { title: '코드분류', linkUrl: '/code-split' },
+  { title: '코드분류(회사별)', linkUrl: '/code-split' },
   { title: '에러테스트', linkUrl: '/error-test', success: true },
   { title: '클라이언트 에러', linkUrl: '/error-client', success: true },
   { title: '서버 에러', linkUrl: '/error-server', success: true },
@@ -144,6 +144,16 @@ const menuMappingInfos = [
   {
     title: '도메인 테스트(detail)',
     linkUrl: '/domain-detail?id=1',
+    success: true
+  },
+  {
+    title: 'Api 테스트(list)',
+    linkUrl: '/api-list',
+    success: true
+  },
+  {
+    title: 'Api 테스트(detail)',
+    linkUrl: '/api-detail?id=1',
     success: true
   }
 ];

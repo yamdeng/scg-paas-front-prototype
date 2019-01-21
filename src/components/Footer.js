@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import Logger from '../utils/Logger';
 
 // widthRouter는 router가 변경시(history 변경시) 하위 컴포넌트를 재 render를 해야하는 경우에만 선언
-// @withRouter
+@withRouter
 @inject('appStore')
 @observer
 class Footer extends React.Component {

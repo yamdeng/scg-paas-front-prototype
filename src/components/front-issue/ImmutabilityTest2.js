@@ -81,8 +81,8 @@ const UlComponentPure = React.memo(props => {
 });
 
 @withRouter
-@observer
 @inject('appStore')
+@observer
 class ImmutabilityTest2 extends React.Component {
   constructor(props) {
     super(props);

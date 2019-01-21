@@ -4,7 +4,7 @@ import Logger from '../../../utils/Logger';
 import shortid from 'shortid';
 
 @observer
-class ListDetailObjectPure extends React.PureComponent {
+class ListDetailObjectPure extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

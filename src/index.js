@@ -59,7 +59,7 @@ if (process.env.TOKEN_TYPE === Constant.TOKEN_TYPE_WEB) {
 
 ReactDOM.render(
   <Provider {...stores}>
-    <Router history={AppHistory}>{AppComponent}</Router>
+    <Router>{AppComponent}</Router>
   </Provider>,
   document.getElementById('root')
 );

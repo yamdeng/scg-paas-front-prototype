@@ -4,7 +4,7 @@ import Logger from '../../../utils/Logger';
 import ListDetail from './ListDetail';
 
 @observer
-class UlComponentPure extends React.PureComponent {
+class UlComponentPure extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

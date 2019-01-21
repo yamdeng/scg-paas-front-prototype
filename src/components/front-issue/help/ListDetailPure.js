@@ -3,7 +3,7 @@ import Logger from '../../../utils/Logger';
 import { observer } from 'mobx-react';
 
 @observer
-class ListDetailPure extends React.PureComponent {
+class ListDetailPure extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
