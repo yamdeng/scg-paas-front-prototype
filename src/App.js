@@ -41,6 +41,7 @@ import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
 import DomainTestList from './components/front-issue/DomainTestList.js';
 import DomainTestDetail from './components/front-issue/DomainTestDetail';
+import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
 import NativeEventService from './services/NativeEventService';
 // import LoadingBar from './utils/LoadingBar';
@@ -249,6 +250,8 @@ class App extends Component {
               </Button>
             </ModalFooter>
           </Modal>
+
+          <Footer />
         </div>
       </ErrorBoundary>
     );
