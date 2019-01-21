@@ -220,7 +220,7 @@ class App extends Component {
             <Route exact path="/domain-list" component={DomainTestList} />
             <Route exact path="/domain-detail" component={DomainTestDetail} />
             <Route exact path="/api-list" component={ApiTestList} />
-            <Route exact path="/api-detail" component={ApiTestDetail} />
+            <Route exact path="/api-detail/:id" component={ApiTestDetail} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

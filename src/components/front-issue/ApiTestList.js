@@ -38,7 +38,7 @@ class ApiTestList extends React.Component {
           <td>{info.id}</td>
           <td>{info.title}</td>
           <td>
-            <Link to={'/api-detail?id=' + info.id}>{info.content}</Link>
+            <Link to={`/api-detail/${info.id}`}>{info.content}</Link>
           </td>
           <td>{moment(info.created).format(Config.dateDisplayFormat)}</td>
           <td>{moment(info.lastModified).format(Config.dateDisplayFormat)}</td>

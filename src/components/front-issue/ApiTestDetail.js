@@ -1,7 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter, Link } from 'react-router-dom';
-import queryString from 'query-string';
 import Api from '../../utils/Api';
 
 @withRouter
@@ -13,12 +12,12 @@ class ApiTestDetail extends React.Component {
     super(props);
     this.state = { detailData: {} };
     this.reload = this.reload.bind(this);
-    this.detailId = queryString.parse(this.props.location.search).id;
+    this.detailId = this.props.match.params.id;
     this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('DomainTestDetail');
+    this.props.appStore.changeHeadTitle('ApiTestDetail');
     this.loadDetail();
   }
 
