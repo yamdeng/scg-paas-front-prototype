@@ -3,47 +3,8 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
-import Home from './components/Home';
-
-import AccordionB from './components/front-issue/AccordionB';
-import AccordionM from './components/front-issue/AccordionM';
-import TabB from './components/front-issue/TabB';
-import TabM from './components/front-issue/TabM';
-import DeviceBasic from './components/front-issue/DeviceBasic';
-import FooterSelect from './components/front-issue/FooterSelect';
-import CheckboxSwitch from './components/front-issue/CheckboxSwitch';
-import NativeInterface from './components/front-issue/NativeInterface';
-import ModalTest1 from './components/front-issue/ModalTest1';
-import SassTest from './components/front-issue/SassTest';
-import Environment from './components/front-issue/Environment';
-import CodeSplit from './components/front-issue/CodeSplit';
-import ErrorTest from './components/front-issue/ErrorTest';
-import ErrorClient from './components/front-issue/ErrorClient';
-import ErrorServer from './components/front-issue/ErrorServer';
-import ErrorAuth from './components/front-issue/ErrorAuth';
-import EventTest from './components/front-issue/EventTest';
-import TalkAnimation from './components/front-issue/TalkAnimation';
-import TalkList from './components/front-issue/TalkList';
-import PushCase1 from './components/front-issue/PushCase1';
-import Analytics from './components/front-issue/Analytics';
-import FormTest from './components/front-issue/FormTest';
-import ChartCase1 from './components/front-issue/ChartCase1';
-import TableScrollPage from './components/front-issue/TableScrollPage';
-import ImageScrollPage from './components/front-issue/ImageScrollPage';
-import TabScroll from './components/front-issue/TabScroll';
-import ReactErrorTest from './components/front-issue/ReactErrorTest';
-import PublishTest from './components/front-issue/PublishTest';
-import ImmutabilityTest from './components/front-issue/ImmutabilityTest';
-import ImmutabilityTest2 from './components/front-issue/ImmutabilityTest2';
-import StoreTest from './components/front-issue/StoreTest';
-import StoreTest2 from './components/front-issue/StoreTest2';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
-import DomainTestList from './components/front-issue/DomainTestList.js';
-import DomainTestDetail from './components/front-issue/DomainTestDetail';
-import ApiTestList from './components/front-issue/ApiTestList';
-import ApiTestDetail from './components/front-issue/ApiTestDetail';
-
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
 import NativeEventService from './services/NativeEventService';
@@ -56,6 +17,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import shortid from 'shortid';
 import Helper from './utils/Helper';
 import Constant from './config/Constant';
+import Routes from './config/Routes';
 
 @withRouter
 @inject('appStore')
@@ -168,59 +130,16 @@ class App extends Component {
           {DEV_TOOL_COMPONENT}
           <FrontIssueNavigation />
           <div style={mainContainerStyle}>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/accordion-b" component={AccordionB} />
-            <Route exact path="/accordion-m" component={AccordionM} />
-            <Route exact path="/tab-b" component={TabB} />
-            <Route exact path="/tab-m" component={TabM} />
-            <Route exact path="/device-basic" component={DeviceBasic} />
-            <Route exact path="/footer-select" component={FooterSelect} />
-            <Route exact path="/checkbox-switch" component={CheckboxSwitch} />
-            <Route exact path="/native-interface" component={NativeInterface} />
-            <Route exact path="/modal-test-1" component={ModalTest1} />
-            <Route exact path="/sass" component={SassTest} />
-            <Route exact path="/environment" component={Environment} />
-            <Route exact path="/code-split" component={CodeSplit} />
-            <Route exact path="/error-test" component={ErrorTest} />
-            <Route exact path="/error-client" component={ErrorClient} />
-            <Route exact path="/error-server" component={ErrorServer} />
-            <Route exact path="/error-auth" component={ErrorAuth} />
-            <Route exact path="/event-test" component={EventTest} />
-            <Route exact path="/talk-anmation" component={TalkAnimation} />
-            <Route exact path="/talk-list" component={TalkList} />
-            <Route exact path="/pushcase-1" component={PushCase1} />
-            <Route exact path="/analytics" component={Analytics} />
-            <Route exact path="/form-test" component={FormTest} />
-            <Route exact path="/chartcase-1" component={ChartCase1} />
-            <Route
-              exact
-              path="/table-page-scroll"
-              component={TableScrollPage}
-            />
-            <Route
-              exact
-              path="/image-page-scroll"
-              component={ImageScrollPage}
-            />
-            <Route exact path="/tab-scroll" component={TabScroll} />
-            <Route exact path="/react-error-test" component={ReactErrorTest} />
-            <Route exact path="/publish-test" component={PublishTest} />
-            <Route
-              exact
-              path="/immutability-test"
-              component={ImmutabilityTest}
-            />
-            <Route
-              exact
-              path="/immutability-test2"
-              component={ImmutabilityTest2}
-            />
-            <Route exact path="/store-test" component={StoreTest} />
-            <Route exact path="/store-test2" component={StoreTest2} />
-            <Route exact path="/domain-list" component={DomainTestList} />
-            <Route exact path="/domain-detail" component={DomainTestDetail} />
-            <Route exact path="/api-list" component={ApiTestList} />
-            <Route exact path="/api-detail/:id" component={ApiTestDetail} />
+            {Routes.map(routeInfo => {
+              return (
+                <Route
+                  exact
+                  path={routeInfo.path}
+                  key={routeInfo.path}
+                  component={routeInfo.component}
+                />
+              );
+            })}
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
