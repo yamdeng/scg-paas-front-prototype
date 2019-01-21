@@ -5,10 +5,12 @@ import { Route, withRouter } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
 import Home from './components/Home';
 
-import AccordionB from './components/front-issue/AccordionB';
-import AccordionM from './components/front-issue/AccordionM';
-import TabB from './components/front-issue/TabB';
-import TabM from './components/front-issue/TabM';
+// import AccordionB from './components/front-issue/AccordionB';
+// import AccordionM from './components/front-issue/AccordionM';
+// import TabB from './components/front-issue/TabB';
+// import TabM from './components/front-issue/TabM';
+
+import { AccordionB, AccordionM, TabB, TabM } from './pages';
 import DeviceBasic from './components/front-issue/DeviceBasic';
 import FooterSelect from './components/front-issue/FooterSelect';
 import CheckboxSwitch from './components/front-issue/CheckboxSwitch';
