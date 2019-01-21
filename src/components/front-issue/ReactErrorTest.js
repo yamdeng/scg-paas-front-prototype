@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import AppError from '../../utils/AppError';
 
 @withRouter
 @inject('appStore')
@@ -11,6 +12,7 @@ class ReactErrorTest extends React.Component {
     this.state = { manualError: false };
     this.handleRenderError = this.handleRenderError.bind(this);
     this.handleCoreError = this.handleCoreError.bind(this);
+    this.handleAppError = this.handleAppError.bind(this);
   }
 
   handleRenderError() {
@@ -19,6 +21,10 @@ class ReactErrorTest extends React.Component {
 
   handleCoreError() {
     this.manualTest();
+  }
+
+  handleAppError() {
+    throw new AppError('app error test');
   }
 
   componentDidMount() {
@@ -41,7 +47,8 @@ class ReactErrorTest extends React.Component {
         ReactErrorTest
         <br />
         <button onClick={this.handleRenderError}>render error</button>
-        <button onClick={this.handleCoreError}>handler error</button>
+        <button onClick={this.handleCoreError}>handler core error</button>
+        <button onClick={this.handleAppError}>handler custom app error</button>
         <br />
         <div>{resultComponent}</div>
       </div>

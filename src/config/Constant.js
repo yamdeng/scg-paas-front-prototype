@@ -8,4 +8,9 @@ Constant.APP_ENV_PRODUCTION = 'production';
 Constant.TOKEN_TYPE_WEB = 'web';
 Constant.TOKEN_TYPE_APP = 'native';
 
+// error type
+Constant.ERROR_TYPE_CORE = 'core';
+Constant.ERROR_TYPE_REACT = 'react';
+Constant.ERROR_TYPE_APP = 'app';
+
 export default Constant;

@@ -10,6 +10,7 @@ class StoreTest2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    // store clear는 constructor에서 하는 걸로
     this.props.testStore.clear();
   }
 

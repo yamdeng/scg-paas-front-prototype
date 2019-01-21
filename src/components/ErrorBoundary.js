@@ -5,6 +5,7 @@ import shortid from 'shortid';
 import Logger from '../utils/Logger';
 import Helper from '../utils/Helper';
 import Button from '@material-ui/core/Button';
+import Constant from '../config/Constant';
 
 @withRouter
 @inject('appStore')
@@ -24,6 +25,7 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, info) {
     let errorObject = {};
+    errorObject.errorType = Constant.ERROR_TYPE_REACT;
     if (error.message) {
       errorObject.message = error.message;
     }

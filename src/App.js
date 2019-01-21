@@ -89,6 +89,8 @@ class App extends Component {
     if (errorObject.stack) {
       appErrorObject.statck = errorObject.stack;
     }
+    appErrorObject.errorType =
+      errorObject.errorType || Constant.ERROR_TYPE_CORE;
     if (process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT) {
       this.setState({
         displayErrorModal: true,
