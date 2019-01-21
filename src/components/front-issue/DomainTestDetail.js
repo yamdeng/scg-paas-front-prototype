@@ -30,7 +30,8 @@ class DomainTestDetail extends React.Component {
   delete() {
     this.state.domain.delete(this.detailId).then(result => {
       if (result.data.success) {
-        this.props.history.push('/domain-list');
+        // this.props.history.push('/domain-list');
+        this.props.history.replace('/domain-list');
       }
     });
   }
