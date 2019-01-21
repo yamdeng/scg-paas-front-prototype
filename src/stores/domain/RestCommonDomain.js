@@ -1,4 +1,5 @@
-import { observable, action } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
+import Api from '../../utils/Api';
 
 class RestCommonDomain {
   @observable
@@ -27,11 +28,22 @@ class RestCommonDomain {
 
   @action
   getDetail(detailId) {
-    return this.detailData;
+    Api.get(this.apiUri + '/' + detailId).then(result => {
+      runInAction('RestCommonDomain getDetail', () => {
+        this.detailData = result.data;
+      });
+    });
   }
 
   @action
-  delete(detailId) {}
+  delete(detailId) {
+    return Api.delete(this.apiUri + '/' + detailId).then(result => {
+      runInAction('RestCommonDomain delete', () => {
+        this.detailData = {};
+      });
+      return result;
+    });
+  }
 
   @action
   deleteIds(detailIds) {}
@@ -50,7 +62,13 @@ class RestCommonDomain {
 
   @action
   search(params) {
-    return this.data;
+    Api.get(this.apiUri, {
+      params: params
+    }).then(result => {
+      runInAction('RestCommonDomain search', () => {
+        this.data = result.data;
+      });
+    });
   }
 }
 export default RestCommonDomain;

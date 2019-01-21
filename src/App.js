@@ -39,6 +39,8 @@ import StoreTest from './components/front-issue/StoreTest';
 import StoreTest2 from './components/front-issue/StoreTest2';
 import LoadingBarContainer from './containers/LoadingBarContainer';
 import ErrorBoundary from './components/ErrorBoundary';
+import DomainTestList from './components/front-issue/DomainTestList.js';
+import DomainTestDetail from './components/front-issue/DomainTestDetail';
 // import NativeInterfaceService from './services/NativeInterfaceService';
 import NativeEventService from './services/NativeEventService';
 // import LoadingBar from './utils/LoadingBar';
@@ -211,6 +213,8 @@ class App extends Component {
             />
             <Route exact path="/store-test" component={StoreTest} />
             <Route exact path="/store-test2" component={StoreTest2} />
+            <Route exact path="/domain-list" component={DomainTestList} />
+            <Route exact path="/domain-detail" component={DomainTestDetail} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

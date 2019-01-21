@@ -1,7 +1,7 @@
 import { observable, action, runInAction } from 'mobx';
 import Api from '../utils/Api';
 
-class CommonStore {
+class CommonStoreInterface {
   @observable
   apiUri = '';
 
@@ -22,11 +22,11 @@ class CommonStore {
     Api.get(this.apiUri, {
       params: params
     }).then(result => {
-      runInAction('CommonStore search', () => {
+      runInAction('CommonStoreInterface search', () => {
         this.data = result.data.data;
       });
     });
   }
 }
 
-export default CommonStore;
+export default CommonStoreInterface;

@@ -133,7 +133,18 @@ const menuMappingInfos = [
   },
   {
     title: '저장소 테스트2',
-    linkUrl: '/store-test2'
+    linkUrl: '/store-test2',
+    success: true
+  },
+  {
+    title: '도메인 테스트(list)',
+    linkUrl: '/domain-list',
+    success: true
+  },
+  {
+    title: '도메인 테스트(detail)',
+    linkUrl: '/domain-detail?id=1',
+    success: true
   }
 ];
 

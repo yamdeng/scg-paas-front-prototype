@@ -1,6 +1,6 @@
-import CommonStore from './CommonStore';
+import CommonStoreInterface from './CommonStoreInterface';
 
-class TestStore extends CommonStore {
+class TestStore extends CommonStoreInterface {
   constructor(rootStore, apiUri) {
     super(apiUri);
     this.rootStore = rootStore;
