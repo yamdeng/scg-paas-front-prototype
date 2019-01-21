@@ -4,7 +4,7 @@ const Config = {};
 Config.apiCallTimeout = 30000;
 
 // 메시지 날짜 foramt
-Config.dateDisplayFormat = 'a hh:mm';
+Config.dateDisplayFormat = 'YYYY-MM-DD hh:mm';
 
 // 계약번호
 Config.contractNo = '123123';

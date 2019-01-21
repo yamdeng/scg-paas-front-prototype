@@ -3,6 +3,8 @@ import { Table } from 'reactstrap';
 import { observer, inject } from 'mobx-react';
 import { withRouter, Link } from 'react-router-dom';
 import RestCommonDomain from '../../stores/domain/RestCommonDomain';
+import moment from 'moment';
+import Config from '../../config/Config';
 
 @withRouter
 @inject('appStore')
@@ -30,8 +32,8 @@ class DomainTestList extends React.Component {
           <td>{info.id}</td>
           <td>{info.title}</td>
           <Link to={'/domain-detail?id=' + info.id}>{info.content}</Link>
-          <td>{info.title}</td>
-          <td>{info.title}</td>
+          <td>{moment(info.created).format(Config.dateDisplayFormat)}</td>
+          <td>{moment(info.lastModified).format(Config.dateDisplayFormat)}</td>
         </tr>
       );
     });
