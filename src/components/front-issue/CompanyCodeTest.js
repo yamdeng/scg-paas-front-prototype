@@ -44,9 +44,21 @@ class CompanyCodeTest extends React.Component {
 
   handleButton() {
     if (this.props.companyStore.companyCode === Constant.COMPANY_CODE_INCHON) {
-      alert('inchon handle');
+      alert(
+        this.props.companyStore.getCompanyInfoByKey('label1') +
+          ':' +
+          this.props.companyStore.getCompanyInfoByKey('info1.label1') +
+          ':' +
+          this.props.companyStore.getCompanyInfoByKey('info2.info2-1.label2')
+      );
     } else {
-      alert('seoul handle');
+      alert(
+        this.props.companyStore.getCompanyInfoByKey('label1') +
+          ':' +
+          this.props.companyStore.getCompanyInfoByKey('info1.label1') +
+          ':' +
+          this.props.companyStore.getCompanyInfoByKey('info2.info2-1.label2')
+      );
     }
   }
 
@@ -71,6 +83,7 @@ class CompanyCodeTest extends React.Component {
         <p>{this.props.companyStore.companyInfo.label1}</p>
         <p>{this.props.companyStore.companyInfo.info1.label2}</p>
         <p>{this.props.companyStore.companyInfo.info2.label2}</p>
+        <p>{this.props.companyStore.getCompanyInfoByKey('label2')}</p>
         <br />
         {<InitComponent />}
         <br />

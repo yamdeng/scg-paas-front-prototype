@@ -14,6 +14,13 @@ class CompanySeoulTest extends React.Component {
     return (
       <div>
         <h1>CompanySeoulTest</h1>
+        <p>
+          {this.props.companyStore.companyInfo.seoulLabel1 +
+            ':' +
+            (this.props.companyStore.companyInfo.seoulInfo
+              ? this.props.companyStore.companyInfo.seoulInfo.label2
+              : '-')}
+        </p>
       </div>
     );
   }

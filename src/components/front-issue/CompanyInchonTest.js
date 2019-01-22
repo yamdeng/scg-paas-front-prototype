@@ -14,6 +14,13 @@ class CompanyInchonTest extends React.Component {
     return (
       <div>
         <h1>CompanyInchonTest</h1>
+        <p>
+          {this.props.companyStore.companyInfo.inchonLabel1 +
+            ':' +
+            (this.props.companyStore.companyInfo.inchonInfo
+              ? this.props.companyStore.companyInfo.inchonInfo.label2
+              : '-')}
+        </p>
       </div>
     );
   }
