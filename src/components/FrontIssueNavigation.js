@@ -175,6 +175,10 @@ const menuMappingInfos = [
     title: 'lifecycle-test',
     linkUrl: '/lifecycle-test',
     success: true
+  },
+  {
+    title: 'recompose-test',
+    linkUrl: '/recompose-test'
   }
 ];
 
