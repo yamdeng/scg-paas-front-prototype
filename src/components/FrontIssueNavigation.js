@@ -170,6 +170,11 @@ const menuMappingInfos = [
     title: 'company-inchon-test',
     linkUrl: '/company-inchon-test',
     success: true
+  },
+  {
+    title: 'lifecycle-test',
+    linkUrl: '/lifecycle-test',
+    success: true
   }
 ];
 

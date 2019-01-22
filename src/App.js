@@ -45,6 +45,7 @@ import ApiTestDetail from './components/front-issue/ApiTestDetail';
 import CompanyCodeTest from './components/front-issue/CompanyCodeTest';
 import CompanySeoulTest from './components/front-issue/CompanySeoulTest';
 import CompanyInchonTest from './components/front-issue/CompanyInchonTest';
+import LifeCycleTest from './components/front-issue/LifeCycleTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -238,6 +239,7 @@ class App extends Component {
               path="/company-inchon-test"
               component={CompanyInchonTest}
             />
+            <Route exact path="/lifecycle-test" component={LifeCycleTest} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

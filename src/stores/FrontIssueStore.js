@@ -13,6 +13,7 @@ class FrontIssueStore {
   @observable objectTest2 = new ListDetail({ id: 102, name: 'domain object' });
   @observable loadedTabData1 = false;
   @observable loadedTabData2 = false;
+  @observable age = 36;
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -112,6 +113,11 @@ class FrontIssueStore {
   @action
   changeObject2Name(name) {
     this.objectTest2.changeName(name);
+  }
+
+  @action
+  changeAge(age) {
+    this.age = age;
   }
 }
 
