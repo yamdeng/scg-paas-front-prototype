@@ -179,6 +179,10 @@ const menuMappingInfos = [
   {
     title: 'recompose-test',
     linkUrl: '/recompose-test'
+  },
+  {
+    title: 'hoc-test',
+    linkUrl: '/hoc-test'
   }
 ];
 

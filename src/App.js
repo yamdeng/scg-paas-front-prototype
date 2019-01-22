@@ -47,6 +47,7 @@ import CompanySeoulTest from './components/front-issue/CompanySeoulTest';
 import CompanyInchonTest from './components/front-issue/CompanyInchonTest';
 import LifeCycleTest from './components/front-issue/LifeCycleTest';
 import RecomposeTest from './components/front-issue/RecomposeTest';
+import HocTest from './components/front-issue/HocTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -242,6 +243,7 @@ class App extends Component {
             />
             <Route exact path="/lifecycle-test" component={LifeCycleTest} />
             <Route exact path="/recompose-test" component={RecomposeTest} />
+            <Route exact path="/hoc-test" component={HocTest} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
