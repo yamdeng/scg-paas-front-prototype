@@ -17,4 +17,7 @@ Config.defaultEmptyValue = '-';
 // 기본 CompanyCode
 Config.defaultCompanyCode = Constant.COMPANY_CODE_SEOUL;
 
+// 기본 라우팅 uri
+Config.defaultUri = 'home';
+
 export default Config;

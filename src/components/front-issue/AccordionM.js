@@ -9,6 +9,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import InnerTextComponent from './help/InnerTextComponent';
 import Logger from '../../utils/Logger';
+import AppHistory from '../../utils/AppHistory';
 
 const styles = theme => ({
   root: {
@@ -39,8 +40,6 @@ class AccordionM extends React.Component {
     super(props);
     this.state = { expanded: null, text1: '', text2: '', text3: '' };
     this.handleChange = this.handleChange.bind(this);
-    // Logger.info('location.search : ' + location.search); ---> '' 값임. 적용않됨
-    Logger.info('location.search : ' + this.props.location.search);
   }
 
   handleChange(panel, event, isExpanded) {

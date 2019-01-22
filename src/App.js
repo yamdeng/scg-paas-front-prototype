@@ -171,6 +171,7 @@ class App extends Component {
           <FrontIssueNavigation />
           <div style={mainContainerStyle}>
             <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/accordion-b" component={AccordionB} />
             <Route exact path="/accordion-m" component={AccordionM} />
             <Route exact path="/tab-b" component={TabB} />

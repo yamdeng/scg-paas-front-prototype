@@ -84,6 +84,7 @@ const styles = theme => ({
 */
 
 const menuMappingInfos = [
+  { title: '홈', linkUrl: '/home', success: true },
   { title: '아코디언 부트스트랩', linkUrl: '/accordion-b', success: true },
   {
     title: '아코디언 메트리얼',

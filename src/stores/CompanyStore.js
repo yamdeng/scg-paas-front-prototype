@@ -8,6 +8,7 @@ class CompanyStore {
   @observable companyInfo = {};
   constructor(rootStore) {
     this.rootStore = rootStore;
+    this.companyInfo = CompanyInfo[this.companyCode];
   }
 
   @action
@@ -19,6 +20,12 @@ class CompanyStore {
   @action
   getCompanyInfoByKey(key) {
     return _.get(this.companyInfo, key);
+  }
+
+  @action
+  reloadPageByCompanyCode(companyCode) {
+    window.location.href = '/#/?companyCode=' + companyCode;
+    window.location.reload();
   }
 }
 
