@@ -13,4 +13,8 @@ Constant.ERROR_TYPE_CORE = 'core';
 Constant.ERROR_TYPE_REACT = 'react';
 Constant.ERROR_TYPE_APP = 'app';
 
+// company code
+Constant.COMPANY_CODE_SEOUL = 'seoul';
+Constant.COMPANY_CODE_INCHON = 'inchon';
+
 export default Constant;

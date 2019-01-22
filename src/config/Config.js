@@ -1,3 +1,5 @@
+import Constant from './Constant';
+
 const Config = {};
 
 // ajax timeout
@@ -11,5 +13,8 @@ Config.contractNo = '123123';
 
 // 빈값일 경우 보여주는 문자
 Config.defaultEmptyValue = '-';
+
+// 기본 CompanyCode
+Config.defaultCompanyCode = Constant.COMPANY_CODE_SEOUL;
 
 export default Config;

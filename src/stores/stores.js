@@ -18,6 +18,7 @@ let rootStore = new RootStore();
      4.FrontIssueStore.js : 프론트 테스트 store
      5.UiStore.js : UI store
      6.TestStore.js : Test store
+     7.CompanyStore.js : Company Store
 
 */
 
@@ -27,7 +28,8 @@ let stores = {
   nativeStore: rootStore.nativeStore,
   frontIssueStore: rootStore.frontIssueStore,
   uiStore: rootStore.uiStore,
-  testStore: rootStore.testStore
+  testStore: rootStore.testStore,
+  companyStore: rootStore.companyStore
 };
 
 export default stores;

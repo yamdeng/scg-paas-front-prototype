@@ -31,7 +31,9 @@ class DomainTestList extends React.Component {
         <tr key={info.id}>
           <td>{info.id}</td>
           <td>{info.title}</td>
-          <Link to={'/domain-detail?id=' + info.id}>{info.content}</Link>
+          <td>
+            <Link to={'/domain-detail?id=' + info.id}>{info.content}</Link>
+          </td>
           <td>{moment(info.created).format(Config.dateDisplayFormat)}</td>
           <td>{moment(info.lastModified).format(Config.dateDisplayFormat)}</td>
         </tr>

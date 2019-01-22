@@ -76,6 +76,13 @@ const styles = theme => ({
   }
 });
 
+/*
+
+  except: true,
+  
+
+*/
+
 const menuMappingInfos = [
   { title: '아코디언 부트스트랩', linkUrl: '/accordion-b', success: true },
   {
@@ -93,7 +100,6 @@ const menuMappingInfos = [
   { title: '모달 테스트1', linkUrl: '/modal-test-1' },
   { title: 'sass', linkUrl: '/sass', success: true },
   { title: '환경변수', linkUrl: '/environment', success: true },
-  { title: '코드분류(회사별)', linkUrl: '/code-split' },
   { title: '에러테스트', linkUrl: '/error-test', success: true },
   { title: '클라이언트 에러', linkUrl: '/error-client', success: true },
   { title: '서버 에러', linkUrl: '/error-server', success: true },
@@ -155,6 +161,18 @@ const menuMappingInfos = [
     title: 'Api 테스트(detail)',
     linkUrl: '/api-detail?id=1',
     success: true
+  },
+  {
+    title: 'company-code-test',
+    linkUrl: '/company-code-test'
+  },
+  {
+    title: 'company-seoul-test',
+    linkUrl: '/company-seoul-test'
+  },
+  {
+    title: 'company-inchon-test',
+    linkUrl: '/company-inchon-test'
   }
 ];
 

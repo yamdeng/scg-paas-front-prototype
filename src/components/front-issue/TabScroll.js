@@ -39,7 +39,7 @@ class TabScroll extends React.Component {
 
   render() {
     return (
-      <div class="scrollmenu" id="tabScroll">
+      <div className="scrollmenu" id="tabScroll">
         <a
           href="javascript:void(0);"
           className={this.getClassName(0)}

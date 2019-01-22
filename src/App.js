@@ -16,7 +16,6 @@ import NativeInterface from './components/front-issue/NativeInterface';
 import ModalTest1 from './components/front-issue/ModalTest1';
 import SassTest from './components/front-issue/SassTest';
 import Environment from './components/front-issue/Environment';
-import CodeSplit from './components/front-issue/CodeSplit';
 import ErrorTest from './components/front-issue/ErrorTest';
 import ErrorClient from './components/front-issue/ErrorClient';
 import ErrorServer from './components/front-issue/ErrorServer';
@@ -43,6 +42,9 @@ import DomainTestList from './components/front-issue/DomainTestList.js';
 import DomainTestDetail from './components/front-issue/DomainTestDetail';
 import ApiTestList from './components/front-issue/ApiTestList';
 import ApiTestDetail from './components/front-issue/ApiTestDetail';
+import CompanyCodeTest from './components/front-issue/CompanyCodeTest';
+import CompanySeoulTest from './components/front-issue/CompanySeoulTest';
+import CompanyInchonTest from './components/front-issue/CompanyInchonTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -180,7 +182,6 @@ class App extends Component {
             <Route exact path="/modal-test-1" component={ModalTest1} />
             <Route exact path="/sass" component={SassTest} />
             <Route exact path="/environment" component={Environment} />
-            <Route exact path="/code-split" component={CodeSplit} />
             <Route exact path="/error-test" component={ErrorTest} />
             <Route exact path="/error-client" component={ErrorClient} />
             <Route exact path="/error-server" component={ErrorServer} />
@@ -221,6 +222,21 @@ class App extends Component {
             <Route exact path="/domain-detail" component={DomainTestDetail} />
             <Route exact path="/api-list" component={ApiTestList} />
             <Route exact path="/api-detail/:id" component={ApiTestDetail} />
+            <Route
+              exact
+              path="/company-code-test"
+              component={CompanyCodeTest}
+            />
+            <Route
+              exact
+              path="/company-seoul-test"
+              component={CompanySeoulTest}
+            />
+            <Route
+              exact
+              path="/company-inchon-test"
+              component={CompanyInchonTest}
+            />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

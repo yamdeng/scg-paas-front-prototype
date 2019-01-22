@@ -9,6 +9,7 @@ import { Button } from 'reactstrap';
 class TalkList extends React.Component {
   dummyTalkList = [];
   currentDummyTalkListIndex = 0;
+  timeoutId = null;
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +19,7 @@ class TalkList extends React.Component {
 
   repeatAddTalkList() {
     if (this.state.talkList.length < this.dummyTalkList.length) {
-      setTimeout(() => {
+      this.timeoutId = setTimeout(() => {
         this.setState({
           talkList: [
             ...this.state.talkList,
@@ -33,6 +34,12 @@ class TalkList extends React.Component {
           color: 'success'
         });
       }, 1000);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
     }
   }
 

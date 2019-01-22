@@ -27,6 +27,7 @@ const styles = theme => ({
 class ImageScrollPage extends React.Component {
   pageSize = 10;
   page = 1;
+  enableDataLoad = true;
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +39,11 @@ class ImageScrollPage extends React.Component {
 
   handleScroll() {
     if (window.scrollY + window.innerHeight + 50 > document.body.clientHeight) {
-      if (this.state.data.length < this.state.totalCount) {
+      if (
+        this.enableDataLoad &&
+        this.state.data.length < this.state.totalCount
+      ) {
+        this.enableDataLoad = false;
         Api.get('imageScroll', {
           params: {
             page: this.page,
@@ -50,6 +55,7 @@ class ImageScrollPage extends React.Component {
             data: this.state.data.concat(result.data.data),
             totalCount: result.data.totalCount
           });
+          this.enableDataLoad = true;
         });
       }
     }

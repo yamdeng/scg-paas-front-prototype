@@ -10,6 +10,7 @@ import Api from '../../utils/Api';
 class TableScrollPage extends React.Component {
   pageSize = 20;
   page = 1;
+  enableDataLoad = true;
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +22,11 @@ class TableScrollPage extends React.Component {
 
   handleScroll() {
     if (window.scrollY + window.innerHeight + 50 > document.body.clientHeight) {
-      if (this.state.data.length < this.state.totalCount) {
+      if (
+        this.enableDataLoad &&
+        this.state.data.length < this.state.totalCount
+      ) {
+        this.enableDataLoad = false;
         Api.get('tableScroll', {
           params: {
             page: this.page,
@@ -29,11 +34,12 @@ class TableScrollPage extends React.Component {
           },
           disableLoadingBar: true
         }).then(result => {
-          this.page = this.page + 1;
           this.setState({
             data: this.state.data.concat(result.data.data),
             totalCount: result.data.totalCount
           });
+          this.page = this.page + 1;
+          this.enableDataLoad = true;
         });
       }
     }

@@ -36,6 +36,7 @@ AppHistory.block((location, action) => {
 
 AppHistory.listen((location, action) => {
   // location.pathname ---> route시에 공통으로 구글 서비스 전달
+  Logger.info('AppHistory listen : ' + location.pathname);
 });
 
 // state의 상태는 action을 통해서만 가능하게끔 셋팅
