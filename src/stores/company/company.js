@@ -1,5 +1,5 @@
-import inchonCompanyInfo from './inchon';
-import seoulCompanyInfo from './seoul';
+import { inchonCompanyInfo } from './inchon';
+import { seoulCompanyInfo } from './seoul';
 import Constant from '../../config/Constant';
 
 let CompanyInfo = {};

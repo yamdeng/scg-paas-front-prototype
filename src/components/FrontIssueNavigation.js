@@ -76,13 +76,6 @@ const styles = theme => ({
   }
 });
 
-/*
-
-  except: true,
-  
-
-*/
-
 const menuMappingInfos = [
   { title: '홈', linkUrl: '/home', success: true },
   { title: '아코디언 부트스트랩', linkUrl: '/accordion-b', success: true },
@@ -165,20 +158,23 @@ const menuMappingInfos = [
   },
   {
     title: 'company-code-test',
-    linkUrl: '/company-code-test'
+    linkUrl: '/company-code-test',
+    success: true
   },
   {
     title: 'company-seoul-test',
-    linkUrl: '/company-seoul-test'
+    linkUrl: '/company-seoul-test',
+    success: true
   },
   {
     title: 'company-inchon-test',
-    linkUrl: '/company-inchon-test'
+    linkUrl: '/company-inchon-test',
+    success: true
   }
 ];
 
 @withRouter
-@inject('appStore')
+@inject('appStore', 'companyStore')
 @observer
 class FrontIssueNavigation extends React.Component {
   constructor(props) {
@@ -253,6 +249,7 @@ class FrontIssueNavigation extends React.Component {
           </div>
           <Divider />
           <List>
+            {/* this.props.companyStore.menuInfo */}
             {menuMappingInfos.map(info => {
               return (
                 <Link

@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import basicCompanyInfo from './basic';
+import { basicCompanyInfo, basicMenuInfo } from './basic';
 
-let seoulCompanyInfo = {
+let companyInfo = {
   label1: 'seoul',
   label2: 'seoul2',
   info1: {
@@ -23,4 +23,38 @@ let seoulCompanyInfo = {
   }
 };
 
-export default _.defaultsDeep({}, seoulCompanyInfo, basicCompanyInfo);
+let menuInfo = [
+  { title: '홈', linkUrl: '/home', except: true },
+  { title: '아코디언 부트스트랩', linkUrl: '/accordion-b', except: true },
+  {
+    title: '아코디언 메트리얼',
+    linkUrl: '/accordion-m?aa=aa&bb=bb',
+    except: true
+  },
+  { title: '탭 부트스트랩', linkUrl: '/tab-b', except: true },
+  { title: '탭 메트리얼', linkUrl: '/tab-m', except: true },
+  {
+    title: 'company-code-test',
+    linkUrl: '/company-code-test',
+    success: true
+  },
+  {
+    title: 'company-seoul-test',
+    linkUrl: '/company-seoul-test',
+    success: true
+  }
+];
+
+export const seoulCompanyInfo = _.defaultsDeep(
+  {},
+  companyInfo,
+  basicCompanyInfo
+);
+
+export const seoulMenuInfo = _.unionBy(
+  menuInfo,
+  basicMenuInfo,
+  'linkUrl'
+).filter(info => {
+  return !info.except;
+});
