@@ -80,7 +80,7 @@
   "scripts": {
     "start": "cross-env HTTPS=false TOKEN_TYPE=web APP_ENV=development node scripts/start.js",
     "start:publish": "cross-env ENTRY_NAME=publish node scripts/start.js",
-    "build:dev": "cross-env TOKEN_TYPE=native APP_ENV=development NODE_ENV=development node scripts/build.js",
+    "build:dev": "cross-env TOKEN_TYPE=native APP_ENV=development node scripts/build.js",
     "build": "cross-env TOKEN_TYPE=native APP_ENV=production node scripts/build.js",
     "test": "node scripts/test.js"
   },

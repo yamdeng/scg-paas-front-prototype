@@ -18,6 +18,9 @@ class ErrorBoundary extends React.Component {
     this.refreshPage = this.refreshPage.bind(this);
     this.copyToClipboardByTextArea = this.copyToClipboardByTextArea.bind(this);
   }
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
 
   copyToClipboardByTextArea(textAreaId) {
     Helper.copyToClipboard(textAreaId);
@@ -36,7 +39,6 @@ class ErrorBoundary extends React.Component {
       errorObject.componentStack = info.componentStack;
     }
     this.setState({
-      hasError: true,
       errorObject: errorObject
     });
     Logger.error(JSON.stringify(errorObject));

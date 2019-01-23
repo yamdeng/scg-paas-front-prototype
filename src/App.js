@@ -258,6 +258,7 @@ class App extends Component {
               <textarea
                 id={textAreaId}
                 value={errorObjectConvertString}
+                onChange={() => {}}
                 style={{
                   display: 'block',
                   opacity: 0,
