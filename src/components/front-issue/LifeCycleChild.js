@@ -13,6 +13,7 @@ class LifeCycleChild extends React.Component {
       'LifeCycleChild constructor this.constructor.name :' +
         this.constructor.name
     );
+    Logger.info('LifeCycleChild.name :' + LifeCycleChild.name);
   }
 
   static getDerivedStateFromProps(props, state) {

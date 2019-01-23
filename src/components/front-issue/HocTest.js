@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import HOC from '../../utils/HOC';
 
 @withRouter
 @inject('appStore')
@@ -20,4 +21,4 @@ class HocTest extends React.Component {
   }
 }
 
-export default HocTest;
+export default HOC.withRender(HocTest);
