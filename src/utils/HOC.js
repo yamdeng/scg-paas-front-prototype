@@ -1,6 +1,7 @@
 import React from 'react';
 import Logger from '../utils/Logger';
 import Constant from '../config/Constant';
+import Config from '../config/Config';
 
 const HOC = {};
 
@@ -9,8 +10,11 @@ function getDisplayName(WrappedComponent) {
 }
 
 function withRender(WrappedComponent) {
-  if (process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT) {
-    class WithSubscription extends React.Component {
+  if (
+    Config.performanceTesting &&
+    process.env.APP_ENV === Constant.APP_ENV_DEVELOPMENT
+  ) {
+    class WithSubscription extends React.PureComponent {
       constructor(props) {
         super(props);
         this.state = {};

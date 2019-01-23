@@ -2,6 +2,7 @@ import React from 'react';
 import { observer, inject } from 'mobx-react';
 import Logger from '../../../utils/Logger';
 import ListDetail from './ListDetail';
+import HOC from '../../../utils/HOC';
 
 @inject('appStore', 'frontIssueStore')
 @observer
@@ -37,4 +38,4 @@ class UlComponentStore extends React.Component {
   }
 }
 
-export default UlComponentStore;
+export default HOC.withRender(UlComponentStore);

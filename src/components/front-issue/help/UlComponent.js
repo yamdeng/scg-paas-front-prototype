@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import Logger from '../../../utils/Logger';
 import ListDetail from './ListDetail';
+import HOC from '../../../utils/HOC';
 
 @observer
 class UlComponent extends React.Component {
@@ -29,4 +30,4 @@ class UlComponent extends React.Component {
   }
 }
 
-export default UlComponent;
+export default HOC.withRender(UlComponent);

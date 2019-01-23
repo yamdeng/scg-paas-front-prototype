@@ -1,6 +1,7 @@
 import React from 'react';
 import Logger from '../../../utils/Logger';
 import { observer } from 'mobx-react';
+import HOC from '../../../utils/HOC';
 
 @observer
 class ListDetailPure extends React.Component {
@@ -24,4 +25,4 @@ class ListDetailPure extends React.Component {
   }
 }
 
-export default ListDetailPure;
+export default HOC.withRender(ListDetailPure);
