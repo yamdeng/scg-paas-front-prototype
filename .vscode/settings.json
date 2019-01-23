@@ -18,6 +18,6 @@
     "**/node_modules": true
   },
   "javascript.implicitProjectConfig.experimentalDecorators": true,
-  "sync.gist": "555b04b206f71ff3b5a03e2fb58a05c0",
+  "sync.gist": "4e237176311efc5efb5c3f17ae17070e",
   "sync.quietSync": false
 }
