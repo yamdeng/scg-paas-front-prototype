@@ -123,7 +123,9 @@ class FormTest extends React.Component {
           <input
             type="text"
             name="contractNo1"
-            className={this.state.focusIndex === 1 ? 'focus-input' : ''}
+            className={
+              this.state.currentFocusFormInputIndex === 1 ? 'focus-input' : ''
+            }
             maxLength={
               this.props.companyStore.configInfo.contractInputFirstSize
             }
@@ -143,7 +145,9 @@ class FormTest extends React.Component {
           <input
             type="text"
             name="contractNo2"
-            className={this.state.focusIndex === 2 ? 'focus-input' : ''}
+            className={
+              this.state.currentFocusFormInputIndex === 2 ? 'focus-input' : ''
+            }
             maxLength={
               this.props.companyStore.configInfo.contractInputSecondSize
             }
@@ -163,7 +167,9 @@ class FormTest extends React.Component {
           <input
             type="text"
             name="contractNo3"
-            className={this.state.focusIndex === 3 ? 'focus-input' : ''}
+            className={
+              this.state.currentFocusFormInputIndex === 3 ? 'focus-input' : ''
+            }
             maxLength={
               this.props.companyStore.configInfo.contractInputThirdSize
             }
@@ -185,7 +191,9 @@ class FormTest extends React.Component {
           <input
             type="number"
             name="age"
-            className={this.state.focusIndex === 4 ? 'focus-input' : ''}
+            className={
+              this.state.currentFocusFormInputIndex === 4 ? 'focus-input' : ''
+            }
             ref={this.ageRef}
             value={this.state.formData.age}
             onChange={event => this.handleInputChange(event)}
@@ -199,7 +207,9 @@ class FormTest extends React.Component {
           <input
             type="checkbox"
             name="isApply"
-            className={this.state.focusIndex === 5 ? 'focus-input' : ''}
+            className={
+              this.state.currentFocusFormInputIndex === 5 ? 'focus-input' : ''
+            }
             checked={this.state.formData.isApply}
             onChange={event => this.handleInputChange(event)}
           />

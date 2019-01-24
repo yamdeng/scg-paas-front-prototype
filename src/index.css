@@ -110,5 +110,5 @@ div.scrollmenu a:hover {
 }
 
 .focus-input {
-  border: blue solid 1px;
+  outline: green solid 1px;
 }
