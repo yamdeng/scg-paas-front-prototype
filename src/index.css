@@ -108,3 +108,7 @@ div.scrollmenu a:hover {
 #modalContainer.modal-dialog {
     top: 200px;
 }
+
+.focus-input {
+  border: blue solid 1px;
+}
