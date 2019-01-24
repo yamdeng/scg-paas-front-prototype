@@ -125,3 +125,7 @@ div.scrollmenu a:hover {
 option[value=""][disabled] {
   display: none;
 }
+
+.validation-warning {
+    background-color: #ffe5e5  !important;
+}

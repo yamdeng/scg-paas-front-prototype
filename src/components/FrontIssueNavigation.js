@@ -102,8 +102,9 @@ const menuMappingInfos = [
   { title: '상담톡 애니메이션', linkUrl: '/talk-anmation' },
   { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },
   { title: 'Analytics', linkUrl: '/analytics' },
-  { title: '폼 테스트', linkUrl: '/form-test' },
-  { title: '폼 테스트2', linkUrl: '/form-test2' },
+  { title: '폼 테스트', linkUrl: '/form-test', success: true },
+  { title: '폼 테스트2', linkUrl: '/form-test2', success: true },
+  { title: '폼 validation', linkUrl: '/form-validation' },
   { title: '차트 테스트1', linkUrl: '/chartcase-1' },
   {
     title: '테이블 페이징 스크롤',
