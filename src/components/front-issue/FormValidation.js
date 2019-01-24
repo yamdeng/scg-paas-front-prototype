@@ -9,6 +9,14 @@ import Api from '../../utils/Api';
 @inject('appStore', 'companyStore')
 @observer
 class FormValidation extends React.Component {
+  inputNames = [
+    'contractNo1',
+    'contractNo2',
+    'contractNo3',
+    'age',
+    'content',
+    'paymentPeriod'
+  ];
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +25,7 @@ class FormValidation extends React.Component {
         isApply: false,
         paymentPeriod: ''
       },
+      validationRule: {},
       currentFocusFormInputIndex: null,
       beforeFocusFormInputIndex: null
     };
@@ -25,6 +34,8 @@ class FormValidation extends React.Component {
     this.contractNo2Ref = React.createRef();
     this.contractNo3Ref = React.createRef();
     this.ageRef = React.createRef();
+    this.contentRef = React.createRef();
+    this.paymentPeriodRef = React.createRef();
     this.reset = this.reset.bind(this);
     this.save = this.save.bind(this);
     this.validation = this.validation.bind(this);
@@ -104,6 +115,10 @@ class FormValidation extends React.Component {
   }
 
   validation() {
+    let inputRealDomInfos = this.inputNames.map(inputName => {
+      return this[inputName + 'Ref'].current;
+    });
+    debugger;
     return this.validationAlert();
   }
 
@@ -203,6 +218,8 @@ class FormValidation extends React.Component {
             onFocus={event => this.onFocusApplyIndex(4, event)}
             onBlur={event => this.onBlurApplyIndex(4, event)}
             placeholder="나이"
+            min="1"
+            max="10"
           />
         </div>
 
@@ -243,6 +260,7 @@ class FormValidation extends React.Component {
           <select
             name="paymentPeriod"
             value={this.state.formData.paymentPeriod}
+            ref={this.paymentPeriodRef}
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(5, event)}
             onBlur={event => this.onBlurApplyIndex(5, event)}
@@ -266,6 +284,7 @@ class FormValidation extends React.Component {
           <textarea
             name="content"
             value={this.state.formData.content}
+            ref={this.contentRef}
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(6, event)}
             onBlur={event => this.onBlurApplyIndex(6, event)}
@@ -273,6 +292,23 @@ class FormValidation extends React.Component {
           />
         </div>
         <br />
+        <div>
+          phone :{' '}
+          <input
+            type="text"
+            name="이메일"
+            className={
+              this.state.currentFocusFormInputIndex === 4 ? 'focus-input' : ''
+            }
+            ref={this.ageRef}
+            value={this.state.formData.age}
+            onChange={event => this.handleInputChange(event)}
+            onFocus={event => this.onFocusApplyIndex(-1, event)}
+            onBlur={event => this.onBlurApplyIndex(-1, event)}
+            placeholder="이메일"
+            pattern="1"
+          />
+        </div>
         <div>
           <Button color="primary" onClick={this.reset}>
             취소
