@@ -51,12 +51,12 @@ function withRender2(WrappedComponent) {
         );
       }
       componentDidMount() {
-        Logger.error(
-          'withRender2 componentDidMount2 : ' + WithSubscription.displayName
+        Logger.info(
+          'withRender2 componentDidMount2: ' + WithSubscription.displayName
         );
       }
       render() {
-        Logger.error('withRender2 render2 : ' + WithSubscription.displayName);
+        Logger.info('withRender2 render : ' + WithSubscription.displayName);
         return <WrappedComponent {...this.props} />;
       }
     }
@@ -67,7 +67,26 @@ function withRender2(WrappedComponent) {
   }
 }
 
+function analytics(WrappedComponent) {
+  class WithSubscription extends React.PureComponent {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+    componentDidMount() {
+      Logger.info(
+        'analytics componentDidMount : ' + WrappedComponent.analyticsName
+      );
+    }
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  }
+  return WithSubscription;
+}
+
 HOC.withRender = withRender;
 HOC.withRender2 = withRender2;
+HOC.analytics = analytics;
 
 export default HOC;

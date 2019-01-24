@@ -185,6 +185,11 @@ const menuMappingInfos = [
     title: 'hoc-test',
     linkUrl: '/hoc-test',
     success: true
+  },
+  {
+    title: 'hoc-analytics',
+    linkUrl: '/hoc-analytics',
+    success: true
   }
 ];
 
