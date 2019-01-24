@@ -43,6 +43,12 @@ class NativeEventService {
       LoadingBar.hide();
       window.location.href = '/';
     });
+
+    $(window).on('reloadPageByCompanyCode', function(event, data) {
+      // eslint-disable-next-line
+      console.log('reloadPageByCompanyCode : ' + data);
+      stores.companyStore.reloadPageByCompanyCode(data);
+    });
   }
 }
 
