@@ -102,6 +102,14 @@ let menuInfo = [
   }
 ];
 
+let configInfo = {
+  contractInputFirstSize: 2,
+  contractInputSecondSize: 3,
+  contractInputThirdSize: 4
+};
+
 export const basicCompanyInfo = companyInfo;
 
 export const basicMenuInfo = menuInfo;
+
+export const basicConfigInfo = configInfo;

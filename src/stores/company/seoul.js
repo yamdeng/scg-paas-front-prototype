@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { basicCompanyInfo, basicMenuInfo } from './basic';
+import { basicCompanyInfo, basicMenuInfo, basicConfigInfo } from './basic';
 
 let companyInfo = {
   label1: 'seoul',
@@ -45,6 +45,12 @@ let menuInfo = [
   }
 ];
 
+let configInfo = {
+  contractInputFirstSize: 2,
+  contractInputSecondSize: 3,
+  contractInputThirdSize: 7
+};
+
 export const seoulCompanyInfo = _.defaultsDeep(
   {},
   companyInfo,
@@ -58,3 +64,5 @@ export const seoulMenuInfo = _.unionBy(
 ).filter(info => {
   return !info.except;
 });
+
+export const seoulConfigInfo = _.defaultsDeep({}, configInfo, basicConfigInfo);

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { basicCompanyInfo, basicMenuInfo } from './basic';
+import { basicCompanyInfo, basicMenuInfo, basicConfigInfo } from './basic';
 
 let companyInfo = {
   info1: {
@@ -31,6 +31,12 @@ let menuInfo = [
   }
 ];
 
+let configInfo = {
+  contractInputFirstSize: 5,
+  contractInputSecondSize: 5,
+  contractInputThirdSize: 5
+};
+
 export const inchonCompanyInfo = _.defaultsDeep(
   {},
   companyInfo,
@@ -44,3 +50,5 @@ export const inchonMenuInfo = _.unionBy(
 ).filter(info => {
   return !info.except;
 });
+
+export const inchonConfigInfo = _.defaultsDeep({}, configInfo, basicConfigInfo);

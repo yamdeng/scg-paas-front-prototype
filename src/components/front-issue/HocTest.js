@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import HOC from '../../utils/HOC';
 import HocChild from './help/HocChild';
+import ApiService from '../../services/ApiService';
 
 @withRouter
 @inject('appStore')
@@ -15,6 +16,7 @@ class HocTest extends React.Component {
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('HocTest');
+    ApiService.get('tableScroll');
   }
 
   render() {
