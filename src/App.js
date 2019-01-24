@@ -26,6 +26,7 @@ import TalkList from './components/front-issue/TalkList';
 import PushCase1 from './components/front-issue/PushCase1';
 import Analytics from './components/front-issue/Analytics';
 import FormTest from './components/front-issue/FormTest';
+import FormTest2 from './components/front-issue/FormTest2';
 import ChartCase1 from './components/front-issue/ChartCase1';
 import TableScrollPage from './components/front-issue/TableScrollPage';
 import ImageScrollPage from './components/front-issue/ImageScrollPage';
@@ -197,6 +198,7 @@ class App extends Component {
             <Route exact path="/pushcase-1" component={PushCase1} />
             <Route exact path="/analytics" component={Analytics} />
             <Route exact path="/form-test" component={FormTest} />
+            <Route exact path="/form-test2" component={FormTest2} />
             <Route exact path="/chartcase-1" component={ChartCase1} />
             <Route
               exact

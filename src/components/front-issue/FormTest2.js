@@ -1,22 +1,20 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-import update from 'immutability-helper';
 import { Button } from 'reactstrap';
+import _ from 'lodash';
 import Api from '../../utils/Api';
 
 @withRouter
 @inject('appStore', 'companyStore')
 @observer
-class FormTest extends React.Component {
+class FormTest2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formData: {
-        paymentKind: '0',
-        isApply: false,
-        paymentPeriod: '2'
-      },
+      paymentKind: '0',
+      isApply: false,
+      paymentPeriod: '2',
       currentFocusFormInputIndex: null,
       beforeFocusFormInputIndex: null
     };
@@ -33,7 +31,7 @@ class FormTest extends React.Component {
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('FormTest');
+    this.props.appStore.changeHeadTitle('FormTest2');
   }
 
   onFocusApplyIndex(index) {
@@ -63,10 +61,6 @@ class FormTest extends React.Component {
       event.target.type === 'checkbox'
         ? event.target.checked
         : event.target.value;
-
-    let updateFormData = update(this.state.formData, {
-      $merge: { [inputName]: inputValue }
-    });
     if (
       nextInputName &&
       inputValue &&
@@ -75,21 +69,19 @@ class FormTest extends React.Component {
     ) {
       this[nextInputName + 'Ref'].current.focus();
     }
-    this.setState({ formData: updateFormData });
+    this.setState({ [inputName]: inputValue });
   }
 
   reset() {
     this.setState({
-      formData: {
-        paymentKind: '1',
-        contractNo1: '',
-        contractNo2: '',
-        contractNo3: '',
-        age: '',
-        isApply: false,
-        paymentPeriod: '0',
-        content: ''
-      },
+      paymentKind: '1',
+      contractNo1: '',
+      contractNo2: '',
+      contractNo3: '',
+      age: '',
+      isApply: false,
+      paymentPeriod: '0',
+      content: '',
       currentFocusFormInputIndex: null,
       beforeFocusFormInputIndex: null
     });
@@ -97,9 +89,13 @@ class FormTest extends React.Component {
 
   save() {
     if (this.validation()) {
-      Api.post('formJson', this.state.formData).then(result =>
-        alert('data : ' + JSON.stringify(result.data))
-      );
+      Api.post(
+        'formJson',
+        _.omit(this.state, [
+          'currentFocusFormInputIndex',
+          'beforeFocusFormInputIndex'
+        ])
+      ).then(result => alert('data : ' + JSON.stringify(result.data)));
     }
   }
 
@@ -130,7 +126,7 @@ class FormTest extends React.Component {
               this.props.companyStore.configInfo.contractInputFirstSize
             }
             ref={this.contractNo1Ref}
-            value={this.state.formData.contractNo1}
+            value={this.state.contractNo1}
             onChange={event =>
               this.handleInputChange(
                 event,
@@ -152,7 +148,7 @@ class FormTest extends React.Component {
               this.props.companyStore.configInfo.contractInputSecondSize
             }
             ref={this.contractNo2Ref}
-            value={this.state.formData.contractNo2}
+            value={this.state.contractNo2}
             onChange={event =>
               this.handleInputChange(
                 event,
@@ -174,7 +170,7 @@ class FormTest extends React.Component {
               this.props.companyStore.configInfo.contractInputThirdSize
             }
             ref={this.contractNo3Ref}
-            value={this.state.formData.contractNo3}
+            value={this.state.contractNo3}
             onChange={event =>
               this.handleInputChange(
                 event,
@@ -195,7 +191,7 @@ class FormTest extends React.Component {
               this.state.currentFocusFormInputIndex === 4 ? 'focus-input' : ''
             }
             ref={this.ageRef}
-            value={this.state.formData.age}
+            value={this.state.age}
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(4, event)}
             onBlur={event => this.onBlurApplyIndex(4, event)}
@@ -210,7 +206,7 @@ class FormTest extends React.Component {
             className={
               this.state.currentFocusFormInputIndex === 5 ? 'focus-input' : ''
             }
-            checked={this.state.formData.isApply}
+            checked={this.state.isApply}
             onChange={event => this.handleInputChange(event)}
           />
         </div>
@@ -220,7 +216,7 @@ class FormTest extends React.Component {
           <input
             type="radio"
             name="paymentKind"
-            checked={this.state.formData.paymentKind === '0'}
+            checked={this.state.paymentKind === '0'}
             value="0"
             onChange={event => this.handleInputChange(event)}
           />
@@ -228,7 +224,7 @@ class FormTest extends React.Component {
           <input
             type="radio"
             name="paymentKind"
-            checked={this.state.formData.paymentKind === '1'}
+            checked={this.state.paymentKind === '1'}
             value="1"
             onChange={event => this.handleInputChange(event)}
           />
@@ -238,7 +234,7 @@ class FormTest extends React.Component {
           선택 :{' '}
           <select
             name="paymentPeriod"
-            value={this.state.formData.paymentPeriod}
+            value={this.state.paymentPeriod}
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(5, event)}
             onBlur={event => this.onBlurApplyIndex(5, event)}
@@ -260,7 +256,7 @@ class FormTest extends React.Component {
           에디터 :{' '}
           <textarea
             name="content"
-            value={this.state.formData.content}
+            value={this.state.content}
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(6, event)}
             onBlur={event => this.onBlurApplyIndex(6, event)}
@@ -280,4 +276,4 @@ class FormTest extends React.Component {
   }
 }
 
-export default FormTest;
+export default FormTest2;
