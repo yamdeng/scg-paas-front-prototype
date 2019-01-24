@@ -15,7 +15,7 @@ class FormTest extends React.Component {
       formData: {
         paymentKind: '0',
         isApply: false,
-        paymentPeriod: '2'
+        paymentPeriod: ''
       },
       currentFocusFormInputIndex: null,
       beforeFocusFormInputIndex: null
@@ -140,6 +140,7 @@ class FormTest extends React.Component {
             }
             onFocus={event => this.onFocusApplyIndex(1, event)}
             onBlur={event => this.onBlurApplyIndex(1, event)}
+            placeholder="계약번호1"
           />{' '}
           {' : '}
           <input
@@ -162,6 +163,7 @@ class FormTest extends React.Component {
             }
             onFocus={event => this.onFocusApplyIndex(2, event)}
             onBlur={event => this.onBlurApplyIndex(2, event)}
+            placeholder="계약번호2"
           />{' '}
           {' : '}
           <input
@@ -184,6 +186,7 @@ class FormTest extends React.Component {
             }
             onFocus={event => this.onFocusApplyIndex(3, event)}
             onBlur={event => this.onBlurApplyIndex(3, event)}
+            placeholder="계약번호3"
           />
         </div>
         <div>
@@ -199,6 +202,7 @@ class FormTest extends React.Component {
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(4, event)}
             onBlur={event => this.onBlurApplyIndex(4, event)}
+            placeholder="나이"
           />
         </div>
 
@@ -242,11 +246,12 @@ class FormTest extends React.Component {
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(5, event)}
             onBlur={event => this.onBlurApplyIndex(5, event)}
+            className={!this.state.formData.paymentPeriod ? 'input-empty' : ''}
           >
-            <option value="">선택해주세요</option>
-            <option value="0" checked="checked">
-              일시불
+            <option value="" disabled>
+              선택해주세요
             </option>
+            <option value="0">일시불</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -264,6 +269,7 @@ class FormTest extends React.Component {
             onChange={event => this.handleInputChange(event)}
             onFocus={event => this.onFocusApplyIndex(6, event)}
             onBlur={event => this.onBlurApplyIndex(6, event)}
+            placeholder="내용"
           />
         </div>
         <br />

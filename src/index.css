@@ -112,3 +112,16 @@ div.scrollmenu a:hover {
 .focus-input {
   outline: green solid 1px;
 }
+
+::placeholder {
+  color: gray;
+  font-style: italic;
+}
+
+.input-empty {
+  color: red;
+}
+
+option[value=""][disabled] {
+  display: none;
+}
