@@ -34,6 +34,7 @@ class NativeInterface extends React.Component {
     this.disableBackButton = this.disableBackButton.bind(this);
     this.moveUrl = this.moveUrl.bind(this);
     this.refreshApp = this.refreshApp.bind(this);
+    this.reloadPageByCompanyCode = this.reloadPageByCompanyCode.bind(this);
   }
 
   getDeviceInfo() {
@@ -88,6 +89,10 @@ class NativeInterface extends React.Component {
 
   refreshApp() {
     NativeInterfaceService.refreshApp();
+  }
+
+  reloadPageByCompanyCode() {
+    NativeInterfaceService.reloadPageByCompanyCode();
   }
 
   addEventListener() {
@@ -181,6 +186,13 @@ class NativeInterface extends React.Component {
         </Button>
         <Button variant="contained" color="primary" onClick={this.refreshApp}>
           refreshApp
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.reloadPageByCompanyCode}
+        >
+          reloadPageByCompanyCode
         </Button>
         <Dialog
           open={this.state.open}

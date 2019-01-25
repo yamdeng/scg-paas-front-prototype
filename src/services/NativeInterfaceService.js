@@ -56,6 +56,12 @@ class NativeInterfaceService {
       window.android.refreshApp();
     }
   }
+
+  reloadPageByCompanyCode() {
+    if (DeviceUtil.isAndroid) {
+      window.android.reloadPageByCompanyCode();
+    }
+  }
 }
 
 export default new NativeInterfaceService();
