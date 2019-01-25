@@ -12,10 +12,6 @@
 
 5. 실행 : yarn start
 
-6. mariadb 맥에서 서비스로 등록시키기
- -brew services start mariadb
-
-
 # scg-paas-front-prototype 프로젝트 작업 히스토리
 
 1. 상위 폴더에서 npx create-react-app scg-paas-front-prototype
