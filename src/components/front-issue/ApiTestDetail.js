@@ -35,6 +35,7 @@ class ApiTestDetail extends React.Component {
     Api.delete('board/' + this.detailId).then(result => {
       if (result.data.success) {
         this.props.history.push('/api-list');
+        // this.props.history.push('/tab-b?activeTab=2');
       }
     });
   }

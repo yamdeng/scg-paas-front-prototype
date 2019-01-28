@@ -11,6 +11,7 @@ import {
   Col
 } from 'reactstrap';
 import classnames from 'classnames';
+import queryString from 'query-string';
 import InnerTableComponent from './help/InnerTableComponent';
 
 @withRouter
@@ -19,8 +20,10 @@ import InnerTableComponent from './help/InnerTableComponent';
 class TabB extends React.Component {
   constructor(props) {
     super(props);
+    let queryStringInfo = queryString.parse(this.props.location.search);
+    let activeTab = queryStringInfo.activeTab ? queryStringInfo.activeTab : '1';
     this.state = {
-      activeTab: '1'
+      activeTab: activeTab
     };
   }
 
