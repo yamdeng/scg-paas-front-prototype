@@ -62,6 +62,18 @@ class NativeInterfaceService {
       window.android.reloadPageByCompanyCode();
     }
   }
+
+  setLoginInfo() {
+    if (DeviceUtil.isAndroid) {
+      window.android.setLoginInfo(JSON.stringify(stores.appStore.loginInfo));
+    }
+  }
+
+  refreshAppByUrl() {
+    if (DeviceUtil.isAndroid) {
+      window.android.refreshAppByUrl();
+    }
+  }
 }
 
 export default new NativeInterfaceService();

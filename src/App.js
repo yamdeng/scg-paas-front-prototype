@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
 import Home from './components/Home';
+import IntroPage from './components/IntroPage';
 
 import AccordionB from './components/front-issue/AccordionB';
 import AccordionM from './components/front-issue/AccordionM';
@@ -156,6 +157,15 @@ class App extends Component {
     // if (!this.props.appStore.loginInfo) {
     //   mainContainerStyle.display = 'none';
     // }
+
+    let IntroPageComponent = null;
+    let NavigationComponent = <FrontIssueNavigation />;
+
+    if (!this.props.appStore.nativeInit) {
+      mainContainerStyle.display = 'none';
+      IntroPageComponent = <IntroPage />;
+      NavigationComponent = null;
+    }
     let errorObjectConvertString = '';
     if (this.state.appErrorObject) {
       errorObjectConvertString = JSON.stringify(this.state.appErrorObject);
@@ -174,7 +184,8 @@ class App extends Component {
       <ErrorBoundary>
         <div>
           {DEV_TOOL_COMPONENT}
-          <FrontIssueNavigation />
+          {NavigationComponent}
+          {IntroPageComponent}
           <div style={mainContainerStyle}>
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />

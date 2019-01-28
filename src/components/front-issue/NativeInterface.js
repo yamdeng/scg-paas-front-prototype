@@ -35,6 +35,8 @@ class NativeInterface extends React.Component {
     this.moveUrl = this.moveUrl.bind(this);
     this.refreshApp = this.refreshApp.bind(this);
     this.reloadPageByCompanyCode = this.reloadPageByCompanyCode.bind(this);
+    this.setLoginInfo = this.setLoginInfo.bind(this);
+    this.refreshAppByUrl = this.refreshAppByUrl.bind(this);
   }
 
   getDeviceInfo() {
@@ -91,8 +93,16 @@ class NativeInterface extends React.Component {
     NativeInterfaceService.refreshApp();
   }
 
+  refreshAppByUrl() {
+    NativeInterfaceService.refreshAppByUrl();
+  }
+
   reloadPageByCompanyCode() {
     NativeInterfaceService.reloadPageByCompanyCode();
+  }
+
+  setLoginInfo() {
+    NativeInterfaceService.setLoginInfo();
   }
 
   addEventListener() {
@@ -193,6 +203,16 @@ class NativeInterface extends React.Component {
           onClick={this.reloadPageByCompanyCode}
         >
           reloadPageByCompanyCode
+        </Button>
+        <Button variant="contained" color="primary" onClick={this.setLoginInfo}>
+          setLoginInfo
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.refreshAppByUrl}
+        >
+          refreshAppByUrl
         </Button>
         <Dialog
           open={this.state.open}

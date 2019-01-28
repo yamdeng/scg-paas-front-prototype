@@ -42,6 +42,15 @@ class NativeEventService {
       console.log('refreshApp : ' + data);
       LoadingBar.hide();
       window.location.href = '/';
+      window.location.reload();
+    });
+
+    $(window).on('refreshAppByUrl', function(event, data) {
+      // eslint-disable-next-line
+      console.log('refreshAppByUrl : ' + data);
+      LoadingBar.hide();
+      window.location.href = data || '/#/';
+      window.location.reload();
     });
 
     $(window).on('reloadPageByCompanyCode', function(event, data) {

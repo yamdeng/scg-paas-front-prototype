@@ -71,7 +71,15 @@ if (companyCode) {
 
 if (process.env.TOKEN_TYPE === Constant.TOKEN_TYPE_WEB) {
   if (urlQuery && urlQuery.token) {
-    stores.appStore.setLoginInfo({ name: 'test', token: urlQuery.token });
+    stores.appStore.setLoginInfo({
+      loginId: 'test7',
+      name: 'test',
+      token: urlQuery.token
+    });
+    stores.appStore.changeNativeInit(false);
+    setTimeout(() => {
+      stores.appStore.changeNativeInit(true);
+    }, 3000);
   }
 }
 

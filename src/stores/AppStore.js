@@ -5,7 +5,12 @@ class AppStore {
   @observable deviceInfo = {};
   @observable appVersion = '';
   @observable history = null;
-  @observable loginInfo = null;
+  @observable nativeInit = true;
+  @observable loginInfo = {
+    loginId: 'yamdeng7',
+    name: '얌댕',
+    token: '12345'
+  };
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -28,6 +33,11 @@ class AppStore {
   @action
   setLoginInfo(loginInfo) {
     this.loginInfo = loginInfo;
+  }
+
+  @action
+  changeNativeInit(nativeInit) {
+    this.nativeInit = nativeInit;
   }
 }
 
