@@ -192,6 +192,26 @@ const menuMappingInfos = [
     title: 'hoc-analytics',
     linkUrl: '/hoc-analytics',
     success: true
+  },
+  {
+    title: 'form-new',
+    linkUrl: '/form/new',
+    success: true
+  },
+  {
+    title: 'form-edit',
+    linkUrl: '/form/123/edit',
+    success: true
+  },
+  {
+    title: 'form-detail',
+    linkUrl: '/form/123',
+    success: true
+  },
+  {
+    title: 'form-detail2',
+    linkUrl: '/form/123/detail',
+    success: true
   }
 ];
 

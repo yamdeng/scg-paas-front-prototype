@@ -52,6 +52,8 @@ import LifeCycleTest from './components/front-issue/LifeCycleTest';
 import RecomposeTest from './components/front-issue/RecomposeTest';
 import HocTest from './components/front-issue/HocTest';
 import HocAnalytics from './components/front-issue/HocAnalytics';
+import BoardDetail from './components/front-issue/BoardDetail';
+import BoardForm from './components/front-issue/BoardForm';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -261,6 +263,23 @@ class App extends Component {
             <Route exact path="/recompose-test" component={RecomposeTest} />
             <Route exact path="/hoc-test" component={HocTest} />
             <Route exact path="/hoc-analytics" component={HocAnalytics} />
+            <Route
+              exact={true}
+              path="/form/:id/detail"
+              component={BoardDetail}
+            />
+            <Route exact={true} path="/form/:id/edit" component={BoardForm} />
+            <Route
+              exact={true}
+              path="/form/:id"
+              render={({ match }) => {
+                if (match.params.id === Constant.FORM_NEW_ID) {
+                  return <BoardForm />;
+                } else {
+                  return <BoardDetail />;
+                }
+              }}
+            />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

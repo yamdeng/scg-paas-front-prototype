@@ -17,4 +17,7 @@ Constant.ERROR_TYPE_APP = 'app';
 Constant.COMPANY_CODE_SEOUL = 'seoul';
 Constant.COMPANY_CODE_INCHON = 'inchon';
 
+// form new id
+Constant.FORM_NEW_ID = 'new';
+
 export default Constant;
