@@ -3,7 +3,8 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import HOC from '../../utils/HOC';
 
-@HOC.analytics
+@HOC.analytics2('yamdeng hohohoh')
+// @HOC.analytics
 @withRouter
 @inject('appStore')
 @observer

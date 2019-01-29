@@ -85,8 +85,23 @@ function analytics(WrappedComponent) {
   return WithSubscription;
 }
 
+const analytics2 = analyticsName => WrappedComponent =>
+  class WithSubscription extends React.PureComponent {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+    componentDidMount() {
+      Logger.info('analytics2 componentDidMount : ' + analyticsName);
+    }
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };
+
 HOC.withRender = withRender;
 HOC.withRender2 = withRender2;
 HOC.analytics = analytics;
+HOC.analytics2 = analytics2;
 
 export default HOC;
