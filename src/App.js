@@ -280,6 +280,16 @@ class App extends Component {
                 }
               }}
             />
+            <Route
+              exact
+              path="/lock/member/privacy-agree"
+              component={BoardForm}
+            />
+            <Route
+              exact
+              path="/lock/member/privacy-agree/:id"
+              component={BoardDetail}
+            />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

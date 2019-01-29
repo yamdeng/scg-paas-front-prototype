@@ -212,6 +212,16 @@ const menuMappingInfos = [
     title: 'form-detail2',
     linkUrl: '/form/123/detail',
     success: true
+  },
+  {
+    title: '라우팅 테스트1',
+    linkUrl: '/lock/member/privacy-agree',
+    success: true
+  },
+  {
+    title: '라우팅 테스트2',
+    linkUrl: '/lock/member/privacy-agree/123',
+    success: true
   }
 ];
 
