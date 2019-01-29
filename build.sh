@@ -6,9 +6,9 @@ cd ~/Project/scg-paas-server-prototype/public
 rm -rf `ls | find . -name image -prune -o -print`
 echo "server public remove success"
 cd ~/Project/scg-paas-front-prototype
-# yarn build:dev
+yarn build:dev
 # yarn build
-yarn build:publish
+# yarn build:publish
 echo "build success"
 sleep 1
 cp -rf ./build/* ../scg-paas-server-prototype/public
