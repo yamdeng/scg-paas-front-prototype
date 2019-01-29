@@ -74,7 +74,8 @@ if (process.env.TOKEN_TYPE === Constant.TOKEN_TYPE_WEB) {
     stores.appStore.setLoginInfo({
       loginId: 'test7',
       name: 'test',
-      token: urlQuery.token
+      token: urlQuery.token,
+      contractNumber: '123'
     });
     stores.appStore.changeNativeInit(false);
     setTimeout(() => {

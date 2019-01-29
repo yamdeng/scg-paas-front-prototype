@@ -82,7 +82,8 @@ const menuMappingInfos = [
   {
     title: '아코디언 메트리얼',
     linkUrl: '/accordion-m?aa=aa&bb=bb',
-    success: true
+    success: true,
+    checkLogin: true
   },
   { title: '탭 부트스트랩', linkUrl: '/tab-b', success: true },
   { title: '탭 메트리얼', linkUrl: '/tab-m', success: true },
@@ -303,12 +304,20 @@ class FrontIssueNavigation extends React.Component {
           <List>
             {/* this.props.companyStore.menuInfo */}
             {menuMappingInfos.map(info => {
+              let linkStyle = {};
+              if (
+                info.checkLogin &&
+                this.props.appStore.loginInfo.contractNumber
+              ) {
+                linkStyle = { display: 'none' };
+              }
               return (
                 <Link
                   className="nav-link"
                   to={info.linkUrl}
                   onClick={this.clickMenu}
                   key={info.title}
+                  style={linkStyle}
                 >
                   <ListItem
                     button
