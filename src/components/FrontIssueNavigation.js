@@ -107,7 +107,10 @@ const menuMappingInfos = [
   { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },
   { title: 'Analytics', linkUrl: '/analytics' },
   { title: '차트 테스트1', linkUrl: '/chartcase-1' },
-  { title: 'ckeditor 테스트', linkUrl: '/ckeditor' },
+  { title: 'ckeditor 테스트', linkUrl: '/ckeditor', success: true },
+  { title: 'ckeditor5 테스트', linkUrl: '/ckeditor5', success: true },
+  { title: 'tiny editor 테스트', linkUrl: '/tiny-editor', success: true },
+  { title: 'summer editor 테스트', linkUrl: '/summer-editor', success: true },
   {
     title: '테이블 페이징 스크롤',
     linkUrl: '/table-page-scroll',
