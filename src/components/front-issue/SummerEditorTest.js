@@ -9,27 +9,44 @@ class SummerEditorTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: '' };
-    this.onUploadRequest = this.onUploadRequest.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
-    this.onEditorAfterPaste = this.onEditorAfterPaste.bind(this);
   }
 
-  onUploadRequest(event) {
-    event.data.requestData.imageFile = event.data.requestData.upload;
-    delete event.data.requestData.upload;
-  }
-
-  onEditorAfterPaste(event) {
-    this.setState({ data: event.editor.getData() });
-  }
-
-  onEditorChange(event, editor) {
-    this.setState({ data: editor.getData() });
+  onEditorChange(contents) {
+    this.setState({ data: contents });
   }
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('SummerEditorTest');
-    $('#summernote').summernote();
+    $('#summernote').summernote({
+      lang: 'ko-KR',
+      height: 300,
+      width: '100%',
+      callbacks: {
+        onChange: (contents, $editable) => {
+          this.onEditorChange(contents);
+        },
+        onImageUpload: (files, editor, welEditable) => {
+          let formData = new FormData();
+          formData.append('imageFile', files[0]);
+          $.ajax({
+            data: formData,
+            type: 'POST',
+            url: '/api/front/uploadImage',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+              $('#summernote').summernote(
+                'insertImage',
+                data.fileUrl,
+                data.fileName
+              );
+            }
+          });
+        }
+      }
+    });
   }
 
   render() {
