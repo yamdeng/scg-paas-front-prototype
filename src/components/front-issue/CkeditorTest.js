@@ -11,6 +11,7 @@ class CkeditorTest extends React.Component {
     super(props);
     this.state = { data: '' };
     this.onUploadRequest = this.onUploadRequest.bind(this);
+    this.onUploadResponse = this.onUploadResponse.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
     this.onEditorAfterPaste = this.onEditorAfterPaste.bind(this);
   }
@@ -18,6 +19,13 @@ class CkeditorTest extends React.Component {
   onUploadRequest(event) {
     event.data.requestData.imageFile = event.data.requestData.upload;
     delete event.data.requestData.upload;
+  }
+  onUploadResponse(event) {
+    event.stop();
+    let data = event.data,
+      xhr = data.fileLoader.xhr,
+      response = JSON.parse(xhr.responseText);
+    data.url = response.fileUrl;
   }
 
   onEditorAfterPaste(event) {
@@ -39,10 +47,12 @@ class CkeditorTest extends React.Component {
           data={this.state.data}
           config={{
             extraPlugins: 'uploadimage,preview',
-            filebrowserImageUploadUrl: '/api/front/uploadImageCkEditor'
+            filebrowserImageUploadUrl: '/api/front/uploadImage'
+            // filebrowserImageUploadUrl: '/api/front/uploadImageCkEditor'
           }}
           onChange={this.onEditorChange}
           onFileUploadRequest={this.onUploadRequest}
+          onFileUploadResponse={this.onUploadResponse}
           onEditorAfterPaste={this.onEditorAfterPaste}
         />
       </div>
