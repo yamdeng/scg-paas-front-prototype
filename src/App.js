@@ -54,6 +54,7 @@ import HocTest from './components/front-issue/HocTest';
 import HocAnalytics from './components/front-issue/HocAnalytics';
 import BoardDetail from './components/front-issue/BoardDetail';
 import BoardForm from './components/front-issue/BoardForm';
+import CkeditorTest from './components/front-issue/CkeditorTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -290,6 +291,7 @@ class App extends Component {
               path="/lock/member/privacy-agree/:id"
               component={BoardDetail}
             />
+            <Route exact path="/ckeditor" component={CkeditorTest} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
