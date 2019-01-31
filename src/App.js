@@ -60,6 +60,7 @@ import TinyEditorTest from './components/front-issue/TinyEditorTest';
 import SummerEditorTest from './components/front-issue/SummerEditorTest';
 import MomentTest from './components/front-issue/MomentTest';
 import MaterialDatePicker from './components/front-issue/date-picker/MaterialDatePicker';
+import ClipCopyTest from './components/front-issue/ClipCopyTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -302,6 +303,7 @@ class App extends Component {
             <Route exact path="/summer-editor" component={SummerEditorTest} />
             <Route exact path="/moment" component={MomentTest} />
             <Route exact path="/material-date" component={MaterialDatePicker} />
+            <Route exact path="/clipcopy" component={ClipCopyTest} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

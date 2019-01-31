@@ -111,6 +111,7 @@ const menuMappingInfos = [
     title: 'material-date',
     linkUrl: '/material-date'
   },
+  { title: 'clipcopy', linkUrl: '/clipcopy' },
   { title: 'ckeditor 테스트', linkUrl: '/ckeditor', success: true },
   { title: 'ckeditor5 테스트', linkUrl: '/ckeditor5', success: true },
   { title: 'tiny editor 테스트', linkUrl: '/tiny-editor', success: true },
