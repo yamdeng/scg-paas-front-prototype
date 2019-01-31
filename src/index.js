@@ -1,5 +1,7 @@
 import './css/common.scss';
 import './index.css';
+import moment from 'moment';
+import 'moment/locale/ko';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +19,8 @@ import queryString from 'query-string';
 import Logger from './utils/Logger';
 import AppHistory from './utils/AppHistory';
 import Config from './config/Config';
+
+moment.locale('ko');
 
 // let hashString = location.hash;
 // let urlQuery = queryString.parse(

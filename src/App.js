@@ -58,6 +58,7 @@ import CkeditorTest from './components/front-issue/CkeditorTest';
 import CkeditorTest5 from './components/front-issue/CkeditorTest5';
 import TinyEditorTest from './components/front-issue/TinyEditorTest';
 import SummerEditorTest from './components/front-issue/SummerEditorTest';
+import MomentTest from './components/front-issue/MomentTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -298,6 +299,7 @@ class App extends Component {
             <Route exact path="/ckeditor5" component={CkeditorTest5} />
             <Route exact path="/tiny-editor" component={TinyEditorTest} />
             <Route exact path="/summer-editor" component={SummerEditorTest} />
+            <Route exact path="/moment" component={MomentTest} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

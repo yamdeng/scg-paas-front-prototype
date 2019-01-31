@@ -227,6 +227,11 @@ const menuMappingInfos = [
     title: '라우팅 테스트2',
     linkUrl: '/lock/member/privacy-agree/123',
     success: true
+  },
+  {
+    title: 'moment 테스트',
+    linkUrl: '/moment',
+    success: true
   }
 ];
 
