@@ -53,6 +53,12 @@
 
 13.
 
+#.storybook
+
+1. npx -p @storybook/cli sb init
+
+2. yarn storybook
+
 
 # tip
  1. @inject는 this.props에 store를 주입받기 위한
