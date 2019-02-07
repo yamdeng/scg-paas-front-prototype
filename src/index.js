@@ -46,10 +46,11 @@ Logger.info('location.hash : ' + location.hash);
 Logger.info('AppHistory.search : ' + AppHistory.location.search);
 Logger.info('AppHistory.hash : ' + AppHistory.location.hash);
 
-AppHistory.block((location, action) => {
-  Logger.info('on route block');
-  return true;
-});
+// block은 않먹힘! App.js에서 핸들러를 등록시켜야 함!
+// AppHistory.block((location, action) => {
+//   Logger.info('on route block');
+//   return true;
+// });
 
 AppHistory.listen((location, action) => {
   // location.pathname ---> route시에 공통으로 구글 서비스 전달

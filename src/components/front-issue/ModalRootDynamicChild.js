@@ -33,6 +33,10 @@ class ModalRootDynamicChild extends React.Component {
     // paas : disableBackButton
   }
 
+  componentWillUnmount() {
+    // paas : enableBackButton
+  }
+
   render() {
     let modalId = this.props.match.params.id;
     let modalComponent = null;

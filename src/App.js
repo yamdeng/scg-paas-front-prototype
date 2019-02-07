@@ -145,13 +145,30 @@ class App extends Component {
     // NativeInterfaceService.getLoginInfo();
     // LoadingBar.show();
 
+    // block 핸들러 : index.js는 먹하지 않음!
+    // let checkCount = 1;
     // this.historyBlockHandler = this.props.history.block((location, action) => {
-    //   console.log('on route block');
-    //   if (this.props.appStore.headTitle === '아코디언 메트리얼') {
-    //     return false;
-    //   } else {
-    //     return true;
+    //   // if (this.props.appStore.headTitle === '아코디언 메트리얼') {
+    //   //   return false;
+    //   // } else {
+    //   //   return true;
+    //   // }
+
+    //   Logger.info('on route block7 : ' + action + ':' + checkCount);
+    //   checkCount++;
+    //   // location.pathname
+    //   // debugger;
+    //   if (action === 'POP') {
+    //     Logger.info('pass1');
+    //     if (checkCount > 10) {
+    //       Logger.info('pass2');
+    //       return true;
+    //     } else {
+    //       Logger.info('pass3');
+    //       return false;
+    //     }
     //   }
+    //   return true;
     // });
   }
 

@@ -15,6 +15,15 @@ class Modal1 extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    // this.props.appStore.changeHeadTitle('ModalRootDynamicChild');
+    // paas : disableBackButton
+  }
+
+  componentWillUnmount() {
+    // paas : enableBackButton
+  }
+
   render() {
     return (
       <div>
