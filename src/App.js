@@ -61,6 +61,8 @@ import SummerEditorTest from './components/front-issue/SummerEditorTest';
 import MomentTest from './components/front-issue/MomentTest';
 import MaterialDatePicker from './components/front-issue/date-picker/MaterialDatePicker';
 import ClipCopyTest from './components/front-issue/ClipCopyTest';
+import ModalRoot from './components/front-issue/ModalRoot';
+import ModalRootChild from './components/front-issue/ModalRootChild';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -303,7 +305,9 @@ class App extends Component {
             <Route exact path="/summer-editor" component={SummerEditorTest} />
             <Route exact path="/moment" component={MomentTest} />
             <Route exact path="/material-date" component={MaterialDatePicker} />
-            <Route exact path="/clipcopy" component={ClipCopyTest} />
+            <Route path="/clipcopy" component={ClipCopyTest} />
+            <Route path="/modal-root" component={ModalRoot} />
+            <Route exact path="/modal-root/child" component={ModalRootChild} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
