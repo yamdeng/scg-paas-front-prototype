@@ -23,4 +23,7 @@ Config.defaultUri = 'home';
 // performace test 여부
 Config.performanceTesting = true;
 
+// home uri
+Config.homeRouteUri = '/home';
+
 export default Config;

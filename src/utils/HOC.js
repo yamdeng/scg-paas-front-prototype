@@ -67,6 +67,23 @@ function withRender2(WrappedComponent) {
   }
 }
 
+function componentWillUnmount(WrappedComponent) {
+  class WithSubscription extends React.PureComponent {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+    componentWillUnmount() {
+      Logger.info('componentWillUnmount: ' + WithSubscription.displayName);
+    }
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  }
+  WithSubscription.displayName = getDisplayName(WrappedComponent);
+  return WithSubscription;
+}
+
 function analytics(WrappedComponent) {
   class WithSubscription extends React.PureComponent {
     constructor(props) {
@@ -103,5 +120,6 @@ HOC.withRender = withRender;
 HOC.withRender2 = withRender2;
 HOC.analytics = analytics;
 HOC.analytics2 = analytics2;
+HOC.componentWillUnmount = componentWillUnmount;
 
 export default HOC;

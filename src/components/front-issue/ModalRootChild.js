@@ -4,7 +4,9 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import AppHistory from '../../utils/AppHistory';
+import HOC from '../../utils/HOC';
 
+@HOC.componentWillUnmount
 @withRouter
 @inject('appStore')
 @observer
