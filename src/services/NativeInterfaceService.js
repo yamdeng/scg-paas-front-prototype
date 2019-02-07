@@ -74,6 +74,12 @@ class NativeInterfaceService {
       window.android.refreshAppByUrl();
     }
   }
+
+  openModal() {
+    if (DeviceUtil.isAndroid) {
+      window.android.openModal();
+    }
+  }
 }
 
 export default new NativeInterfaceService();

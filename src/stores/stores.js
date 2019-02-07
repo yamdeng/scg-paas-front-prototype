@@ -19,6 +19,7 @@ let rootStore = new RootStore();
      5.UiStore.js : UI store
      6.TestStore.js : Test store
      7.CompanyStore.js : Company Store
+     8.ModalStore.js : Modal Store
 
 */
 
@@ -29,7 +30,8 @@ let stores = {
   frontIssueStore: rootStore.frontIssueStore,
   uiStore: rootStore.uiStore,
   testStore: rootStore.testStore,
-  companyStore: rootStore.companyStore
+  companyStore: rootStore.companyStore,
+  modalStore: rootStore.modalStore
 };
 
 export default stores;

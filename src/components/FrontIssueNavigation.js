@@ -118,11 +118,13 @@ const menuMappingInfos = [
   },
   {
     title: 'modal-root-child-dynamic1',
-    linkUrl: '/modal-root-dynamic/1'
+    linkUrl: '/modal-root-dynamic/1',
+    success: true
   },
   {
     title: 'modal-root-child-dynamic2',
-    linkUrl: '/modal-root-dynamic/2'
+    linkUrl: '/modal-root-dynamic/2',
+    success: true
   },
   { title: 'clipcopy', linkUrl: '/clipcopy', success: true },
   { title: 'ckeditor 테스트', linkUrl: '/ckeditor', success: true },

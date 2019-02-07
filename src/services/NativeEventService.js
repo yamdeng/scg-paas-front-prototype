@@ -58,6 +58,15 @@ class NativeEventService {
       console.log('reloadPageByCompanyCode : ' + data);
       stores.companyStore.reloadPageByCompanyCode(data);
     });
+
+    $(window).on('openModal', function(event, data) {
+      // eslint-disable-next-line
+      console.log('openModal : ' + modalType);
+      let modalData = JSON.parse(data);
+      let modalType = modalData.modalType;
+      delete modalData.modalType;
+      stores.modalStore.showModal(modalType, modalData);
+    });
   }
 }
 

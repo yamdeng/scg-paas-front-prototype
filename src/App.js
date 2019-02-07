@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Route, withRouter } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
+import ModalContainer from './containers/ModalContainer';
 import Home from './components/Home';
 import IntroPage from './components/IntroPage';
 
@@ -80,7 +81,7 @@ import Helper from './utils/Helper';
 import Constant from './config/Constant';
 
 @withRouter
-@inject('appStore')
+@inject('appStore', 'modalStore')
 @observer
 class App extends Component {
   historyBlockHandler = null;
@@ -170,6 +171,15 @@ class App extends Component {
     //   }
     //   return true;
     // });
+
+    this.historyBlockHandler = this.props.history.block((location, action) => {
+      if (this.props.modalStore.displayModal) {
+        this.props.modalStore.hideModal();
+        return false;
+      } else {
+        return true;
+      }
+    });
   }
 
   componentDidMount() {
@@ -336,6 +346,7 @@ class App extends Component {
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
+          <ModalContainer />
           <Modal
             isOpen={this.state.displayErrorModal}
             toggle={this.closeErrorModal}
