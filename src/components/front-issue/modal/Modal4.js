@@ -18,7 +18,7 @@ class Modal4 extends React.Component {
   render() {
     return (
       <div>
-        <p>Modal4 : {JSON.stringify(this.props.modalData)}</p>
+        <p>Modal4 : {JSON.stringify(this.props.modalStore.modalData)}</p>
         <Button
           color="primary"
           onClick={e => this.props.modalStore.hideModal()}
