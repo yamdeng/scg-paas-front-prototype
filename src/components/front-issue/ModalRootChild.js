@@ -14,10 +14,10 @@ class ModalRootChild extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: true };
-    this.closeErrorModal = this.closeErrorModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  closeErrorModal() {
+  closeModal() {
     this.setState({ isOpen: false });
     AppHistory.push('/home');
   }
@@ -31,17 +31,15 @@ class ModalRootChild extends React.Component {
       <div>
         <Modal
           isOpen={this.state.isOpen}
-          toggle={this.closeErrorModal}
+          toggle={this.closeModal}
           id="modalContainer"
         >
-          <ModalHeader toggle={this.closeErrorModal}>
-            모달 라우팅 테스트
-          </ModalHeader>
+          <ModalHeader toggle={this.closeModal}>모달 라우팅 테스트</ModalHeader>
           <ModalBody>
             <p>ModalRootChild modal</p>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.closeErrorModal}>
+            <Button color="primary" onClick={this.closeModal}>
               닫기
             </Button>
           </ModalFooter>

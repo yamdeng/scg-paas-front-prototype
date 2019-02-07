@@ -62,7 +62,9 @@ import MomentTest from './components/front-issue/MomentTest';
 import MaterialDatePicker from './components/front-issue/date-picker/MaterialDatePicker';
 import ClipCopyTest from './components/front-issue/ClipCopyTest';
 import ModalRoot from './components/front-issue/ModalRoot';
+import ModalRootDynamic from './components/front-issue/ModalRootDynamic';
 import ModalRootChild from './components/front-issue/ModalRootChild';
+import ModalRootDynamicChild from './components/front-issue/ModalRootDynamicChild';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -307,7 +309,13 @@ class App extends Component {
             <Route exact path="/material-date" component={MaterialDatePicker} />
             <Route path="/clipcopy" component={ClipCopyTest} />
             <Route path="/modal-root" component={ModalRoot} />
+            <Route path="/modal-root-dynamic" component={ModalRootDynamic} />
             <Route exact path="/modal-root/child" component={ModalRootChild} />
+            <Route
+              exact
+              path="/modal-root-dynamic/:id"
+              component={ModalRootDynamicChild}
+            />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
