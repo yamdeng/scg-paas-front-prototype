@@ -3,6 +3,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import AppHistory from '../../utils/AppHistory';
 
 @withRouter
 @inject('appStore')
@@ -15,7 +16,8 @@ class ModalRootChild extends React.Component {
   }
 
   closeErrorModal() {
-    this.setState({ displayErrorModal: false });
+    this.setState({ isOpen: false });
+    AppHistory.push('/home');
   }
 
   componentDidMount() {
