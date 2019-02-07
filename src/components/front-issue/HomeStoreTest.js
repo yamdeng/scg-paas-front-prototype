@@ -5,19 +5,19 @@ import { withRouter } from 'react-router-dom';
 @withRouter
 @inject('appStore')
 @observer
-class PushCase1 extends React.Component {
+class HomeStoreTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   componentDidMount() {
-    this.props.appStore.changeHeadTitle('PushCase1');
+    this.props.appStore.changeHeadTitle('HomeStoreTest');
   }
 
   render() {
-    return <div>PushCase1</div>;
+    return <div>HomeStoreTest</div>;
   }
 }
 
-export default PushCase1;
+export default HomeStoreTest;

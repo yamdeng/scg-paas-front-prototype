@@ -92,7 +92,7 @@ const menuMappingInfos = [
   { title: '라디오 스위치', linkUrl: '/checkbox-switch', success: true },
   { title: '탭 스크롤', linkUrl: '/tab-scroll', success: true },
   { title: '네이티브 인터페이스', linkUrl: '/native-interface', success: true },
-  { title: '모달 테스트1', linkUrl: '/modal-test-1' },
+  { title: '모달 테스트1', linkUrl: '/modal-test-1', success: true },
   { title: 'sass', linkUrl: '/sass', success: true },
   { title: '환경변수', linkUrl: '/environment', success: true },
   { title: '에러테스트', linkUrl: '/error-test', success: true },
@@ -104,12 +104,12 @@ const menuMappingInfos = [
   { title: '폼 테스트', linkUrl: '/form-test', success: true },
   { title: '폼 테스트2', linkUrl: '/form-test2', success: true },
   { title: '폼 validation', linkUrl: '/form-validation' },
-  { title: '푸쉬 테스트1', linkUrl: '/pushcase-1' },
   { title: 'Analytics', linkUrl: '/analytics' },
-  { title: '차트 테스트1', linkUrl: '/chartcase-1' },
+  { title: 'HomeStore', linkUrl: '/homestore' },
   {
     title: 'material-date',
-    linkUrl: '/material-date'
+    linkUrl: '/material-date',
+    success: true
   },
   {
     title: 'modal-root-child',

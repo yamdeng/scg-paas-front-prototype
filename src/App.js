@@ -25,12 +25,10 @@ import ErrorAuth from './components/front-issue/ErrorAuth';
 import EventTest from './components/front-issue/EventTest';
 import TalkAnimation from './components/front-issue/TalkAnimation';
 import TalkList from './components/front-issue/TalkList';
-import PushCase1 from './components/front-issue/PushCase1';
 import Analytics from './components/front-issue/Analytics';
 import FormTest from './components/front-issue/FormTest';
 import FormTest2 from './components/front-issue/FormTest2';
 import FormValidation from './components/front-issue/FormValidation';
-import ChartCase1 from './components/front-issue/ChartCase1';
 import TableScrollPage from './components/front-issue/TableScrollPage';
 import ImageScrollPage from './components/front-issue/ImageScrollPage';
 import TabScroll from './components/front-issue/TabScroll';
@@ -66,6 +64,7 @@ import ModalRoot from './components/front-issue/ModalRoot';
 import ModalRootDynamic from './components/front-issue/ModalRootDynamic';
 import ModalRootChild from './components/front-issue/ModalRootChild';
 import ModalRootDynamicChild from './components/front-issue/ModalRootDynamicChild';
+import HomeStoreTest from './components/front-issue/HomeStoreTest';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -247,12 +246,10 @@ class App extends Component {
             <Route exact path="/event-test" component={EventTest} />
             <Route exact path="/talk-anmation" component={TalkAnimation} />
             <Route exact path="/talk-list" component={TalkList} />
-            <Route exact path="/pushcase-1" component={PushCase1} />
             <Route exact path="/analytics" component={Analytics} />
             <Route exact path="/form-test" component={FormTest} />
             <Route exact path="/form-test2" component={FormTest2} />
             <Route exact path="/form-validation" component={FormValidation} />
-            <Route exact path="/chartcase-1" component={ChartCase1} />
             <Route
               exact
               path="/table-page-scroll"
@@ -343,6 +340,7 @@ class App extends Component {
               path="/modal-root-dynamic/:id"
               component={ModalRootDynamicChild}
             />
+            <Route exact path="/homestore" component={HomeStoreTest} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
