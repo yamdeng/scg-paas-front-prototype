@@ -106,6 +106,7 @@ const menuMappingInfos = [
   { title: '폼 validation', linkUrl: '/form-validation' },
   { title: 'Analytics', linkUrl: '/analytics' },
   { title: 'HomeStore', linkUrl: '/homestore' },
+  { title: 'SlideHome', linkUrl: '/slide-home' },
   {
     title: 'material-date',
     linkUrl: '/material-date',

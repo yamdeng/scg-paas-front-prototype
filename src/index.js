@@ -5,6 +5,8 @@ import 'moment/locale/ko';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Constant from './config/Constant';
 import App from './App';
 import App2 from './App2';

@@ -5,6 +5,7 @@ import UiStore from './UiStore';
 import TestStore from './TestStore';
 import CompanyStore from './CompanyStore';
 import ModalStore from './ModalStore';
+import HomeStore from './HomeStore';
 
 class RootStore {
   constructor() {
@@ -15,6 +16,7 @@ class RootStore {
     this.testStore = new TestStore(this, 'tableScroll');
     this.companyStore = new CompanyStore(this);
     this.modalStore = new ModalStore(this);
+    this.homeStore = new HomeStore(this);
   }
 }
 

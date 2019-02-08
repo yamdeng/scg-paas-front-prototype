@@ -65,6 +65,7 @@ import ModalRootDynamic from './components/front-issue/ModalRootDynamic';
 import ModalRootChild from './components/front-issue/ModalRootChild';
 import ModalRootDynamicChild from './components/front-issue/ModalRootDynamicChild';
 import HomeStoreTest from './components/front-issue/HomeStoreTest';
+import SlideHome from './components/front-issue/SlideHome';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -341,6 +342,7 @@ class App extends Component {
               component={ModalRootDynamicChild}
             />
             <Route exact path="/homestore" component={HomeStoreTest} />
+            <Route exact path="/slide-home" component={SlideHome} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
