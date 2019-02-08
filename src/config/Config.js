@@ -26,4 +26,7 @@ Config.performanceTesting = true;
 // home uri
 Config.homeRouteUri = '/home';
 
+// analystic id
+Config.AnalysticId = 'UA-134125076-1';
+
 export default Config;

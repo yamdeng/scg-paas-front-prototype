@@ -7,6 +7,9 @@ import InnerTextComponent from './help/InnerTextComponent';
 // import Helper from '../../utils/Helper';
 import Logger from '../../utils/Logger';
 
+import HOC from '../../utils/HOC';
+
+@HOC.analytics2('AccordionB')
 @withRouter
 @inject('appStore', 'frontIssueStore')
 @observer

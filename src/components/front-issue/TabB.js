@@ -14,6 +14,9 @@ import classnames from 'classnames';
 import queryString from 'query-string';
 import InnerTableComponent from './help/InnerTableComponent';
 
+import HOC from '../../utils/HOC';
+
+@HOC.analytics2('TabB')
 @withRouter
 @inject('appStore', 'frontIssueStore')
 @observer

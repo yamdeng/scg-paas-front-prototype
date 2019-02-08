@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import HOC from '../../utils/HOC';
 
+@HOC.analytics2('AnalyticsTest')
 @withRouter
 @inject('appStore')
 @observer

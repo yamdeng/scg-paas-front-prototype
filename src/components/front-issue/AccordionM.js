@@ -11,6 +11,8 @@ import InnerTextComponent from './help/InnerTextComponent';
 import Logger from '../../utils/Logger';
 import AppHistory from '../../utils/AppHistory';
 
+import HOC from '../../utils/HOC';
+
 const styles = theme => ({
   root: {
     width: '100%'
@@ -26,6 +28,7 @@ const styles = theme => ({
   }
 });
 
+@HOC.analytics2('AccordionM')
 @withRouter
 @inject('appStore')
 @observer

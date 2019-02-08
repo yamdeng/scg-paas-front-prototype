@@ -2,6 +2,7 @@ import React from 'react';
 import Logger from '../utils/Logger';
 import Constant from '../config/Constant';
 import Config from '../config/Config';
+import AnalyticsService from '../services/AnalyticsService';
 
 const HOC = {};
 
@@ -109,6 +110,10 @@ const analytics2 = analyticsName => WrappedComponent =>
       this.state = {};
     }
     componentDidMount() {
+      AnalyticsService.sendGA({
+        page_title: analyticsName,
+        page_path: analyticsName
+      });
       Logger.info('analytics2 componentDidMount : ' + analyticsName);
     }
     render() {

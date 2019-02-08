@@ -3,6 +3,9 @@ import { observer, inject } from 'mobx-react';
 import { withRouter, Link } from 'react-router-dom';
 import Api from '../../utils/Api';
 
+import HOC from '../../utils/HOC';
+
+@HOC.analytics2('ApiTestDetail')
 @withRouter
 @inject('appStore')
 @observer

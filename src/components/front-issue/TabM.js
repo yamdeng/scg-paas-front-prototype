@@ -8,6 +8,8 @@ import Tab from '@material-ui/core/Tab';
 import InnerTextComponent from './help/InnerTextComponent';
 import InnerTextComponent2 from './help/InnerTextComponent2';
 
+import HOC from '../../utils/HOC';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -16,6 +18,7 @@ const styles = theme => ({
   }
 });
 
+@HOC.analytics2('TabM')
 @withRouter
 @inject('appStore')
 @observer
