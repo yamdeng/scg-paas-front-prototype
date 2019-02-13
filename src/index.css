@@ -194,7 +194,7 @@ option[value=""][disabled] {
 .days li.active {
   padding: 5px;
   background: #1abc9c;
-  color: white !important
+  color: red !important
 }
 
 .days li.disabled {
@@ -202,7 +202,8 @@ option[value=""][disabled] {
 }
 
 .days li.selected {
-  color: red;
+  color: blue;
+  font-weight: bold;
 }
 
  /* calendar end */

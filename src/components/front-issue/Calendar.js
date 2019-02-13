@@ -23,15 +23,20 @@ class Calendar extends React.Component {
       moment('2019-02-17', 'YYYY-MM-DD').day(); ---> week : 0 일요일 6 토요일
 
     */
-
     super(props);
     let todayMonth = moment().format('YYYY-MMD');
-    this.state = { currentMonth: todayMonth, dayInfos: [] };
+    this.state = {
+      currentMonth: todayMonth,
+      dayInfos: [],
+      selectDate: this.selectDate,
+      selectDates: this.selectDates
+    };
     this.changeCalendar = this.changeCalendar.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
     this.handleSelectDate = this.handleSelectDate.bind(this);
     this.changeCalendarToToday = this.changeCalendarToToday.bind(this);
+    this.checkSelected = this.checkSelected.bind(this);
   }
 
   changeCalendarToToday() {
@@ -115,7 +120,26 @@ class Calendar extends React.Component {
     );
   }
 
-  handleSelectDate() {}
+  handleSelectDate(selectDateInfo) {
+    if (selectDateInfo.dateString === this.state.selectDate) {
+      this.setState({ selectDate: null });
+    } else {
+      this.setState({ selectDate: selectDateInfo.dateString });
+    }
+  }
+
+  checkSelected(info) {
+    let selected = false;
+    if (this.state.selectDate === info.dateString) {
+      selected = true;
+    }
+    this.state.selectDates.forEach(selectDatesUnitInfo => {
+      if (selectDatesUnitInfo === info.dateString) {
+        selected = true;
+      }
+    });
+    return selected;
+  }
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('Calendar');
@@ -159,10 +183,16 @@ class Calendar extends React.Component {
               let className = '';
               className = classNames({
                 active: info.isHoliDay,
-                disabled: info.disabled
+                disabled: info.disabled,
+                selected: this.checkSelected(info)
               });
               dayListComponent = (
-                <li className={className}>{info.date.format('D')}</li>
+                <li
+                  onClick={e => this.handleSelectDate(info)}
+                  className={className}
+                >
+                  {info.date.format('D')}
+                </li>
               );
             } else {
               dayListComponent = <li />;
