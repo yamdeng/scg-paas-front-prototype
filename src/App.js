@@ -66,6 +66,7 @@ import ModalRootDynamicChild from './components/front-issue/ModalRootDynamicChil
 import HomeStoreTest from './components/front-issue/HomeStoreTest';
 import SlideHome from './components/front-issue/SlideHome';
 import Calendar from './components/front-issue/Calendar';
+import FileUpload from './components/front-issue/FileUpload';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -343,6 +344,7 @@ class App extends Component {
             <Route exact path="/homestore" component={HomeStoreTest} />
             <Route exact path="/slide-home" component={SlideHome} />
             <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/file-upload" component={FileUpload} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
