@@ -59,13 +59,18 @@ function getInfoByLocalStorage(key) {
   }
 }
 
+function diffMomentDate(date1, date2) {
+  return date1.diff(date2);
+}
+
 const Helper = {
   convertEmptyValue: convertEmptyValue,
   checkAuthByUrl: checkAuthByUrl,
   getQueryStringValue: getQueryStringValue,
   copyToClipboard: copyToClipboard,
   saveInfoToLocalStorage: saveInfoToLocalStorage,
-  getInfoByLocalStorage: getInfoByLocalStorage
+  getInfoByLocalStorage: getInfoByLocalStorage,
+  diffMomentDate: diffMomentDate
 };
 
 export default Helper;

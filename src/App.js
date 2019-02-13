@@ -25,7 +25,6 @@ import ErrorAuth from './components/front-issue/ErrorAuth';
 import EventTest from './components/front-issue/EventTest';
 import TalkAnimation from './components/front-issue/TalkAnimation';
 import TalkList from './components/front-issue/TalkList';
-import Analytics from './components/front-issue/Analytics';
 import FormTest from './components/front-issue/FormTest';
 import FormTest2 from './components/front-issue/FormTest2';
 import FormValidation from './components/front-issue/FormValidation';
@@ -66,6 +65,7 @@ import ModalRootChild from './components/front-issue/ModalRootChild';
 import ModalRootDynamicChild from './components/front-issue/ModalRootDynamicChild';
 import HomeStoreTest from './components/front-issue/HomeStoreTest';
 import SlideHome from './components/front-issue/SlideHome';
+import Calendar from './components/front-issue/Calendar';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -247,7 +247,6 @@ class App extends Component {
             <Route exact path="/event-test" component={EventTest} />
             <Route exact path="/talk-anmation" component={TalkAnimation} />
             <Route exact path="/talk-list" component={TalkList} />
-            <Route exact path="/analytics" component={Analytics} />
             <Route exact path="/form-test" component={FormTest} />
             <Route exact path="/form-test2" component={FormTest2} />
             <Route exact path="/form-validation" component={FormValidation} />
@@ -343,6 +342,7 @@ class App extends Component {
             />
             <Route exact path="/homestore" component={HomeStoreTest} />
             <Route exact path="/slide-home" component={SlideHome} />
+            <Route exact path="/calendar" component={Calendar} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
