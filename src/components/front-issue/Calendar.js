@@ -29,7 +29,7 @@ class Calendar extends React.Component {
     this.changeCalendar = this.changeCalendar.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
-    this.selectDate = this.selectDate.bind(this);
+    this.handleSelectDate = this.handleSelectDate.bind(this);
   }
 
   changeCalendar(changeMonth) {
@@ -109,7 +109,7 @@ class Calendar extends React.Component {
     );
   }
 
-  selectDate() {}
+  handleSelectDate() {}
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('Calendar');
