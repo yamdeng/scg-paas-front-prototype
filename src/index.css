@@ -198,7 +198,7 @@ option[value=""][disabled] {
 }
 
 .days li.disabled {
-  background-color: #808080;
+  background-color: #a9a9a9;
 }
 
 .days li.selected {

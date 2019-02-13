@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import classNames from 'classnames';
+import { Button } from 'reactstrap';
 
 @withRouter
 @inject('appStore')
@@ -30,6 +31,11 @@ class Calendar extends React.Component {
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
     this.handleSelectDate = this.handleSelectDate.bind(this);
+    this.changeCalendarToToday = this.changeCalendarToToday.bind(this);
+  }
+
+  changeCalendarToToday() {
+    this.changeCalendar(moment().format('YYYY-MM'));
   }
 
   changeCalendar(changeMonth) {
@@ -164,6 +170,17 @@ class Calendar extends React.Component {
             return dayListComponent;
           })}
         </ul>
+        <div>
+          <Button
+            color="secondary"
+            size="lg"
+            block
+            style={{ margin: 0 }}
+            onClick={this.changeCalendarToToday}
+          >
+            today
+          </Button>
+        </div>
       </React.Fragment>
     );
   }
