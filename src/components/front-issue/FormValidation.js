@@ -5,311 +5,168 @@ import update from 'immutability-helper';
 import { Button } from 'reactstrap';
 import Api from '../../utils/Api';
 
+const checkValidation = function(inputData) {
+  let validResult = { isValid: true, errorMessage: '' };
+  let inputValue = inputData.value;
+  if (inputData.touched) {
+    if (inputData.isRequired) {
+      if (!inputValue) {
+        validResult.isValid = false;
+        validResult.errorMessage = '필수값입니다';
+        return validResult;
+      }
+    }
+    if (inputData.isNumber) {
+      if (isNaN(inputValue)) {
+        validResult.isValid = false;
+        validResult.errorMessage = '숫자가 아닙니다';
+        return validResult;
+      }
+    }
+  }
+  return validResult;
+};
+
 @withRouter
 @inject('appStore', 'companyStore')
 @observer
 class FormValidation extends React.Component {
-  inputNames = [
-    'contractNo1',
-    'contractNo2',
-    'contractNo3',
-    'age',
-    'content',
-    'paymentPeriod'
-  ];
   constructor(props) {
     super(props);
-    this.state = {
-      formData: {
-        paymentKind: '0',
-        isApply: false,
-        paymentPeriod: ''
-      },
-      validationRule: {},
-      currentFocusFormInputIndex: null,
-      beforeFocusFormInputIndex: null
+    let formData = {};
+    formData.textInput = {
+      touched: false,
+      isRequired: true,
+      isValid: true,
+      errorMessage: '',
+      value: null
     };
+    formData.textInput2 = {
+      touched: false,
+      isRequired: true,
+      isValid: true,
+      errorMessage: '',
+      value: null
+    };
+    this.state = { formData: formData };
+    this.textInputRef = React.createRef();
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.contractNo1Ref = React.createRef();
-    this.contractNo2Ref = React.createRef();
-    this.contractNo3Ref = React.createRef();
-    this.ageRef = React.createRef();
-    this.contentRef = React.createRef();
-    this.paymentPeriodRef = React.createRef();
-    this.reset = this.reset.bind(this);
-    this.save = this.save.bind(this);
-    this.validation = this.validation.bind(this);
-    this.onFocusApplyIndex = this.onFocusApplyIndex.bind(this);
-    this.onBlurApplyIndex = this.onBlurApplyIndex.bind(this);
+    this.refreshDisplayValidation = this.refreshDisplayValidation.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+
+    /*
+
+      <form> tag에 넣지 않음. 
+      id와 name을 동일하게 가져간다
+
+
+      1.isRequired
+      2.touched(dirty)
+      3.max
+      4.min
+      5.maxLength
+      6.minLegnth
+      7.pattern
+      8.number
+      9.focus
+      10.valid
+      11.errorMessage
+      12.value
+      13.whitelist: ['alligator', 'crocodile']
+
+      1.text
+      2-1.number
+      2-2.text number
+      3.email
+      3-1.email
+      3-2.pattern
+      4.max(number)
+      5.min(number)
+      6.maxLength
+
+    */
   }
 
-  componentDidMount() {
-    this.props.appStore.changeHeadTitle('FormValidation');
-  }
-
-  onFocusApplyIndex(index) {
-    if (this.state.currentFocusFormInputIndex !== index) {
-      this.setState({
-        beforeFocusFormInputIndex: this.state.currentFocusFormInputIndex,
-        currentFocusFormInputIndex: index
-      });
-    }
-  }
-
-  onBlurApplyIndex(index) {
-    if (
-      this.state.beforeFocusFormInputIndex &&
-      this.state.currentFocusFormInputIndex === index
-    ) {
-      this.setState({
-        currentFocusFormInputIndex: null,
-        beforeFocusFormInputIndex: null
-      });
-    }
-  }
-
-  handleInputChange(event, nextInputName, inputMaxLength) {
+  handleInputChange(event) {
     let inputName = event.target.name;
     let inputValue =
       event.target.type === 'checkbox'
         ? event.target.checked
         : event.target.value;
-
     let updateFormData = update(this.state.formData, {
-      $merge: { [inputName]: inputValue }
+      [inputName]: {
+        $merge: { value: inputValue }
+      }
     });
-    if (
-      nextInputName &&
-      inputValue &&
-      inputMaxLength &&
-      inputValue.length >= inputMaxLength
-    ) {
-      this[nextInputName + 'Ref'].current.focus();
-    }
     this.setState({ formData: updateFormData });
   }
 
-  reset() {
-    this.setState({
-      formData: {
-        paymentKind: '1',
-        contractNo1: '',
-        contractNo2: '',
-        contractNo3: '',
-        age: '',
-        isApply: false,
-        paymentPeriod: '0',
-        content: ''
-      },
-      currentFocusFormInputIndex: null,
-      beforeFocusFormInputIndex: null
+  onBlur(event, inputName) {
+    let inputData = this.state.formData[inputName];
+    inputData.touched = true;
+    let validResult = checkValidation(inputData);
+    let updateFormData = update(this.state.formData, {
+      [inputName]: {
+        $merge: {
+          touched: true,
+          errorMessage: validResult.errorMessage,
+          isValid: validResult.isValid
+        }
+      }
     });
+    this.setState({ formData: updateFormData });
   }
 
-  save() {
-    if (this.validation()) {
-      Api.post('formJson', this.state.formData).then(result =>
-        alert('data : ' + JSON.stringify(result.data))
-      );
-    }
-  }
+  refreshDisplayValidation() {}
 
-  validation() {
-    let inputRealDomInfos = this.inputNames.map(inputName => {
-      return this[inputName + 'Ref'].current;
-    });
-    debugger;
-    return this.validationAlert();
-  }
-
-  validationAlert() {
-    return true;
-  }
-
-  validationDisplay() {
-    return true;
+  componentDidMount() {
+    this.props.appStore.changeHeadTitle('FormValidation');
   }
 
   render() {
     return (
       <div style={{ marginTop: 90 }}>
+        {/* textInput */}
         <div>
-          계약번호 :{' '}
+          textInput :{' '}
           <input
             type="text"
-            name="contractNo1"
-            className={
-              this.state.currentFocusFormInputIndex === 1 ? 'focus-input' : ''
-            }
-            maxLength={
-              this.props.companyStore.configInfo.contractInputFirstSize
-            }
-            ref={this.contractNo1Ref}
-            value={this.state.formData.contractNo1}
-            onChange={event =>
-              this.handleInputChange(
-                event,
-                'contractNo2',
-                this.props.companyStore.configInfo.contractInputFirstSize
-              )
-            }
-            onFocus={event => this.onFocusApplyIndex(1, event)}
-            onBlur={event => this.onBlurApplyIndex(1, event)}
-            placeholder="계약번호1"
-          />{' '}
-          {' : '}
+            id="textInput"
+            name="textInput"
+            ref={this.textInputRef}
+            value={this.state.formData.textInput.value}
+            onChange={event => this.handleInputChange(event, 'textInput')}
+            onBlur={event => this.onBlur(event, 'textInput')}
+            placeholder="text 인풋"
+            required
+          />
+          {this.state.formData.textInput.errorMessage ? (
+            <div className="validation-warning">
+              {this.state.formData.textInput.errorMessage}
+            </div>
+          ) : null}
+        </div>
+        {/* textInput2 */}
+        <div>
+          textInput2 :{' '}
           <input
             type="text"
-            name="contractNo2"
-            className={
-              this.state.currentFocusFormInputIndex === 2 ? 'focus-input' : ''
-            }
-            maxLength={
-              this.props.companyStore.configInfo.contractInputSecondSize
-            }
-            ref={this.contractNo2Ref}
-            value={this.state.formData.contractNo2}
-            onChange={event =>
-              this.handleInputChange(
-                event,
-                'contractNo3',
-                this.props.companyStore.configInfo.contractInputSecondSize
-              )
-            }
-            onFocus={event => this.onFocusApplyIndex(2, event)}
-            onBlur={event => this.onBlurApplyIndex(2, event)}
-            placeholder="계약번호2"
-          />{' '}
-          {' : '}
-          <input
-            type="text"
-            name="contractNo3"
-            className={
-              this.state.currentFocusFormInputIndex === 3 ? 'focus-input' : ''
-            }
-            maxLength={
-              this.props.companyStore.configInfo.contractInputThirdSize
-            }
-            ref={this.contractNo3Ref}
-            value={this.state.formData.contractNo3}
-            onChange={event =>
-              this.handleInputChange(
-                event,
-                'age',
-                this.props.companyStore.configInfo.contractInputThirdSize
-              )
-            }
-            onFocus={event => this.onFocusApplyIndex(3, event)}
-            onBlur={event => this.onBlurApplyIndex(3, event)}
-            placeholder="계약번호3"
+            id="textInput2"
+            name="textInput2"
+            ref={this.textInput2Ref}
+            value={this.state.formData.textInput2.value}
+            onChange={event => this.handleInputChange(event, 'textInput2')}
+            onBlur={event => this.onBlur(event, 'textInput2')}
+            placeholder="text 인풋2"
+            required
           />
+          {this.state.formData.textInput2.errorMessage ? (
+            <div className="validation-warning">
+              {this.state.formData.textInput2.errorMessage}
+            </div>
+          ) : null}
         </div>
-        <div>
-          age :{' '}
-          <input
-            type="number"
-            name="age"
-            className={
-              this.state.currentFocusFormInputIndex === 4 ? 'focus-input' : ''
-            }
-            ref={this.ageRef}
-            value={this.state.formData.age}
-            onChange={event => this.handleInputChange(event)}
-            onFocus={event => this.onFocusApplyIndex(4, event)}
-            onBlur={event => this.onBlurApplyIndex(4, event)}
-            placeholder="나이"
-            min="1"
-            max="10"
-          />
-        </div>
-
-        <div>
-          체크박스 :{' '}
-          <input
-            type="checkbox"
-            name="isApply"
-            className={
-              this.state.currentFocusFormInputIndex === 5 ? 'focus-input' : ''
-            }
-            checked={this.state.formData.isApply}
-            onChange={event => this.handleInputChange(event)}
-          />
-        </div>
-
-        <div>
-          라디오 :{' '}
-          <input
-            type="radio"
-            name="paymentKind"
-            checked={this.state.formData.paymentKind === '0'}
-            value="0"
-            onChange={event => this.handleInputChange(event)}
-          />
-          {'   '}
-          <input
-            type="radio"
-            name="paymentKind"
-            checked={this.state.formData.paymentKind === '1'}
-            value="1"
-            onChange={event => this.handleInputChange(event)}
-          />
-        </div>
-
-        <div>
-          선택 :{' '}
-          <select
-            name="paymentPeriod"
-            value={this.state.formData.paymentPeriod}
-            ref={this.paymentPeriodRef}
-            onChange={event => this.handleInputChange(event)}
-            onFocus={event => this.onFocusApplyIndex(5, event)}
-            onBlur={event => this.onBlurApplyIndex(5, event)}
-            className={!this.state.formData.paymentPeriod ? 'input-empty' : ''}
-          >
-            <option value="" disabled>
-              선택해주세요
-            </option>
-            <option value="0">일시불</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="12">12</option>
-            <option value="24">24</option>
-          </select>
-        </div>
-        <div>
-          에디터 :{' '}
-          <textarea
-            name="content"
-            value={this.state.formData.content}
-            ref={this.contentRef}
-            onChange={event => this.handleInputChange(event)}
-            onFocus={event => this.onFocusApplyIndex(6, event)}
-            onBlur={event => this.onBlurApplyIndex(6, event)}
-            placeholder="내용"
-          />
-        </div>
-        <br />
-        <div>
-          phone :{' '}
-          <input
-            type="text"
-            name="이메일"
-            className={
-              this.state.currentFocusFormInputIndex === 4 ? 'focus-input' : ''
-            }
-            ref={this.ageRef}
-            value={this.state.formData.age}
-            onChange={event => this.handleInputChange(event)}
-            onFocus={event => this.onFocusApplyIndex(-1, event)}
-            onBlur={event => this.onBlurApplyIndex(-1, event)}
-            placeholder="이메일"
-            pattern="1"
-          />
-        </div>
-        <div>
+        <div style={{ marginTop: 10 }}>
           <Button color="primary" onClick={this.reset}>
             취소
           </Button>{' '}
