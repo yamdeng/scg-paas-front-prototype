@@ -67,6 +67,7 @@ import HomeStoreTest from './components/front-issue/HomeStoreTest';
 import SlideHome from './components/front-issue/SlideHome';
 import Calendar from './components/front-issue/Calendar';
 import FileUpload from './components/front-issue/FileUpload';
+import WebSign from './components/front-issue/WebSign';
 
 import Footer from './components/Footer';
 // import NativeInterfaceService from './services/NativeInterfaceService';
@@ -345,6 +346,7 @@ class App extends Component {
             <Route exact path="/slide-home" component={SlideHome} />
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/file-upload" component={FileUpload} />
+            <Route exact path="/websign" component={WebSign} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

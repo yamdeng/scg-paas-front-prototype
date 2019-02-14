@@ -207,3 +207,8 @@ option[value=""][disabled] {
 }
 
  /* calendar end */
+
+
+ #sign-canvas canvas {
+   width: 100%;
+ }
