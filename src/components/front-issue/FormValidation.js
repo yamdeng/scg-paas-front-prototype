@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import update from 'immutability-helper';
 import { Button } from 'reactstrap';
-import Api from '../../utils/Api';
+import _ from 'lodash';
 
 const checkValidation = function(inputData) {
   let validResult = { isValid: true, errorMessage: '' };
@@ -31,60 +31,56 @@ const checkValidation = function(inputData) {
 @inject('appStore', 'companyStore')
 @observer
 class FormValidation extends React.Component {
+  checkInputNames = ['textInput', 'textNumberInput'];
   constructor(props) {
     super(props);
     let formData = {};
     formData.textInput = {
+      inputName: 'textInput',
       touched: false,
       isRequired: true,
       isValid: true,
       errorMessage: '',
       value: null
     };
-    formData.textInput2 = {
+    formData.textNumberInput = {
+      inputName: 'textNumberInput',
       touched: false,
       isRequired: true,
+      isNumber: true,
       isValid: true,
       errorMessage: '',
       value: null
     };
     this.state = { formData: formData };
     this.textInputRef = React.createRef();
+    this.textNumberInputRef = React.createRef();
     this.handleInputChange = this.handleInputChange.bind(this);
     this.refreshDisplayValidation = this.refreshDisplayValidation.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.save = this.save.bind(this);
 
     /*
-
-      <form> tag에 넣지 않음. 
-      id와 name을 동일하게 가져간다
-
-
-      1.isRequired
-      2.touched(dirty)
-      3.max
-      4.min
-      5.maxLength
-      6.minLegnth
-      7.pattern
-      8.number
-      9.focus
-      10.valid
-      11.errorMessage
-      12.value
-      13.whitelist: ['alligator', 'crocodile']
-
-      1.text
-      2-1.number
-      2-2.text number
-      3.email
-      3-1.email
-      3-2.pattern
-      4.max(number)
-      5.min(number)
-      6.maxLength
+      
+      -input type="text" maxLength
+      -input type="number" max, min
+      -pattern : email, phone(3, 3, 4), 숫자와 자릿수
+      -whitelist: ['alligator', 'crocodile']
 
     */
+  }
+
+  save() {
+    if (this.refreshDisplayValidation()) {
+      alert('save true');
+    } else {
+      alert('save false');
+    }
+    let inputKeys = _.keys(this.state.formData);
+    let sendFormData = {};
+    inputKeys.forEach(key => {
+      sendFormData[key] = this.state.formData[key].value;
+    });
   }
 
   handleInputChange(event) {
@@ -105,19 +101,43 @@ class FormValidation extends React.Component {
     let inputData = this.state.formData[inputName];
     inputData.touched = true;
     let validResult = checkValidation(inputData);
+    let updateInputData = update(inputData, {
+      $merge: {
+        touched: true,
+        errorMessage: validResult.errorMessage,
+        isValid: validResult.isValid
+      }
+    });
     let updateFormData = update(this.state.formData, {
-      [inputName]: {
-        $merge: {
-          touched: true,
-          errorMessage: validResult.errorMessage,
-          isValid: validResult.isValid
-        }
+      $merge: {
+        [inputName]: updateInputData
       }
     });
     this.setState({ formData: updateFormData });
   }
 
-  refreshDisplayValidation() {}
+  refreshDisplayValidation() {
+    let validationFormData = _.cloneDeep(this.state.formData);
+    let firstErrorInputData = null;
+    let successValidation = true;
+    this.checkInputNames.forEach(inputName => {
+      let inputData = validationFormData[inputName];
+      inputData.touched = true;
+      let validResult = checkValidation(inputData);
+      inputData.errorMessage = validResult.errorMessage;
+      inputData.isValid = validResult.isValid;
+      if (!firstErrorInputData && !inputData.isValid) {
+        firstErrorInputData = inputData;
+        successValidation = false;
+      }
+    });
+    if (firstErrorInputData) {
+      alert('errorMessage : ' + firstErrorInputData.errorMessage);
+      this[firstErrorInputData.inputName + 'Ref'].current.focus();
+    }
+    this.setState({ formData: validationFormData });
+    return successValidation;
+  }
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('FormValidation');
@@ -146,27 +166,30 @@ class FormValidation extends React.Component {
             </div>
           ) : null}
         </div>
-        {/* textInput2 */}
+        {/* textNumberInput */}
         <div>
-          textInput2 :{' '}
+          textNumberInput :{' '}
           <input
             type="text"
-            id="textInput2"
-            name="textInput2"
-            ref={this.textInput2Ref}
-            value={this.state.formData.textInput2.value}
-            onChange={event => this.handleInputChange(event, 'textInput2')}
-            onBlur={event => this.onBlur(event, 'textInput2')}
-            placeholder="text 인풋2"
+            id="textNumberInput"
+            name="textNumberInput"
+            ref={this.textNumberInputRef}
+            value={this.state.formData.textNumberInput.value}
+            onChange={event => this.handleInputChange(event, 'textNumberInput')}
+            onBlur={event => this.onBlur(event, 'textNumberInput')}
+            placeholder="text number 인풋"
             required
           />
-          {this.state.formData.textInput2.errorMessage ? (
+          {this.state.formData.textNumberInput.errorMessage ? (
             <div className="validation-warning">
-              {this.state.formData.textInput2.errorMessage}
+              {this.state.formData.textNumberInput.errorMessage}
             </div>
           ) : null}
         </div>
         <div style={{ marginTop: 10 }}>
+          <Button color="primary" onClick={this.refreshDisplayValidation}>
+            validation
+          </Button>{' '}
           <Button color="primary" onClick={this.reset}>
             취소
           </Button>{' '}
