@@ -122,7 +122,7 @@ class FormValidation extends React.Component {
     /*
       
       -whitelist: ['alligator', 'crocodile']
-      -message를 custom하게 셋팅할수 있도록 수정ㅇ
+      -message를 custom하게 셋팅할수 있도록 수정
 
     */
   }
