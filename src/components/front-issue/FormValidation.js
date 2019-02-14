@@ -23,6 +23,15 @@ const checkValidation = function(inputData) {
         return validResult;
       }
     }
+
+    if (inputData.maxLength) {
+      if (inputValue && inputValue.length > inputData.maxLength) {
+        validResult.isValid = false;
+        validResult.errorMessage =
+          '입력값을 초과하였습니다(' + inputData.maxLength + '자리)';
+        return validResult;
+      }
+    }
   }
   return validResult;
 };
@@ -41,7 +50,8 @@ class FormValidation extends React.Component {
       isRequired: true,
       isValid: true,
       errorMessage: '',
-      value: null
+      value: null,
+      maxLength: 5
     };
     formData.textNumberInput = {
       inputName: 'textNumberInput',
@@ -66,6 +76,7 @@ class FormValidation extends React.Component {
       -input type="number" max, min
       -pattern : email, phone(3, 3, 4), 숫자와 자릿수
       -whitelist: ['alligator', 'crocodile']
+      -message를 custom하게 셋팅할수 있도록 수정ㅇ
 
     */
   }
