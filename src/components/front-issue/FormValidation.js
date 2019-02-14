@@ -16,6 +16,7 @@ const checkValidation = function(inputData) {
         return validResult;
       }
     }
+
     if (inputData.isNumber) {
       if (isNaN(inputValue)) {
         validResult.isValid = false;
@@ -24,11 +25,37 @@ const checkValidation = function(inputData) {
       }
     }
 
-    if (inputData.maxLength) {
+    if (inputValue && inputData.maxLength) {
       if (inputValue && inputValue.length > inputData.maxLength) {
         validResult.isValid = false;
         validResult.errorMessage =
           '입력값을 초과하였습니다(' + inputData.maxLength + '자리)';
+        return validResult;
+      }
+    }
+
+    if (inputValue && inputData.max) {
+      if (Number(inputValue) > inputData.max) {
+        validResult.isValid = false;
+        validResult.errorMessage =
+          '쵀대값을 초과하였습니다(' + inputData.max + '이하)';
+        return validResult;
+      }
+    }
+
+    if (inputValue && inputData.min) {
+      if (Number(inputValue) < inputData.min) {
+        validResult.isValid = false;
+        validResult.errorMessage =
+          '최소값보다 큰값을 입력하여야 합니다(' + inputData.min + '이상)';
+        return validResult;
+      }
+    }
+
+    if (inputValue && inputData.pattern) {
+      if (!inputData.pattern.test(inputValue)) {
+        validResult.isValid = false;
+        validResult.errorMessage = '양식에 맞지 않습니다';
         return validResult;
       }
     }
@@ -62,9 +89,31 @@ class FormValidation extends React.Component {
       errorMessage: '',
       value: null
     };
+    formData.numberInput = {
+      inputName: 'numberInput',
+      touched: false,
+      isRequired: false,
+      isNumber: true,
+      isValid: true,
+      max: 20,
+      min: 10,
+      errorMessage: '',
+      value: null
+    };
+    formData.textPatternInput = {
+      inputName: 'textPatternInput',
+      touched: false,
+      isRequired: true,
+      isValid: true,
+      errorMessage: '',
+      value: null,
+      pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    };
     this.state = { formData: formData };
     this.textInputRef = React.createRef();
     this.textNumberInputRef = React.createRef();
+    this.numberInputRef = React.createRef();
+    this.textPatternInputRef = React.createRef();
     this.handleInputChange = this.handleInputChange.bind(this);
     this.refreshDisplayValidation = this.refreshDisplayValidation.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -72,9 +121,6 @@ class FormValidation extends React.Component {
 
     /*
       
-      -input type="text" maxLength
-      -input type="number" max, min
-      -pattern : email, phone(3, 3, 4), 숫자와 자릿수
       -whitelist: ['alligator', 'crocodile']
       -message를 custom하게 셋팅할수 있도록 수정ㅇ
 
@@ -194,6 +240,48 @@ class FormValidation extends React.Component {
           {this.state.formData.textNumberInput.errorMessage ? (
             <div className="validation-warning">
               {this.state.formData.textNumberInput.errorMessage}
+            </div>
+          ) : null}
+        </div>
+        {/* numberInput */}
+        <div>
+          numberInput :{' '}
+          <input
+            type="number"
+            id="numberInput"
+            name="numberInput"
+            ref={this.numberInputRef}
+            value={this.state.formData.numberInput.value}
+            onChange={event => this.handleInputChange(event, 'numberInput')}
+            onBlur={event => this.onBlur(event, 'numberInput')}
+            placeholder="number 인풋"
+            required
+          />
+          {this.state.formData.numberInput.errorMessage ? (
+            <div className="validation-warning">
+              {this.state.formData.numberInput.errorMessage}
+            </div>
+          ) : null}
+        </div>
+        {/* textPatternInput */}
+        <div>
+          textPatternInput :{' '}
+          <input
+            type="text"
+            id="textPatternInput"
+            name="textPatternInput"
+            ref={this.textPatternInputRef}
+            value={this.state.formData.textPatternInput.value}
+            onChange={event =>
+              this.handleInputChange(event, 'textPatternInput')
+            }
+            onBlur={event => this.onBlur(event, 'textPatternInput')}
+            placeholder="pattern 인풋"
+            required
+          />
+          {this.state.formData.textPatternInput.errorMessage ? (
+            <div className="validation-warning">
+              {this.state.formData.textPatternInput.errorMessage}
             </div>
           ) : null}
         </div>
