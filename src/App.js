@@ -82,6 +82,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import shortid from 'shortid';
 import Helper from './utils/Helper';
 import Constant from './config/Constant';
+import Victory from './components/front-issue/chart/Victory';
+import Recharts from './components/front-issue/chart/Recharts';
 
 @withRouter
 @inject('appStore', 'modalStore')
@@ -349,6 +351,8 @@ class App extends Component {
             <Route exact path="/file-upload" component={FileUpload} />
             <Route exact path="/websign" component={WebSign} />
             <Route exact path="/firebase" component={Firebase} />
+            <Route exact path="/chart/recharts" component={Recharts} />
+            <Route exact path="/chart/victory" component={Victory} />
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />

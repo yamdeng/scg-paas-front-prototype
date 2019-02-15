@@ -63,5 +63,6 @@
     @inject('appStore', 'frontIssueStore')
     @observer
 
-
- 
+ #.차트 라이브러리
+  1.yarn add recharts
+  2.yarn add victory
