@@ -73,18 +73,39 @@ class Firebase extends React.Component {
       .get()
       .then(querySnapshot => {
         let updateErrorLogInfos = [];
+        let totalCount = querySnapshot.size;
+        Logger.info('totalCount : ' + totalCount);
         querySnapshot.forEach(doc => {
-          Logger.log(doc.id, ' => ', doc.data());
           updateErrorLogInfos.push(doc.data());
         });
         this.setState({
           errorLogInfos: updateErrorLogInfos,
-          isTablePagination: false
+          isTablePagination: false,
+          totalCount: totalCount
         });
       });
   }
 
-  getDataFilterByPlatform() {}
+  getDataFilterByPlatform() {
+    database
+      .collection('errorLog')
+      .where('platform', '==', 'ios')
+      .limit(10)
+      .get()
+      .then(querySnapshot => {
+        let updateErrorLogInfos = [];
+        let totalCount = querySnapshot.size;
+        Logger.info('totalCount : ' + totalCount);
+        querySnapshot.forEach(doc => {
+          updateErrorLogInfos.push(doc.data());
+        });
+        this.setState({
+          errorLogInfos: updateErrorLogInfos,
+          isTablePagination: false,
+          totalCount: totalCount
+        });
+      });
+  }
 
   getDataFilterByContent() {}
 
