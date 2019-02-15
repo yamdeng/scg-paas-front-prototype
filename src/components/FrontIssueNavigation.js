@@ -103,10 +103,12 @@ const menuMappingInfos = [
   { title: '캘린더', linkUrl: '/calendar', success: true },
   { title: 'file-upload', linkUrl: '/file-upload', success: true },
   { title: 'websign', linkUrl: '/websign', success: true },
+  { title: 'firebase', linkUrl: '/firebase', success: false },
   { title: '상담톡 애니메이션', linkUrl: '/talk-anmation', success: false },
+  { title: '홈 애니메이션', linkUrl: '/home-anmation', success: false },
   { title: '폼 테스트', linkUrl: '/form-test', success: true },
   { title: '폼 테스트2', linkUrl: '/form-test2', success: true },
-  { title: '폼 validation', linkUrl: '/form-validation', success: false },
+  { title: '폼 validation', linkUrl: '/form-validation', success: true },
   { title: 'HomeStore', linkUrl: '/homestore', success: true },
   { title: 'SlideHome', linkUrl: '/slide-home', success: true },
   {
