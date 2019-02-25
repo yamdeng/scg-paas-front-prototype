@@ -63,6 +63,10 @@ function diffMomentDate(date1, date2) {
   return date1.diff(date2);
 }
 
+function removeInfoByLocalStorage(key) {
+  localStorage.removeItem(key);
+}
+
 const Helper = {
   convertEmptyValue: convertEmptyValue,
   checkAuthByUrl: checkAuthByUrl,
@@ -70,6 +74,7 @@ const Helper = {
   copyToClipboard: copyToClipboard,
   saveInfoToLocalStorage: saveInfoToLocalStorage,
   getInfoByLocalStorage: getInfoByLocalStorage,
+  removeInfoByLocalStorage: removeInfoByLocalStorage,
   diffMomentDate: diffMomentDate
 };
 
