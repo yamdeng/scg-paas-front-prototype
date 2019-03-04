@@ -104,8 +104,13 @@ const menuMappingInfos = [
   { title: 'file-upload', linkUrl: '/file-upload', success: true },
   { title: 'websign', linkUrl: '/websign', success: true },
   { title: 'firebase', linkUrl: '/firebase', success: true },
-  { title: 'chart/recharts', linkUrl: '/chart/recharts', success: false },
-  { title: 'chart/victory', linkUrl: '/chart/victory', success: false },
+  { title: 'chart/recharts', linkUrl: '/chart/recharts', success: true },
+  {
+    title: 'chart/recharts-final',
+    linkUrl: '/chart/recharts-final',
+    success: true
+  },
+  { title: 'chart/victory', linkUrl: '/chart/victory', success: true },
   { title: '상담톡 애니메이션', linkUrl: '/talk-anmation', success: false },
   { title: '홈 애니메이션', linkUrl: '/home-anmation', success: false },
   { title: '폼 테스트', linkUrl: '/form-test', success: true },

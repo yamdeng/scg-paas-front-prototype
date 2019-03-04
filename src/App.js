@@ -84,6 +84,7 @@ import Helper from './utils/Helper';
 import Constant from './config/Constant';
 import Victory from './components/front-issue/chart/Victory';
 import Recharts from './components/front-issue/chart/Recharts';
+import RechartsFinal from './components/front-issue/chart/RechartsFinal';
 
 @withRouter
 @inject('appStore', 'modalStore')
@@ -352,6 +353,11 @@ class App extends Component {
             <Route exact path="/websign" component={WebSign} />
             <Route exact path="/firebase" component={Firebase} />
             <Route exact path="/chart/recharts" component={Recharts} />
+            <Route
+              exact
+              path="/chart/recharts-final"
+              component={RechartsFinal}
+            />
             <Route exact path="/chart/victory" component={Victory} />
           </div>
           {/* {라우팅 설정 end} */}
