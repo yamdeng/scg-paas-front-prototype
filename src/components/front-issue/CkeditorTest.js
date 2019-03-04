@@ -2,6 +2,9 @@ import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import CKEditor from 'ckeditor4-react';
+import { Button } from 'reactstrap';
+import Logger from '../../utils/Logger';
+import Api from '../../utils/Api';
 
 @withRouter
 @inject('appStore')
@@ -9,11 +12,33 @@ import CKEditor from 'ckeditor4-react';
 class CkeditorTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: '' };
+    this.state = { data: '', serverData: null };
     this.onUploadRequest = this.onUploadRequest.bind(this);
     this.onUploadResponse = this.onUploadResponse.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
     this.onEditorAfterPaste = this.onEditorAfterPaste.bind(this);
+    this.reset = this.reset.bind(this);
+    this.save = this.save.bind(this);
+    this.refresh = this.refresh.bind(this);
+  }
+
+  reset() {
+    this.setState({ data: null });
+  }
+
+  save() {
+    let data = this.state.data;
+    Api.post('editor/ckEditorData', { data: data }).then(result =>
+      this.refresh()
+    );
+  }
+
+  refresh() {
+    Api.get('editor/ckEditorData').then(result => {
+      let data = result.data.data;
+      Logger.info('result.data : ' + result.data);
+      this.setState({ data: data, serverData: data });
+    });
   }
 
   onUploadRequest(event) {
@@ -38,6 +63,7 @@ class CkeditorTest extends React.Component {
 
   componentDidMount() {
     this.props.appStore.changeHeadTitle('CkeditorTest');
+    this.refresh();
   }
 
   render() {
@@ -55,6 +81,15 @@ class CkeditorTest extends React.Component {
           onFileUploadResponse={this.onUploadResponse}
           onEditorAfterPaste={this.onEditorAfterPaste}
         />
+        <div>
+          <Button color="primary" onClick={this.reset}>
+            취소
+          </Button>{' '}
+          <Button color="primary" onClick={this.save}>
+            저장
+          </Button>{' '}
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: this.state.serverData }} />
       </div>
     );
   }
