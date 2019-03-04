@@ -38,6 +38,7 @@ class SummerEditorTest extends React.Component {
       let data = result.data.data;
       Logger.info('result.data : ' + result.data);
       this.setState({ data: data, serverData: data });
+      $('#summernote').summernote('code', data);
     });
   }
 
@@ -72,6 +73,7 @@ class SummerEditorTest extends React.Component {
         }
       }
     });
+    this.refresh();
   }
 
   render() {
