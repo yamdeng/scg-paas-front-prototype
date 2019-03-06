@@ -21,8 +21,8 @@ class List extends React.Component {
             <tr>
               <th>#</th>
               <th>First Name 1</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Last Name 2</th>
+              <th>Username 3</th>
             </tr>
           </thead>
           <tbody>
