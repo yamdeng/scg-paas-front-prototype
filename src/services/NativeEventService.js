@@ -26,6 +26,7 @@ class NativeEventService {
     $(window).on('setLoginInfo', function(event, data) {
       // eslint-disable-next-line
       console.log('setLoginInfo : ' + data);
+      alert('setLoginInfo : ' + data);
       stores.appStore.setLoginInfo(JSON.parse(data));
       LoadingBar.hide();
     });
