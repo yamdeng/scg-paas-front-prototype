@@ -27,7 +27,7 @@ class List extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">1 123123</th>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
@@ -45,6 +45,7 @@ class List extends React.Component {
               <td>@twitter</td>
             </tr>
           </tbody>
+          <h1>HUHUHUH</h1>
         </Table>
       </div>
     );

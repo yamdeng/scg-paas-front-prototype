@@ -47,7 +47,7 @@ class Profile extends React.Component {
           />
         </Grid>
         <ListGroup>
-          <ListGroupItem>로그인ID : {this.state.data.loginId}</ListGroupItem>
+          <ListGroupItem>로그인ID GOOD : {this.state.data.loginId}</ListGroupItem>
           <ListGroupItem>이름 : {this.state.data.name}</ListGroupItem>
           <ListGroupItem>계약관리번호 : {Config.contractNo}</ListGroupItem>
         </ListGroup>
