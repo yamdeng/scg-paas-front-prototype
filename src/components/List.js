@@ -20,9 +20,9 @@ class List extends React.Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>First Name 1</th>
-              <th>Last Name 2</th>
-              <th>Username 3</th>
+              <th>First Name 1 123123</th>
+              <th>Last Name 2 123123</th>
+              <th>Username 3 123123</th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +47,7 @@ class List extends React.Component {
           </tbody>
           <h1>HUHUHUH</h1>
         </Table>
+        <p> GOOD </p>
       </div>
     );
   }
