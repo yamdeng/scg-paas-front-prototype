@@ -84,9 +84,9 @@ if (process.env.TOKEN_TYPE === Constant.TOKEN_TYPE_WEB) {
       token: urlQuery.token,
       contractNumber: '123'
     });
-    stores.appStore.changeNativeInit(false);
+    stores.appStore.changeNativeInited(false);
     setTimeout(() => {
-      stores.appStore.changeNativeInit(true);
+      stores.appStore.changeNativeInited(true);
     }, 3000);
   }
 }

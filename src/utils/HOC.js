@@ -121,10 +121,25 @@ const analytics2 = analyticsName => WrappedComponent =>
     }
   };
 
+const documentTitle = title => WrappedComponent =>
+  class WithSubscription extends React.PureComponent {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+    componentDidMount() {
+      document.title = title;
+    }
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };
+
 HOC.withRender = withRender;
 HOC.withRender2 = withRender2;
 HOC.analytics = analytics;
 HOC.analytics2 = analytics2;
 HOC.componentWillUnmount = componentWillUnmount;
+HOC.documentTitle = documentTitle;
 
 export default HOC;

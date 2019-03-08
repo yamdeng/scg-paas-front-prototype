@@ -207,7 +207,7 @@ class App extends Component {
     let IntroPageComponent = null;
     let NavigationComponent = <FrontIssueNavigation />;
 
-    if (!this.props.appStore.nativeInit) {
+    if (!this.props.appStore.nativeInited) {
       mainContainerStyle.display = 'none';
       IntroPageComponent = <IntroPage />;
       NavigationComponent = null;

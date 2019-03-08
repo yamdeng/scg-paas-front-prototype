@@ -28,6 +28,7 @@ const styles = theme => ({
   }
 });
 
+@HOC.documentTitle('어코디언 메트리얼')
 @HOC.analytics2('AccordionM')
 @withRouter
 @inject('appStore')

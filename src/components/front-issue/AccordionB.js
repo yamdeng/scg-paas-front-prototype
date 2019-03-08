@@ -9,6 +9,7 @@ import Logger from '../../utils/Logger';
 
 import HOC from '../../utils/HOC';
 
+@HOC.documentTitle('어코디언 부트스트랩')
 @HOC.analytics2('AccordionB')
 @withRouter
 @inject('appStore', 'frontIssueStore')

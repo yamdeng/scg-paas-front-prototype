@@ -5,7 +5,7 @@ class AppStore {
   @observable deviceInfo = {};
   @observable appVersion = '';
   @observable history = null;
-  @observable nativeInit = true;
+  @observable nativeInited = true;
   @observable loginInfo = {
     loginId: 'yamdeng7',
     name: '얌댕',
@@ -36,8 +36,8 @@ class AppStore {
   }
 
   @action
-  changeNativeInit(nativeInit) {
-    this.nativeInit = nativeInit;
+  changeNativeInited(nativeInited) {
+    this.nativeInited = nativeInited;
   }
 }
 

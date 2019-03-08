@@ -67,6 +67,10 @@ function removeInfoByLocalStorage(key) {
   localStorage.removeItem(key);
 }
 
+function changeDocumentTitle(title) {
+  document.title = title;
+}
+
 const Helper = {
   convertEmptyValue: convertEmptyValue,
   checkAuthByUrl: checkAuthByUrl,
@@ -75,7 +79,8 @@ const Helper = {
   saveInfoToLocalStorage: saveInfoToLocalStorage,
   getInfoByLocalStorage: getInfoByLocalStorage,
   removeInfoByLocalStorage: removeInfoByLocalStorage,
-  diffMomentDate: diffMomentDate
+  diffMomentDate: diffMomentDate,
+  changeDocumentTitle: changeDocumentTitle
 };
 
 export default Helper;
