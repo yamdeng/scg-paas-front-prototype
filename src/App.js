@@ -1,7 +1,7 @@
 import DevTools from 'mobx-react-devtools';
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import FrontIssueNavigation from './components/FrontIssueNavigation';
 import ModalContainer from './containers/ModalContainer';
 import Home from './components/Home';
@@ -85,6 +85,7 @@ import Constant from './config/Constant';
 import Victory from './components/front-issue/chart/Victory';
 import Recharts from './components/front-issue/chart/Recharts';
 import RechartsFinal from './components/front-issue/chart/RechartsFinal';
+import NotFound from './components/front-issue/NotFound';
 
 @withRouter
 @inject('appStore', 'modalStore')
@@ -233,132 +234,151 @@ class App extends Component {
           {NavigationComponent}
           {IntroPageComponent}
           <div style={mainContainerStyle}>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/accordion-b" component={AccordionB} />
-            <Route exact path="/accordion-m" component={AccordionM} />
-            <Route exact path="/tab-b" component={TabB} />
-            <Route exact path="/tab-m" component={TabM} />
-            <Route exact path="/device-basic" component={DeviceBasic} />
-            <Route exact path="/footer-select" component={FooterSelect} />
-            <Route exact path="/checkbox-switch" component={CheckboxSwitch} />
-            <Route exact path="/native-interface" component={NativeInterface} />
-            <Route exact path="/modal-test-1" component={ModalTest1} />
-            <Route exact path="/sass" component={SassTest} />
-            <Route exact path="/environment" component={Environment} />
-            <Route exact path="/error-test" component={ErrorTest} />
-            <Route exact path="/error-client" component={ErrorClient} />
-            <Route exact path="/error-server" component={ErrorServer} />
-            <Route exact path="/error-auth" component={ErrorAuth} />
-            <Route exact path="/event-test" component={EventTest} />
-            <Route exact path="/talk-anmation" component={TalkAnimation} />
-            <Route exact path="/talk-list" component={TalkList} />
-            <Route exact path="/form-test" component={FormTest} />
-            <Route exact path="/form-test2" component={FormTest2} />
-            <Route exact path="/form-validation" component={FormValidation} />
-            <Route
-              exact
-              path="/table-page-scroll"
-              component={TableScrollPage}
-            />
-            <Route
-              exact
-              path="/image-page-scroll"
-              component={ImageScrollPage}
-            />
-            <Route exact path="/tab-scroll" component={TabScroll} />
-            <Route exact path="/react-error-test" component={ReactErrorTest} />
-            <Route exact path="/publish-test" component={PublishTest} />
-            <Route
-              exact
-              path="/immutability-test"
-              component={ImmutabilityTest}
-            />
-            <Route
-              exact
-              path="/immutability-test2"
-              component={ImmutabilityTest2}
-            />
-            <Route exact path="/store-test" component={StoreTest} />
-            <Route exact path="/store-test2" component={StoreTest2} />
-            <Route exact path="/domain-list" component={DomainTestList} />
-            <Route exact path="/domain-detail" component={DomainTestDetail} />
-            <Route exact path="/api-list" component={ApiTestList} />
-            <Route exact path="/api-detail/:id" component={ApiTestDetail} />
-            <Route
-              exact
-              path="/company-code-test"
-              component={CompanyCodeTest}
-            />
-            <Route
-              exact
-              path="/company-seoul-test"
-              component={CompanySeoulTest}
-            />
-            <Route
-              exact
-              path="/company-inchon-test"
-              component={CompanyInchonTest}
-            />
-            <Route exact path="/lifecycle-test" component={LifeCycleTest} />
-            <Route exact path="/recompose-test" component={RecomposeTest} />
-            <Route exact path="/hoc-test" component={HocTest} />
-            <Route exact path="/hoc-analytics" component={HocAnalytics} />
-            <Route
-              exact={true}
-              path="/form/:id/detail"
-              component={BoardDetail}
-            />
-            <Route exact={true} path="/form/:id/edit" component={BoardForm} />
-            <Route
-              exact={true}
-              path="/form/:id"
-              render={({ match }) => {
-                if (match.params.id === Constant.FORM_NEW_ID) {
-                  return <BoardForm />;
-                } else {
-                  return <BoardDetail />;
-                }
-              }}
-            />
-            <Route
-              exact
-              path="/lock/member/privacy-agree"
-              component={BoardForm}
-            />
-            <Route
-              exact
-              path="/lock/member/privacy-agree/:id"
-              component={BoardDetail}
-            />
-            <Route exact path="/ckeditor" component={CkeditorTest} />
-            <Route exact path="/ckeditor5" component={CkeditorTest5} />
-            <Route exact path="/tiny-editor" component={TinyEditorTest} />
-            <Route exact path="/summer-editor" component={SummerEditorTest} />
-            <Route exact path="/moment" component={MomentTest} />
-            <Route exact path="/material-date" component={MaterialDatePicker} />
-            <Route path="/clipcopy" component={ClipCopyTest} />
-            <Route path="/modal-root" component={ModalRoot} />
-            <Route path="/modal-root-dynamic" component={ModalRootDynamic} />
-            <Route exact path="/modal-root/child" component={ModalRootChild} />
-            <Route
-              exact
-              path="/modal-root-dynamic/:id"
-              component={ModalRootDynamicChild}
-            />
-            <Route exact path="/homestore" component={HomeStoreTest} />
-            <Route exact path="/slide-home" component={SlideHome} />
-            <Route exact path="/calendar" component={Calendar} />
-            <Route exact path="/file-upload" component={FileUpload} />
-            <Route exact path="/websign" component={WebSign} />
-            <Route exact path="/firebase" component={Firebase} />
-            <Route exact path="/chart/recharts" component={Recharts} />
-            <Route
-              exact
-              path="/chart/recharts-final"
-              component={RechartsFinal}
-            />
-            <Route exact path="/chart/victory" component={Victory} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/accordion-b" component={AccordionB} />
+              <Route exact path="/accordion-m" component={AccordionM} />
+              <Route exact path="/tab-b" component={TabB} />
+              <Route exact path="/tab-m" component={TabM} />
+              <Route exact path="/device-basic" component={DeviceBasic} />
+              <Route exact path="/footer-select" component={FooterSelect} />
+              <Route exact path="/checkbox-switch" component={CheckboxSwitch} />
+              <Route
+                exact
+                path="/native-interface"
+                component={NativeInterface}
+              />
+              <Route exact path="/modal-test-1" component={ModalTest1} />
+              <Route exact path="/sass" component={SassTest} />
+              <Route exact path="/environment" component={Environment} />
+              <Route exact path="/error-test" component={ErrorTest} />
+              <Route exact path="/error-client" component={ErrorClient} />
+              <Route exact path="/error-server" component={ErrorServer} />
+              <Route exact path="/error-auth" component={ErrorAuth} />
+              <Route exact path="/event-test" component={EventTest} />
+              <Route exact path="/talk-anmation" component={TalkAnimation} />
+              <Route exact path="/talk-list" component={TalkList} />
+              <Route exact path="/form-test" component={FormTest} />
+              <Route exact path="/form-test2" component={FormTest2} />
+              <Route exact path="/form-validation" component={FormValidation} />
+              <Route
+                exact
+                path="/table-page-scroll"
+                component={TableScrollPage}
+              />
+              <Route
+                exact
+                path="/image-page-scroll"
+                component={ImageScrollPage}
+              />
+              <Route exact path="/tab-scroll" component={TabScroll} />
+              <Route
+                exact
+                path="/react-error-test"
+                component={ReactErrorTest}
+              />
+              <Route exact path="/publish-test" component={PublishTest} />
+              <Route
+                exact
+                path="/immutability-test"
+                component={ImmutabilityTest}
+              />
+              <Route
+                exact
+                path="/immutability-test2"
+                component={ImmutabilityTest2}
+              />
+              <Route exact path="/store-test" component={StoreTest} />
+              <Route exact path="/store-test2" component={StoreTest2} />
+              <Route exact path="/domain-list" component={DomainTestList} />
+              <Route exact path="/domain-detail" component={DomainTestDetail} />
+              <Route exact path="/api-list" component={ApiTestList} />
+              <Route exact path="/api-detail/:id" component={ApiTestDetail} />
+              <Route
+                exact
+                path="/company-code-test"
+                component={CompanyCodeTest}
+              />
+              <Route
+                exact
+                path="/company-seoul-test"
+                component={CompanySeoulTest}
+              />
+              <Route
+                exact
+                path="/company-inchon-test"
+                component={CompanyInchonTest}
+              />
+              <Route exact path="/lifecycle-test" component={LifeCycleTest} />
+              <Route exact path="/recompose-test" component={RecomposeTest} />
+              <Route exact path="/hoc-test" component={HocTest} />
+              <Route exact path="/hoc-analytics" component={HocAnalytics} />
+              <Route
+                exact={true}
+                path="/form/:id/detail"
+                component={BoardDetail}
+              />
+              <Route exact={true} path="/form/:id/edit" component={BoardForm} />
+              <Route
+                exact={true}
+                path="/form/:id"
+                render={({ match }) => {
+                  if (match.params.id === Constant.FORM_NEW_ID) {
+                    return <BoardForm />;
+                  } else {
+                    return <BoardDetail />;
+                  }
+                }}
+              />
+              <Route
+                exact
+                path="/lock/member/privacy-agree"
+                component={BoardForm}
+              />
+              <Route
+                exact
+                path="/lock/member/privacy-agree/:id"
+                component={BoardDetail}
+              />
+              <Route exact path="/ckeditor" component={CkeditorTest} />
+              <Route exact path="/ckeditor5" component={CkeditorTest5} />
+              <Route exact path="/tiny-editor" component={TinyEditorTest} />
+              <Route exact path="/summer-editor" component={SummerEditorTest} />
+              <Route exact path="/moment" component={MomentTest} />
+              <Route
+                exact
+                path="/material-date"
+                component={MaterialDatePicker}
+              />
+              <Route path="/clipcopy" component={ClipCopyTest} />
+              <Route path="/modal-root" component={ModalRoot} />
+              <Route path="/modal-root-dynamic" component={ModalRootDynamic} />
+              <Route
+                exact
+                path="/modal-root/child"
+                component={ModalRootChild}
+              />
+              <Route
+                exact
+                path="/modal-root-dynamic/:id"
+                component={ModalRootDynamicChild}
+              />
+              <Route exact path="/homestore" component={HomeStoreTest} />
+              <Route exact path="/slide-home" component={SlideHome} />
+              <Route exact path="/calendar" component={Calendar} />
+              <Route exact path="/file-upload" component={FileUpload} />
+              <Route exact path="/websign" component={WebSign} />
+              <Route exact path="/firebase" component={Firebase} />
+              <Route exact path="/chart/recharts" component={Recharts} />
+              <Route
+                exact
+                path="/chart/recharts-final"
+                component={RechartsFinal}
+              />
+              <Route exact path="/chart/victory" component={Victory} />
+              <Route component={NotFound} />
+            </Switch>
           </div>
           {/* {라우팅 설정 end} */}
           <LoadingBarContainer />
