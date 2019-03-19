@@ -37,6 +37,7 @@ class NativeInterface extends React.Component {
     this.reloadPageByCompanyCode = this.reloadPageByCompanyCode.bind(this);
     this.setLoginInfo = this.setLoginInfo.bind(this);
     this.refreshAppByUrl = this.refreshAppByUrl.bind(this);
+    this.getSign = this.getSign.bind(this);
   }
 
   getDeviceInfo() {
@@ -118,6 +119,12 @@ class NativeInterface extends React.Component {
       stores.nativeStore.setImage(data);
     });
 
+    $(window).on('setSign', function(event, data) {
+      // eslint-disable-next-line
+      console.log('setSign');
+      stores.nativeStore.setSignImage(data);
+    });
+
     $(window).on('setGps', function(event, data) {
       // eslint-disable-next-line
       console.log('setGps : ' + data);
@@ -128,7 +135,20 @@ class NativeInterface extends React.Component {
   removeEventListener() {
     $(window).off('setDeviceInfo');
     $(window).off('setImage');
+    $(window).off('setSignImage');
     $(window).off('setGps');
+  }
+
+  getSign() {
+    NativeInterfaceService.getSign();
+  }
+
+  getCamera() {
+    NativeInterfaceService.getCamera();
+  }
+
+  getGallery() {
+    NativeInterfaceService.getGallery();
   }
 
   componentDidMount() {
@@ -148,6 +168,8 @@ class NativeInterface extends React.Component {
     let image = this.props.nativeStore.image
       ? this.props.nativeStore.image
       : 'https://material-ui.com/static/images/avatar/1.jpg';
+
+    let signImage = this.props.nativeStore.signImage;
     return (
       <div style={{ marginTop: 70, padding: 10 }}>
         <Button
@@ -214,6 +236,15 @@ class NativeInterface extends React.Component {
         >
           refreshAppByUrl
         </Button>
+        <Button variant="contained" color="primary" onClick={this.getSign}>
+          getSign
+        </Button>
+        <Button variant="contained" color="primary" onClick={this.getCamera}>
+          getCamera
+        </Button>
+        <Button variant="contained" color="primary" onClick={this.getGallery}>
+          getGallery
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -250,6 +281,14 @@ class NativeInterface extends React.Component {
             style={{ marginTop: 10 }}
           >
             <img alt="Remy Sharp" src={image} className={classes.avatar} />
+          </Grid>
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            style={{ marginTop: 10 }}
+          >
+            <img alt="Remy Sharp" src={signImage} className={classes.avatar} />
           </Grid>
         </div>
       </div>

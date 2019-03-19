@@ -80,6 +80,24 @@ class NativeInterfaceService {
       window.android.openModal();
     }
   }
+
+  getSign() {
+    if (DeviceUtil.isAndroid) {
+      window.android.getSign();
+    }
+  }
+
+  getCamera() {
+    if (DeviceUtil.isAndroid) {
+      window.android.getCamera();
+    }
+  }
+
+  getGallery() {
+    if (DeviceUtil.isAndroid) {
+      window.android.getGallery();
+    }
+  }
 }
 
 export default new NativeInterfaceService();

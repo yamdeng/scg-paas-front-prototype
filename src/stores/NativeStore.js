@@ -4,6 +4,7 @@ class NativeStore {
   @observable deviceInfo = null;
   @observable gps = null;
   @observable image = '';
+  @observable signImage = '';
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -19,6 +20,11 @@ class NativeStore {
   }
 
   @action
+  setSignImage(signImage) {
+    this.signImage = signImage;
+  }
+
+  @action
   setImage(image) {
     this.image = image;
   }
@@ -28,6 +34,7 @@ class NativeStore {
     this.deviceInfo = null;
     this.gps = null;
     this.image = null;
+    this.signImage = null;
   }
 }
 
