@@ -5,7 +5,10 @@
 
   <body>
     <script>
-      window.opener.postMessage({ name: 'yamdeng', age: 36 });
+      window.opener.postMessage(
+        { name: 'yamdeng', age: 36 },
+        document.location.origin
+      );
       self.close();
     </script>
   </body>
