@@ -11,7 +11,7 @@ import { Progress } from 'reactstrap';
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { percent: 0 };
+    this.state = { percent: 0, fileUrl: null };
     this.onChange = this.onChange.bind(this);
     this.onUploadProgress = this.onUploadProgress.bind(this);
   }
@@ -28,7 +28,7 @@ class FileUpload extends React.Component {
       onUploadProgress: this.onUploadProgress
     };
     axios.post('/api/front/uploadImage', formData, config).then(result => {
-      // debugger;
+      this.setState({ fileUrl: result.data.fileUrl });
     });
   }
 
@@ -44,6 +44,11 @@ class FileUpload extends React.Component {
         <br />
         <div className="text-center">{this.state.percent}%</div>
         <Progress value={this.state.percent} />
+        <img
+          src={this.state.fileUrl}
+          style={{ width: '100%', height: '100%' }}
+          alt="uploadimage"
+        />
       </div>
     );
   }
