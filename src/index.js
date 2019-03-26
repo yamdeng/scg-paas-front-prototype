@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Constant from './config/Constant';
 import App from './App';
 import App2 from './App2';
+import SignFormApp from './SignFormApp';
 import * as serviceWorker from './serviceWorker';
 
 import { HashRouter as Router } from 'react-router-dom';
@@ -69,6 +70,8 @@ let AppComponent = <App />;
 let appType = urlQuery.appType;
 if (appType && appType === 'app2') {
   AppComponent = <App2 />;
+} else if (appType && appType === 'sign') {
+  AppComponent = <SignFormApp formId={urlQuery.formId} />;
 }
 
 let companyCode = urlQuery.companyCode;

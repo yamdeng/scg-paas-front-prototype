@@ -85,6 +85,7 @@ import Constant from './config/Constant';
 import Victory from './components/front-issue/chart/Victory';
 import Recharts from './components/front-issue/chart/Recharts';
 import RechartsFinal from './components/front-issue/chart/RechartsFinal';
+import OpenWindow from './components/front-issue/OpenWindow';
 import NotFound from './components/front-issue/NotFound';
 
 @withRouter
@@ -377,6 +378,7 @@ class App extends Component {
                 component={RechartsFinal}
               />
               <Route exact path="/chart/victory" component={Victory} />
+              <Route exact path="/openwindow-test" component={OpenWindow} />
               <Route component={NotFound} />
             </Switch>
           </div>

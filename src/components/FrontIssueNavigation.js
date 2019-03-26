@@ -264,6 +264,11 @@ const menuMappingInfos = [
     title: 'moment 테스트',
     linkUrl: '/moment',
     success: true
+  },
+  {
+    title: 'open window 테스트',
+    linkUrl: '/openwindow-test',
+    success: true
   }
 ];
 
