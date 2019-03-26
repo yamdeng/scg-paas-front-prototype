@@ -11,7 +11,7 @@ import shortid from 'shortid';
 class OpenWindow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { message: null };
     this.openWindow = this.openWindow.bind(this);
   }
 
@@ -22,8 +22,9 @@ class OpenWindow extends React.Component {
       accountno: formId
     });
     window.open('/#/?appType=sign&formId=' + formId);
-    $(window).on('message', function(data, event) {
+    $(window).on('message', data => {
       Logger.log('data : ' + JSON.stringify(data.originalEvent.data));
+      this.setState({ message: data.originalEvent.data });
     });
   }
 
@@ -41,6 +42,7 @@ class OpenWindow extends React.Component {
         <button type="button" onClick={this.openWindow}>
           open window
         </button>
+        <p>{JSON.stringify(this.state.message)}</p>
       </div>
     );
   }
