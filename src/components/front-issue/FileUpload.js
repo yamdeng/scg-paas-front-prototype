@@ -64,10 +64,17 @@ class FileUpload extends React.Component {
           type="file"
           name="sign"
           id="sign"
+          title="camera1"
           capture="camera"
           onChange={this.onChange}
         />
-        <input type="file" name="sign2" id="sign2" onChange={this.onChange} />
+        <input
+          type="file"
+          name="sign2"
+          id="sign2"
+          title="camera2"
+          onChange={this.onChange}
+        />
         <br />
         <div className="text-center">{this.state.percent}%</div>
         <Progress value={this.state.percent} />
