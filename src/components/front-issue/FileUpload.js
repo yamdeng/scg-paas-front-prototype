@@ -11,9 +11,15 @@ import { Progress } from 'reactstrap';
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { percent: 0, fileUrl: null };
+    this.state = {
+      percent: 0,
+      fileUrl: null,
+      beforeFileUrl: null,
+      fileObject: null
+    };
     this.onChange = this.onChange.bind(this);
     this.onUploadProgress = this.onUploadProgress.bind(this);
+    this.sendServer = this.sendServer.bind(this);
   }
 
   onUploadProgress(event) {
@@ -23,10 +29,24 @@ class FileUpload extends React.Component {
 
   onChange(event) {
     let formData = new FormData();
-    formData.append('imageFile', event.target.files[0]);
+    let file = event.target.files[0];
+    let fileReader = new FileReader();
+    formData.append('imageFile', file);
+    this.setState({ fileObject: file });
+    if (file.type.match('image')) {
+      fileReader.onload = () => {
+        this.setState({ beforeFileUrl: fileReader.result });
+      };
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  sendServer() {
     let config = {
       onUploadProgress: this.onUploadProgress
     };
+    let formData = new FormData();
+    formData.append('imageFile', this.state.fileObject);
     axios.post('/api/front/uploadImage', formData, config).then(result => {
       this.setState({ fileUrl: result.data.fileUrl });
     });
@@ -44,11 +64,21 @@ class FileUpload extends React.Component {
         <br />
         <div className="text-center">{this.state.percent}%</div>
         <Progress value={this.state.percent} />
+        이전 이미지
+        <img
+          src={this.state.beforeFileUrl}
+          style={{ width: 200, height: 200 }}
+          alt=" beforeimage"
+        />
+        <br />
+        전송된 이미지
         <img
           src={this.state.fileUrl}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: 200, height: 200 }}
           alt="uploadimage"
         />
+        <br />
+        <button onClick={this.sendServer}>전송</button>
       </div>
     );
   }
