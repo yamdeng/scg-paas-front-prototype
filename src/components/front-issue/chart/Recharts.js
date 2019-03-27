@@ -7,7 +7,10 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ComposedChart,
+  Bar,
+  Area
 } from 'recharts';
 
 const data = [
@@ -60,9 +63,30 @@ class CustomizedLabel extends PureComponent {
     const { x, y, stroke, value } = this.props;
 
     return (
-      <text x={x} y={y} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">
-        {value}
-      </text>
+      <React.Fragment>
+        <rect
+          x={x - 23}
+          y={y + 7}
+          width="45"
+          height="20"
+          rx="7"
+          ry="7"
+          fill="#1597ff"
+          strokeWidth="0"
+          opacity="blue"
+        />
+        <text
+          x={x}
+          y={y + 20}
+          fill={'#fff'}
+          fontSize={12}
+          fontWeight="bold"
+          textAnchor="middle"
+          style={{ border: 'solid 6px black' }}
+        >
+          {value}
+        </text>
+      </React.Fragment>
     );
   }
 }
@@ -88,35 +112,88 @@ class CustomizedAxisTick extends PureComponent {
   }
 }
 
+const getPath = (x, y, width, height, radius) => {
+  return `M${x},${y + radius}
+          a${radius},${radius} 0 0 1 ${radius},-${radius}
+      h${width - radius * 2}
+      a${radius},${radius} 0 0 1 ${radius},${radius}
+      v${height - radius * 2}
+      a${radius},${radius} 0 0 1 -${radius},${radius}
+      h${radius - width + radius}
+      a${radius},${radius} 0 0 1 -${radius},-${radius}
+      Z`;
+};
+
+const TriangleBar = props => {
+  const { fill, x, y, width, height, radius } = props;
+  return (
+    <path d={getPath(x, y, width, height, radius)} stroke="none" fill={fill} />
+  );
+};
+
 export default class Recharts extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/5br7g9d6/';
 
   render() {
     return (
-      <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 10
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" height={60} tick={<CustomizedAxisTick />} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="pv"
-          stroke="#8884d8"
-          label={<CustomizedLabel />}
-        />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
+      <React.Fragment>
+        <div style={{ width: '100%', overflow: 'scroll' }}>
+          <LineChart
+            width={1500}
+            height={300}
+            data={data}
+            margin={{
+              top: 20,
+              right: 30,
+              left: 20,
+              bottom: 10
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" height={60} tick={<CustomizedAxisTick />} />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              label={<CustomizedLabel />}
+              isAnimationActive={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="uv"
+              stroke="#82ca9d"
+              isAnimationActive={false}
+            />
+          </LineChart>
+        </div>
+        <hr />
+        <div style={{ width: '100%', overflow: 'scroll' }}>
+          <ComposedChart width={730} height={250} data={data}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <CartesianGrid stroke="#f5f5f5" />
+            <Area
+              type="monotone"
+              dataKey="amt"
+              fill="#8884d8"
+              stroke="#8884d8"
+            />
+            <Bar
+              dataKey="pv"
+              barSize={20}
+              fill="#413ea0"
+              shape={<TriangleBar radius={5} />}
+              barSize={15}
+            />
+            <Line type="monotone" dataKey="uv" stroke="#ff7300" />
+          </ComposedChart>
+        </div>
+      </React.Fragment>
     );
   }
 }
