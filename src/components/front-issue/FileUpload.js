@@ -60,7 +60,7 @@ class FileUpload extends React.Component {
     return (
       <div>
         <h1>FileUpload</h1>
-        <input type="file" onChange={this.onChange} />
+        <input type="file" name="sign" id="sign" onChange={this.onChange} />
         <br />
         <div className="text-center">{this.state.percent}%</div>
         <Progress value={this.state.percent} />
