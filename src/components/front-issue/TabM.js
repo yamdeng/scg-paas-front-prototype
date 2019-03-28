@@ -26,6 +26,11 @@ class TabM extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: 0 };
+    this.openWindow = this.openWindow.bind(this);
+  }
+
+  openWindow() {
+    window.open(process.env.PUBLIC_URL + '/#');
   }
 
   componentDidMount() {
@@ -58,7 +63,9 @@ class TabM extends React.Component {
           <InnerTextComponent text="사용자 정보 상세" />
         )}
         {this.state.value === 1 && (
-          <InnerTextComponent2 text="청구 정보 상세" />
+          <button type="button" onClick={this.openWindow}>
+            open window
+          </button>
         )}
       </div>
     );
