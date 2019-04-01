@@ -1,3 +1,6 @@
+import 'raf/polyfill';
+import 'babel-polyfill';
+import 'react-app-polyfill/ie9';
 import './css/common.scss';
 import './index.css';
 import moment from 'moment';
