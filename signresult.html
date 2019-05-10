@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>싸인 결과값</title>
+  </head>
+
+  <body>
+    <script>
+      window.opener.postMessage(
+        { name: 'yamdeng', age: 36 },
+        document.location.origin
+      );
+      self.close();
+    </script>
+  </body>
+</html>
