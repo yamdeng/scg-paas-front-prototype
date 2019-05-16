@@ -67,6 +67,7 @@ import HomeStoreTest from './components/front-issue/HomeStoreTest';
 import SlideHome from './components/front-issue/SlideHome';
 import Calendar from './components/front-issue/Calendar';
 import FileUpload from './components/front-issue/FileUpload';
+import FileUpload2 from './components/front-issue/FileUpload2';
 import WebSign from './components/front-issue/WebSign';
 import Firebase from './components/front-issue/Firebase';
 
@@ -369,6 +370,7 @@ class App extends Component {
               <Route exact path="/slide-home" component={SlideHome} />
               <Route exact path="/calendar" component={Calendar} />
               <Route exact path="/file-upload" component={FileUpload} />
+              <Route exact path="/file-upload2" component={FileUpload2} />
               <Route exact path="/websign" component={WebSign} />
               <Route exact path="/firebase" component={Firebase} />
               <Route exact path="/chart/recharts" component={Recharts} />

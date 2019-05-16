@@ -102,6 +102,7 @@ const menuMappingInfos = [
   { title: '상담톡 목록', linkUrl: '/talk-list', success: true },
   { title: '캘린더', linkUrl: '/calendar', success: true },
   { title: 'file-upload', linkUrl: '/file-upload', success: true },
+  { title: 'file-upload2', linkUrl: '/file-upload2', success: true },
   { title: 'websign', linkUrl: '/websign', success: true },
   { title: 'firebase', linkUrl: '/firebase', success: true },
   { title: 'chart/recharts', linkUrl: '/chart/recharts', success: true },

@@ -156,7 +156,7 @@
     ]
   },
   "homepage": "https://yamdeng/github.io/scg-paas-front-prototype",
-  "proxy": "http://ec2-54-180-120-228.ap-northeast-2.compute.amazonaws.com:3000",
+  "proxy": "http://ec2-3-0-184-167.ap-southeast-1.compute.amazonaws.com:3000",
   "devDependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "cross-env": "^5.2.0",
