@@ -15,7 +15,8 @@ class FormTest extends React.Component {
       formData: {
         paymentKind: '0',
         isApply: false,
-        paymentPeriod: ''
+        paymentPeriod: '',
+        contentResult: ''
       },
       currentFocusFormInputIndex: null,
       beforeFocusFormInputIndex: null
@@ -97,9 +98,15 @@ class FormTest extends React.Component {
 
   save() {
     if (this.validation()) {
-      Api.post('formJson', this.state.formData).then(result =>
-        alert('data : ' + JSON.stringify(result.data))
-      );
+      Api.post('formJson', this.state.formData).then(result => {
+        // alert('data : ' + JSON.stringify(result.data));
+        // alert('<div>test</div>');
+        let content = result.data.content;
+        if (content) {
+          content = content.replace(/\n/g, '<br/>');
+        }
+        this.setState({ contentResult: content });
+      });
     }
   }
 
@@ -118,6 +125,7 @@ class FormTest extends React.Component {
   render() {
     return (
       <div style={{ marginTop: 90 }}>
+        <div dangerouslySetInnerHTML={{ __html: this.state.contentResult }} />
         <div>
           계약번호 :{' '}
           <input
